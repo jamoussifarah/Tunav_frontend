@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ViewEncapsulation, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 declare var $: any;
@@ -190,5 +190,46 @@ export class VitrineComponent implements AfterViewInit {
     window.open(mailtoLink, '_blank'); 
   }
 */
+isOpen = false;
+
+  @ViewChild('menuSection', { static: true }) menuSection!: ElementRef;
+
+  icons: string[] = [
+  'GUINÉE',
+  'CONGO',
+  'RD CONGO',
+  'MAURITANIE',
+  'BURKINA FASO',
+  'FRANCE',
+  'LIBYE',
+  'MAROC',
+  'CÔTE D\'IVOIRE',
+  'MALI',
+  'SÉNÉGAL',
+  'TOGO'
+];
+
+  getIconTransform(index: number): string {
+    const angle = (360 / this.icons.length) * index;
+    const radius = 300;
+        return this.isOpen
+      ? `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`
+      : `rotate(0deg) translate(0)`;
+  }
+
+ @HostListener('window:scroll', [])
+onScroll() {
+  const sectionTop = this.menuSection.nativeElement.getBoundingClientRect().top;
+  const sectionBottom = this.menuSection.nativeElement.getBoundingClientRect().bottom;
+  const windowHeight = window.innerHeight;
+
+  if (sectionTop < windowHeight * 0.7 && sectionBottom > windowHeight * 0.3) {
+    this.isOpen = true; 
+  } else {
+    this.isOpen = false; 
+  }
+}
+
+
 
 }
