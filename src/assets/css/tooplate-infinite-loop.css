@@ -335,6 +335,11 @@ blockquote {
 
 .tm-gallery-item {
   margin: 0 15px;
+  width: 100%;               
+  height: 250px;             
+  overflow: hidden;         
+  display: flex;
+
 }
 
 .slick-dots {
