@@ -13,6 +13,8 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { VitrineComponent } from './vitrine/vitrine.component';
+import { CarouselHomePageComponent } from './carousel-home-page/carousel-home-page.component';
+import { HeaderHomePageComponent } from './header-home-page/header-home-page.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,9 @@ import { VitrineComponent } from './vitrine/vitrine.component';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    VitrineComponent
+    VitrineComponent,
+    CarouselHomePageComponent,
+    HeaderHomePageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
