@@ -15,6 +15,8 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { VitrineComponent } from './vitrine/vitrine.component';
 import { CarouselHomePageComponent } from './carousel-home-page/carousel-home-page.component';
 import { HeaderHomePageComponent } from './header-home-page/header-home-page.component';
+import { ClientsCarouselComponent } from './clients-carousel/clients-carousel.component';
+import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { HeaderHomePageComponent } from './header-home-page/header-home-page.com
     AdminLayoutComponent,
     VitrineComponent,
     CarouselHomePageComponent,
-    HeaderHomePageComponent
+    HeaderHomePageComponent,
+    ClientsCarouselComponent,
+    IOTCarouselComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
