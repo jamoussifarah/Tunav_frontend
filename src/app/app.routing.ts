@@ -5,11 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { VitrineComponent } from './vitrine/vitrine.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes =[
-  { path: 'vitrine', component: VitrineComponent },
+  { path: '', component: VitrineComponent },
 
-  { path: '', redirectTo: 'vitrine', pathMatch: 'full' }
+  { path: '', redirectTo: 'vitrine', pathMatch: 'full' },
+  { path: 'auth', component: RegisterComponent }
   /*{
     path: '',
     redirectTo: 'dashboard',

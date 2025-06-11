@@ -17,6 +17,8 @@ import { CarouselHomePageComponent } from './carousel-home-page/carousel-home-pa
 import { HeaderHomePageComponent } from './header-home-page/header-home-page.component';
 import { ClientsCarouselComponent } from './clients-carousel/clients-carousel.component';
 import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
+import { RegisterComponent } from './register/register.component';
+import { FooterHomePageComponent } from './footer-home-page/footer-home-page.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
     CarouselHomePageComponent,
     HeaderHomePageComponent,
     ClientsCarouselComponent,
-    IOTCarouselComponent
+    IOTCarouselComponent,
+    RegisterComponent,
+    FooterHomePageComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
