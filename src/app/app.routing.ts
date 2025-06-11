@@ -8,9 +8,9 @@ import { VitrineComponent } from './vitrine/vitrine.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes =[
-  { path: '', component: VitrineComponent },
 
-  { path: '', redirectTo: 'vitrine', pathMatch: 'full' },
+  { path: '', component: VitrineComponent }, 
+  { path: 'home', component: VitrineComponent },
   { path: 'auth', component: RegisterComponent }
   /*{
     path: '',
