@@ -19,6 +19,7 @@ import { ClientsCarouselComponent } from './clients-carousel/clients-carousel.co
 import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterHomePageComponent } from './footer-home-page/footer-home-page.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import { FooterHomePageComponent } from './footer-home-page/footer-home-page.com
     ClientsCarouselComponent,
     IOTCarouselComponent,
     RegisterComponent,
-    FooterHomePageComponent
+    FooterHomePageComponent,
+    AboutUsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

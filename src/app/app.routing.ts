@@ -6,12 +6,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { VitrineComponent } from './vitrine/vitrine.component';
 import { RegisterComponent } from './register/register.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes =[
 
   { path: '', component: VitrineComponent }, 
   { path: 'home', component: VitrineComponent },
-  { path: 'auth', component: RegisterComponent }
+  { path: 'auth', component: RegisterComponent },
+  { path: 'about', component: AboutUsComponent },
   /*{
     path: '',
     redirectTo: 'dashboard',

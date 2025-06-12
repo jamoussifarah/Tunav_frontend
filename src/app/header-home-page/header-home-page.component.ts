@@ -32,5 +32,8 @@ export class HeaderHomePageComponent implements OnInit {
     event.preventDefault();
     this.router.navigate(['auth']);
   }
-
+   About(event: Event){
+    event.preventDefault();
+    this.router.navigate(['about']);
+  }
 }
