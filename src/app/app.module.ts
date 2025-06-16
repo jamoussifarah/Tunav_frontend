@@ -20,6 +20,8 @@ import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterHomePageComponent } from './footer-home-page/footer-home-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 @NgModule({
   imports: [
@@ -42,7 +44,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     IOTCarouselComponent,
     RegisterComponent,
     FooterHomePageComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactUsComponent,
+    ChatBotComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

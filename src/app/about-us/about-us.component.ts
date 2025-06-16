@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-us',
@@ -6,7 +7,8 @@ import { AfterViewInit, Component, OnDestroy, OnInit, ElementRef, ViewChild } fr
   styleUrls: ['./about-us.component.scss']
 })
 export class AboutUsComponent implements OnInit, AfterViewInit, OnDestroy {
-
+  constructor(private router: Router) {}
+  
   @ViewChild('aboutVideo', { static: false }) aboutVideo!: ElementRef<HTMLVideoElement>;
 
   EventImages = [
@@ -138,5 +140,8 @@ toggleSound(): void {
     videoEl.play().catch(err => console.warn('Play with sound failed:', err));
   }
 }
-
+contact(event: Event){
+    event.preventDefault();
+    this.router.navigate(['contact']);
+  }
 }

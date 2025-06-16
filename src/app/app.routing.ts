@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { VitrineComponent } from './vitrine/vitrine.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes =[
 
@@ -14,6 +15,8 @@ const routes: Routes =[
   { path: 'home', component: VitrineComponent },
   { path: 'auth', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
+  { path: 'contact', component: ContactUsComponent },
+
   /*{
     path: '',
     redirectTo: 'dashboard',
