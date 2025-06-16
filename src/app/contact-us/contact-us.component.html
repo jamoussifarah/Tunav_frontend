@@ -1,4 +1,5 @@
  <app-header-home-page></app-header-home-page>
+ <div id="messageBox" style="display:none; margin-top: 10px; font-weight: bold;"></div>
  <section id="contact" class="tm-section-pad-top tm-parallax-2">
       <div class="container tm-container-contact">
         <div class="row"> 
@@ -11,12 +12,56 @@
             </div>
             
             <div class="col-sm-12 col-md-6">
-             <form (ngSubmit)="sendEmail()" #contactForm="ngForm">
-              <input name="name" [(ngModel)]="form.name" type="text" placeholder="Your Name" class="tm-input" required />
-              <input name="email" [(ngModel)]="form.email" type="email" placeholder="Your Email" class="tm-input" required />
-              <textarea name="message" [(ngModel)]="form.message" rows="8" placeholder="Message" class="tm-input" required></textarea>
-              <button type="submit" class="btn tm-btn-submit">Submit</button>
-            </form>
+            <form (ngSubmit)="sendEmail()" #contactForm="ngForm" novalidate>
+
+                <input
+                  name="name"
+                  [(ngModel)]="form.name"
+                  type="text"
+                  placeholder="Your Name"
+                  class="tm-input"
+                  required
+                />
+
+                <input
+                  name="email"
+                  #emailInput
+                  [(ngModel)]="form.email"
+                  type="email"
+                  placeholder="Your Email"
+                  class="tm-input"
+                  required
+                />
+
+                <div
+                  id="emailError"
+                  style="color: red; font-size: 0.9em; margin-top: 4px;"
+                  *ngIf="emailInvalid"
+                >
+                  Veuillez entrer un email valide.
+                </div>
+
+                <textarea
+                  name="message"
+                  [(ngModel)]="form.message"
+                  rows="8"
+                  placeholder="Message"
+                  class="tm-input"
+                  required
+                ></textarea>
+
+                <button type="submit" class="btn tm-btn-submit">Submit</button>
+              </form>
+
+              <div
+                id="messageBox"
+                [style.color]="messageError ? 'red' : 'green'"
+                *ngIf="messageText"
+                style="margin-top: 10px; font-weight: bold;"
+              >
+                {{ messageText }}
+              </div>
+
             </div>
             
             <div class="col-sm-12 col-md-6">

@@ -36,4 +36,8 @@ export class HeaderHomePageComponent implements OnInit {
     event.preventDefault();
     this.router.navigate(['about']);
   }
+   Blogs(event: Event){
+    event.preventDefault();
+    this.router.navigate(['blogs']);
+  }
 }

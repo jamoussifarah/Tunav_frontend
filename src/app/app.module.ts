@@ -22,6 +22,7 @@ import { FooterHomePageComponent } from './footer-home-page/footer-home-page.com
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ChatBotComponent } from './chat-bot/chat-bot.component';
     FooterHomePageComponent,
     AboutUsComponent,
     ContactUsComponent,
-    ChatBotComponent
+    ChatBotComponent,
+    BlogsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

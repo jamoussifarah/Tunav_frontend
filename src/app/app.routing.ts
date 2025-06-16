@@ -8,6 +8,7 @@ import { VitrineComponent } from './vitrine/vitrine.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { BlogsComponent } from './blogs/blogs.component';
 
 const routes: Routes =[
 
@@ -16,7 +17,7 @@ const routes: Routes =[
   { path: 'auth', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
-
+  {path:'blogs',component:BlogsComponent}
   /*{
     path: '',
     redirectTo: 'dashboard',
