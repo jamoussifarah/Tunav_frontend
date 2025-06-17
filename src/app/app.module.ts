@@ -1,6 +1,6 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -23,6 +23,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { FormProductsComponent } from './form-products/form-products.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     NavbarModule,
     FooterModule,
     SidebarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -48,7 +50,8 @@ import { BlogsComponent } from './blogs/blogs.component';
     AboutUsComponent,
     ContactUsComponent,
     ChatBotComponent,
-    BlogsComponent
+    BlogsComponent,
+    FormProductsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

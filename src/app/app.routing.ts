@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { BlogsComponent } from './blogs/blogs.component';
+import { FormProductsComponent } from './form-products/form-products.component';
+import { TablesComponent } from './tables/tables.component';
 
 const routes: Routes =[
 
@@ -17,23 +19,29 @@ const routes: Routes =[
   { path: 'auth', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
-  {path:'blogs',component:BlogsComponent}
-  /*{
-    path: '',
+  {path:'blogs',component:BlogsComponent},
+  {
+    path: 'admin',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   }, {
     path: '',
     component: AdminLayoutComponent,
     children: [
-        {
-      path: '',
-      loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
-  }]},
+      {
+        path: '',
+        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
+      },
+      { path: 'add-product', component: FormProductsComponent },
+      { path: 'update-product/:id', component: FormProductsComponent },
+      { path: 'listProducts', component: TablesComponent },
+      { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
+    ]
+  },
   {
-    path: '**',
-    redirectTo: 'dashboard'
-  }*/
+    path: '**',component: VitrineComponent
+    
+  }
 ];
 
 @NgModule({
