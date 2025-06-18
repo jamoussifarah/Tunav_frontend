@@ -88,5 +88,38 @@
     transition-delay: 0.1s;
   }
 }
+.btn-voir-tous-les-produits{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 50px;
+}
+
+.btn-tous-produits{
+  height: 65px;
+  background-color: #38B;
+  color: white;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px solid #38B;
+  font-weight: 600;
+  padding: 10px 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  animation: saut 2s infinite;
+}
+@keyframes saut{
+  0%,20%,50%,60%,100% {
+    transform:translateY(0);
+  }
+  40%{
+    transform: translateY(15px);
+
+  }
+  80%{
+    transform: translateY(15px);
+  }
+}
 
 
