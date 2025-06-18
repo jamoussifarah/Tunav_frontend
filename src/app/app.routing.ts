@@ -14,10 +14,14 @@ import { TablesComponent } from './tables/tables.component';
 import { UsersListsComponent } from './users-lists/users-lists.component';
 import { BlogslistComponent } from './blogslist/blogslist.component';
 import { FormblogComponent } from './formblog/formblog.component';
+import {ProductsComponent} from './products/products.component';
+import {FormulaireIotItComponent} from './formulaire-iot-it/formulaire-iot-it.component';
+import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
 
 const routes: Routes =[
-
+  
   { path: '', component: VitrineComponent }, 
+  { path: 'products', component: ProductsComponent }, 
   { path: 'home', component: VitrineComponent },
   { path: 'auth', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
@@ -25,6 +29,11 @@ const routes: Routes =[
   {path:'blogs',component:BlogsComponent},
   {
     path: 'admin',
+  { path: 'formulaireiotit', component: FormulaireIotItComponent },
+  { path: 'formulairefranchise', component: FormFranchiseComponent }
+
+  /*{
+    path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   }, {

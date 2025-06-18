@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ViewEncapsulation, HostListener, ElementRef, 
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 declare var $: any;
 
@@ -28,6 +30,8 @@ export class VitrineComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.initScripts();
   }
+  constructor(private router: Router) {}
+
 
   initScripts() {
 
@@ -243,6 +247,9 @@ onScroll() {
     this.isOpen = false; 
   }
 }
+  goToProductsPage(): void {
+  this.router.navigate(['/products']);
+  }
 
 
 

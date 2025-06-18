@@ -27,6 +27,15 @@ import { FormProductsComponent } from './form-products/form-products.component';
 import { UsersListsComponent } from './users-lists/users-lists.component';
 import { BlogslistComponent } from './blogslist/blogslist.component';
 import { FormblogComponent } from './formblog/formblog.component';
+import { ProductsComponent } from './products/products.component';
+import { Carousel2Component } from './carousel2/carousel2.component';
+import { CarteProduitComponent } from './carte-produit/carte-produit.component';
+import { CarteProduitNodevisComponent } from './carte-produit-nodevis/carte-produit-nodevis.component';
+import { PetitCadreComponent } from './petit-cadre/petit-cadre.component';
+import { TitreproduitComponent } from './titreproduit/titreproduit.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormulaireIotItComponent } from './formulaire-iot-it/formulaire-iot-it.component';
+import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
 
 @NgModule({
   imports: [
@@ -58,6 +67,15 @@ import { FormblogComponent } from './formblog/formblog.component';
     UsersListsComponent,
     BlogslistComponent,
     FormblogComponent
+    ProductsComponent,
+    Carousel2Component,
+    CarteProduitComponent,
+    CarteProduitNodevisComponent,
+    PetitCadreComponent,
+    TitreproduitComponent,
+    NavbarComponent,
+    FormulaireIotItComponent,
+    FormFranchiseComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
