@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { AppRoutingModule } from './app.routing';
+
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
@@ -36,6 +36,7 @@ import { TitreproduitComponent } from './titreproduit/titreproduit.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormulaireIotItComponent } from './formulaire-iot-it/formulaire-iot-it.component';
 import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
   imports: [
@@ -66,7 +67,7 @@ import { FormFranchiseComponent } from './form-franchise/form-franchise.componen
     FormProductsComponent,
     UsersListsComponent,
     BlogslistComponent,
-    FormblogComponent
+    FormblogComponent,
     ProductsComponent,
     Carousel2Component,
     CarteProduitComponent,
