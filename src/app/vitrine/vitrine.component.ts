@@ -14,7 +14,7 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None 
 })
 export class VitrineComponent implements AfterViewInit {
-  constructor(private route: ActivatedRoute, private scroller: ViewportScroller) {}
+  constructor(private router: Router,private route: ActivatedRoute, private scroller: ViewportScroller) {}
 
   ngOnInit() {
   this.route.queryParams.subscribe(params => {
@@ -30,7 +30,7 @@ export class VitrineComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.initScripts();
   }
-  constructor(private router: Router) {}
+  // constructor(private router: Router) {}
 
 
   initScripts() {

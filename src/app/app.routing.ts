@@ -27,11 +27,11 @@ const routes: Routes =[
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
   {path:'blogs',component:BlogsComponent},
-  {
-    path: 'admin',
+  // {
+  //   path: 'admin'},
   { path: 'formulaireiotit', component: FormulaireIotItComponent },
   { path: 'formulairefranchise', component: FormFranchiseComponent }
-
+  ]
   /*{
     path: '',
     redirectTo: 'dashboard',
@@ -58,7 +58,7 @@ const routes: Routes =[
     path: '**',component: VitrineComponent
     
   }
-];
+];*/
 
 @NgModule({
   imports: [
