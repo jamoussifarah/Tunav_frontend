@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { ScrollService } from 'app/Services/scroll.service';
 
 @Component({
@@ -8,29 +8,69 @@ import { ScrollService } from 'app/Services/scroll.service';
   styleUrls: ['./header-home-page.component.scss']
 })
 export class HeaderHomePageComponent implements OnInit {
-  constructor(private router: Router, private scrollService: ScrollService) {}
+  pendingSection: string | null = null;
 
-  navigateToSection(sectionId: string) {
-    const currentUrl = this.router.url;
-    if (currentUrl !== '/home') {
-      this.scrollService.setAnchor(sectionId);
-      this.router.navigate(['/home']);
+  constructor(private router: Router) {
+    // Quand la navigation finit, scroll vers la section demandée si besoin
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && this.pendingSection) {
+        setTimeout(() => {
+          const el = document.getElementById(this.pendingSection!);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+          this.pendingSection = null;
+        }, 100); // délai pour que la page ait le temps de s'afficher
+      }
+    });
+  }
+
+  navigateToSection(sectionId: string, event: Event) {
+    event.preventDefault();  // Empêche le comportement par défaut du lien
+
+    // Vérifie si on est sur la page d'accueil (adapter le chemin selon ton routing)
+    const currentUrl = this.router.url.split('#')[0];
+    if (currentUrl !== '/' && currentUrl !== '/home') {
+      // Pas sur la home => redirige vers home, puis scroll
+      this.pendingSection = sectionId;
+      this.router.navigate(['/']);
     } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+      // Déjà sur la home => scroll direct
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
+ ngOnInit(): void {
+  window.addEventListener('scroll', this.onScroll);
+}
 
+onScroll = () => {
+  const scrollY = window.scrollY;
+  const logoBlanc = document.getElementById('logoBlanc');
+  const logoCouleur = document.getElementById('logoCouleur');
 
-  ngOnInit(): void {
+  if (scrollY <= 50) {
+    logoBlanc!.style.display = 'block';
+    logoCouleur!.style.display = 'none';
+  } else {
+    logoBlanc!.style.display = 'none';
+    logoCouleur!.style.display = 'block';
   }
+};
 
 
   Login(event: Event){
     event.preventDefault();
     this.router.navigate(['auth']);
   }
-
+   About(event: Event){
+    event.preventDefault();
+    this.router.navigate(['about']);
+  }
+   Blogs(event: Event){
+    event.preventDefault();
+    this.router.navigate(['blogs']);
+  }
 }

@@ -19,6 +19,14 @@ import { ClientsCarouselComponent } from './clients-carousel/clients-carousel.co
 import { IOTCarouselComponent } from './iotcarousel/iotcarousel.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterHomePageComponent } from './footer-home-page/footer-home-page.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { FormProductsComponent } from './form-products/form-products.component';
+import { UsersListsComponent } from './users-lists/users-lists.component';
+import { BlogslistComponent } from './blogslist/blogslist.component';
+import { FormblogComponent } from './formblog/formblog.component';
 import { ProductsComponent } from './products/products.component';
 import { Carousel2Component } from './carousel2/carousel2.component';
 import { CarteProduitComponent } from './carte-produit/carte-produit.component';
@@ -51,6 +59,14 @@ import { FormFranchiseComponent } from './form-franchise/form-franchise.componen
     IOTCarouselComponent,
     RegisterComponent,
     FooterHomePageComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    ChatBotComponent,
+    BlogsComponent,
+    FormProductsComponent,
+    UsersListsComponent,
+    BlogslistComponent,
+    FormblogComponent
     ProductsComponent,
     Carousel2Component,
     CarteProduitComponent,

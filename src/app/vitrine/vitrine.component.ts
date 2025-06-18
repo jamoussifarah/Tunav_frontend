@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ViewEncapsulation, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 
 
@@ -12,6 +14,18 @@ declare var $: any;
   encapsulation: ViewEncapsulation.None 
 })
 export class VitrineComponent implements AfterViewInit {
+  constructor(private route: ActivatedRoute, private scroller: ViewportScroller) {}
+
+  ngOnInit() {
+  this.route.queryParams.subscribe(params => {
+    const section = params['section'];
+    if (section) {
+      setTimeout(() => {
+        this.scroller.scrollToAnchor(section);
+      }, 100); // délai pour laisser le DOM charger
+    }
+  });
+}
 
   ngAfterViewInit() {
     this.initScripts();
