@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,6 +11,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { FormProductsComponent } from './form-products/form-products.component';
 import { TablesComponent } from './tables/tables.component';
+import { UsersListsComponent } from './users-lists/users-lists.component';
+import { BlogslistComponent } from './blogslist/blogslist.component';
+import { FormblogComponent } from './formblog/formblog.component';
 
 const routes: Routes =[
 
@@ -35,6 +38,10 @@ const routes: Routes =[
       { path: 'add-product', component: FormProductsComponent },
       { path: 'update-product/:id', component: FormProductsComponent },
       { path: 'listProducts', component: TablesComponent },
+      {path:'listblogs',component:BlogslistComponent},
+      {path:'listusers',component:UsersListsComponent},
+      { path: 'add-blog', component: FormblogComponent },
+      { path: 'update-blog/:id', component: FormblogComponent },
       { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   },

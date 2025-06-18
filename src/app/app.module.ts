@@ -24,6 +24,9 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { FormProductsComponent } from './form-products/form-products.component';
+import { UsersListsComponent } from './users-lists/users-lists.component';
+import { BlogslistComponent } from './blogslist/blogslist.component';
+import { FormblogComponent } from './formblog/formblog.component';
 
 @NgModule({
   imports: [
@@ -51,7 +54,10 @@ import { FormProductsComponent } from './form-products/form-products.component';
     ContactUsComponent,
     ChatBotComponent,
     BlogsComponent,
-    FormProductsComponent
+    FormProductsComponent,
+    UsersListsComponent,
+    BlogslistComponent,
+    FormblogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

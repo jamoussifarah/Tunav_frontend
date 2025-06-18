@@ -54,11 +54,9 @@ export class CarouselHomePageComponent implements OnInit {
     this.router.navigate(['/vitrine']);
   }
   
-  scrollToGps() {
-  const titreSection = document.getElementById('partietitre');
-  if (titreSection) {
-    titreSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
+  goToHomeAndScroll(section: string, event: Event) {
+  event.preventDefault();
+  this.router.navigate([''], { queryParams: { section } });
+}
 
 }

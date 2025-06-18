@@ -9,7 +9,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh; 
-  background-color: #f0f4f8; 
+  background-color: white; 
 }
 
 .auth-box {
@@ -26,7 +26,7 @@
 }
 
 .auth-component body {
-	background: #f6f5f7;
+	background:white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -159,7 +159,7 @@
 .auth-component .sign-up-auth-box {
 	left: 0;
 	width: 50%;
-	opacity: 0;
+	opacity: 1;
 	z-index: 1;
 }
 
@@ -247,4 +247,34 @@
 	margin: 0 5px;
 	height: 40px;
 	width: 40px;
+}
+.back-arrow {
+  position: fixed;
+  top: 60px; 
+  left: 20px;
+  font-size: 24px;
+  color: #007bff;
+  text-decoration: none;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  @media (max-width: 768px) {
+    top: 40px; /* Ajustement pour petits écrans */
+    left: 10px;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+  }
+
+  &:hover {
+    color: #0056b3;
+    background: rgba(255, 255, 255, 1);
+  }
 }
