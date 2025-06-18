@@ -4,75 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Infinite Loop - Bootstrap 4.0 HTML Template</title>
+    <title>TUNAV IT GROUP</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,300">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
-   <!-- 
-   <link rel="stylesheet" href="assets/fontawesome-5.5/css/all.min.css" />
-    <link rel="stylesheet" href="assets/slick/slick.css">
-    <link rel="stylesheet" href="assets/slick/slick-theme.css">
-    <link rel="stylesheet" href="assets/magnific-popup/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/tooplate-infinite-loop.css" /> 
-   --> 
-<!--
-Tooplate 2117 Infinite Loop
-https://www.tooplate.com/view/2117-infinite-loop
--->
   </head>
   <body>    
     <!-- Hero section -->
-    <section id="infinite" class="text-white tm-font-big tm-parallax">
-      <!-- Navigation -->
-      <nav class="navbar navbar-expand-md tm-navbar" id="tmNav">              
-        <div class="container">   
-          <div class="tm-next">
-              <a href="#infinite" class="navbar-brand">TUNAV IT GROUP</a>
-          </div>             
-            
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars navbar-toggler-icon"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#infinite">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#whatwedo">What We Do</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link tm-nav-link" href="#testimonials">Testimonials</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#gallery">Gallery</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link tm-nav-link" href="#contact">Contact</a>
-              </li>                    
-            </ul>
-          </div>        
-        </div>
-      </nav>
-      
-      <div class="text-center tm-hero-text-container">
-        <div class="tm-hero-text-container-inner">
-            <h2 class="tm-hero-title">TUNAV IT
-            </h2>
-            <p class="tm-hero-subtitle">
-              Maîtrisez l’instant, anticipez demain — 
-              <br>avec Tunav
-            </p>
-        </div>        
-      </div>
-
-      <div class="tm-next tm-intro-next">
-        <a href="#whatwedo" class="text-center tm-down-arrow-link">
-          <i class="fas fa-2x fa-arrow-down tm-down-arrow"></i>
-        </a>
-      </div>      
-    </section>
+<!-- Navigation -->
+<app-header-home-page></app-header-home-page>
+  <!-- Carousel Component -->
+<app-carousel-home-page></app-carousel-home-page>
       <section class="menu-section" #menuSection>
         <div class="circular-menu" [class.open]="isOpen">
           <div class="center-icon">Où sommes-nous ?</div>
@@ -86,82 +27,82 @@ https://www.tooplate.com/view/2117-infinite-loop
       </section>
 
 
-    <section id="whatwedo" class="tm-section-pad-top">
-      <div class="container">
+  <section id="whatwedo" class="tm-section-pad-top">
+  <div class="container">
 
-            <div class="row tm-content-box"><!-- first row -->
-                <div class="col-lg-12 col-xl-12">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4 tm-section-title">What We Do</h2>
-                        <p class="mb-4 tm-intro-text">
-                          This is Infinite Loop, free Bootstrap 4.0 HTML template with a parallax effect. This layout is what you can modify and use for your websites. Please spread a word to your friends about our website. Thank you for supporting us. If you have any question, you can contact us or chat with us on our <a href="https://fb.com/tooplate">Tooplate Facebook page</a>.</p>
-                    </div>
-                </div>
-
-            </div><!-- first row -->
-            
-            <div class="row tm-content-box"><!-- second row -->
-        		<div class="col-lg-1">
-                    <i class="far fa-3x fa-chart-bar text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Market Analysis</h2>
-                        <p class="mb-4 tm-intro-text">
-                          Praesent sed pharetra lorem, blandit convallis mi. Aenean ornare elit ac metus lacinia, sed iaculis nibh semper. Pellentesque est urna.</p>
-                    </div>
-                </div>
-                
-                <div class="col-lg-1">
-                    <i class="far fa-3x fa-comment-alt text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Fast Support</h2>
-                        <p class="mb-4 tm-intro-text">
-                          Credit goes to <a rel="nofollow" href="https://www.pexels.com">Pexels</a> website for all images used in this template. Cras condimentum mi et sapien dignissim luctus.</p>
-                    </div>
-                </div>
-
-            </div><!-- second row -->
-            
-            <div class="row tm-content-box"><!-- third row -->
-        		<div class="col-lg-1">
-                    <i class="fas fa-3x fa-fingerprint text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                        <h2 class="tm-text-primary mb-4">Top Security</h2>
-                        <p class="mb-4 tm-intro-text">
-                      You have <strong>no</strong> authority to post this template as a ZIP file on your template collection websites. You can <strong>use</strong> this template for your commercial websites.</p>
-                          
-                          <div class="tm-continue">
-                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-1">
-                    <i class="fas fa-3x fa-users text-center tm-icon"></i>
-                </div>
-                <div class="col-lg-5">
-                    <div class="tm-intro-text-container">
-                      <h2 class="tm-text-primary mb-4">Social Work</h2>
-                        <p class="mb-4 tm-intro-text">
-                      You can change <a href="https://fontawesome.com/icons?d=gallery">Font Awesome icons</a> by either <b><em>fas or far</em></b> in the HTML codes. For Examples:<br>
-                      <em>&lt;i class=&quot;fas fa-users&quot;&gt;&lt;i class=&quot;far fa-chart-bar&quot;&gt;</em> </p>
-                          
-                          <div class="tm-continue">
-                            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Details</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div><!-- third row -->
-
+    <div class="row tm-content-box"><!-- first row -->
+      <div class="col-lg-12 col-xl-12">
+        <div class="tm-intro-text-container">
+          <h2 class="tm-text-primary mb-4 tm-section-title">What We Do</h2>
+          <p class="mb-4 tm-intro-text">
+            Depuis plus de 20 ans, Tunav IT Group se positionne en tant que fournisseur de référence en solutions GPS, IT et IoT. Intégrateur de systèmes à forte valeur ajoutée, Tunav conçoit et déploie des solutions technologiques intelligentes, alliant performance et fiabilité. Nos domaines d’expertise couvrent le suivi GPS, la gestion de flotte, la surveillance à distance en temps réel ainsi que l’optimisation des processus métier, au service de la transformation digitale des organisations.
+          </p>
         </div>
-      
-    </section>
+      </div>
+    </div><!-- first row -->
+
+    <div class="row tm-content-box"><!-- second row -->
+      <div class="col-lg-1">
+        <i class="fas fa-network-wired fa-3x text-center tm-icon"></i>
+      </div>
+      <div class="col-lg-5">
+        <div class="tm-intro-text-container">
+          <h2 class="tm-text-primary mb-4">Transformation Digitale</h2>
+          <p class="mb-4 tm-intro-text">
+            Nous accompagnons les entreprises dans leur transition numérique avec des solutions innovantes, durables et parfaitement intégrées à leur activité.
+          </p>
+          <div class="tm-continue">
+            <a href="#testimonials" class="tm-intro-text tm-btn-primary">Découvrir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-1">
+        <i class="fas fa-laptop-code fa-3x text-center tm-icon"></i>
+      </div>
+      <div class="col-lg-5">
+        <div class="tm-intro-text-container">
+          <h2 class="tm-text-primary mb-4">Solutions IT</h2>
+          <p class="mb-4 tm-intro-text">
+             Notre expertise couvre le cloud computing, le développement de logiciels et la surveillance à distance, garantissant aux entreprises de rester compétitives dans un monde numérique en constante évolution. 
+          </p>
+        </div>
+      </div>
+    </div><!-- second row -->
+
+    <div class="row tm-content-box"><!-- third row -->
+      <div class="col-lg-1">
+        <i class="fas fa-map-marker-alt fa-3x text-center tm-icon"></i>
+      </div>
+      <div class="col-lg-5">
+        <div class="tm-intro-text-container">
+          <h2 class="tm-text-primary mb-4">Suivi GPS</h2>
+          <p class="mb-4 tm-intro-text">
+            Nos solutions de géolocalisation assurent un suivi en temps réel fiable et sécurisé de vos véhicules, équipements ou équipes terrain.
+          </p>
+          <div class="tm-continue">
+            <a href="#testimonials" class="tm-intro-text tm-btn-primary">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-1">
+        <i class="fas fa-cogs fa-3x text-center tm-icon"></i>
+      </div>
+      <div class="col-lg-5">
+         <div class="tm-intro-text-container">
+          <h2 class="tm-text-primary mb-4">Solutions IoT</h2>
+          <p class="mb-4 tm-intro-text">
+            Nos solutions IoT offrent une surveillance intelligente, une gestion centralisée des appareils connectés et des systèmes de sécurité avancés pour protéger vos installations, optimiser vos opérations et améliorer votre efficacité globale.
+          </p>
+        </div>
+       
+      </div>
+    </div><!-- third row -->
+
+  </div>
+</section>
+
     
     <section id="testimonials" class="tm-section-pad-top tm-parallax-2">      
       <div class="container tm-testimonials-content">
@@ -321,8 +262,14 @@ https://www.tooplate.com/view/2117-infinite-loop
             </div>        
           </div>
       </div>
+      <div class="btn-voir-tous-les-produits">
+        <button (click)="goToProductsPage()" class="btn-tous-produits">Voir Tous Les Produits</button>
+      </div>
     </section>
-
+ <!--
+    <app-iotcarousel></app-iotcarousel>
+ --> 
+   <app-clients-carousel></app-clients-carousel>
     <!-- Contact -->
     <section id="contact" class="tm-section-pad-top tm-parallax-2">
     
@@ -333,8 +280,9 @@ https://www.tooplate.com/view/2117-infinite-loop
             <div class="text-center col-12">
                 <h2 class="tm-section-title mb-4">Contact Us</h2>
                 <p class="mb-5">
-                  Proin enim orci, tincidunt quis suscipit in, placerat nec est. Vestibulum posuere faucibus posuere. Quisque aliquam velit eget leo blandit egestas. Nulla id posuere felis, quis tristique nulla.
-                </p><br>
+            Vous pouvez nous contacter à tout moment par e-mail ou par téléphone. Vous pouvez également remplir directement ce formulaire, et notre équipe vous répondra dans les plus brefs délais.     
+        
+          </p><br>
             </div>
             
             <div class="col-sm-12 col-md-6">
@@ -387,16 +335,12 @@ https://www.tooplate.com/view/2117-infinite-loop
         
       </div>
 
-      	<footer class="text-center small tm-footer">
-          <p class="mb-0">
-          Copyright &copy; 2025 TUNAV IT GROUP 
-          
-          . <a rel="nofollow" href="https://www.tooplate.com" title="HTML templates">Designed by TUNAV TEAM</a></p>
-        </footer>
 
     </section>
     
 
    
   </body>
+
 </html>
+  <app-footer-home-page></app-footer-home-page>

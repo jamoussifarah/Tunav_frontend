@@ -145,14 +145,20 @@ blockquote {
 /* Hero */
 
 #infinite {
-	background-color: #222;
-  background-image: url(../img/infinite-loop-01.jpg);
-  background-repeat: no-repeat;
+	/*background-color: #222;
+  /*background-image: url(../img/infinite-loop-01.jpg);*/
+ /* background-repeat: no-repeat;*/
   height: 100vh;
   min-height: 375px;
+  height: 100vh;
   position: relative;
 }
-
+#heroCarousel .carousel-inner,
+#heroCarousel .carousel-item,
+#heroCarousel .carousel-item img {
+  height: 100vh;
+  object-fit: cover;
+}
 @media (min-height: 600px) and (min-width: 1920px) {
   #infinite {
     background-size: cover;

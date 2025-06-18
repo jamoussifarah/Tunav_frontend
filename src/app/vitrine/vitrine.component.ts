@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ViewEncapsulation, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 declare var $: any;
 
@@ -14,6 +16,8 @@ export class VitrineComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.initScripts();
   }
+  constructor(private router: Router) {}
+
 
   initScripts() {
 
@@ -229,6 +233,9 @@ onScroll() {
     this.isOpen = false; 
   }
 }
+  goToProductsPage(): void {
+  this.router.navigate(['/products']);
+  }
 
 
 
