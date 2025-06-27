@@ -21,7 +21,7 @@
       <label>Tags</label>
       <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
         <span *ngFor="let tag of blog.tags; let i = index" class="badge bg-primary px-2 py-1 me-1">
-          {{ tag }}
+          {{ tag}}
           <button type="button" class="btn btn-sm btn-light ms-2" (click)="removeTag(i)">×</button>
         </span>
       </div>
@@ -37,8 +37,10 @@
            (dragover)="onDragOver($event)"
            (dragleave)="onDragLeave($event)"
            [class.drag-over]="isDragging">
-        <p *ngIf="!blog.image">Glissez-déposez une image ici ou sélectionnez un fichier.</p>
-        <img *ngIf="blog.image" [src]="blog.image" class="image-preview" alt="Aperçu de l'image">
+        <p *ngIf="!blog.imagePath">Glissez-déposez une image ici ou sélectionnez un fichier.</p>
+        <img *ngIf="blog.imagePath"
+         [src]="blog.imagePath.startsWith('data:') ? blog.imagePath : getImageUrl(blog.imagePath)"
+         class="image-preview" alt="Aperçu de l'image">
         <input type="file" (change)="onFileSelected($event)" class="form-control mt-2" accept="image/*">
       </div>
     </div>

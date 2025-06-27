@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User, UserService } from 'app/Services/UserService';
 
 @Component({
   selector: 'app-users-lists',
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersListsComponent implements OnInit {
 
-  constructor() { }
+   users: User[] = [];
+
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
+    this.userService.getUsers().subscribe({
+      next: (data) => {
+        this.users = data;
+      },
+      error: (err) => {
+        console.error('Erreur lors du chargement des utilisateurs', err);
+      }
+    });
   }
-  users = [
-    { nom: 'Farah Jamoussi', email: 'farah@example.com', role: 'Admin' },
-    { nom: 'Ali Mehdi', email: 'mehdi@example.com', role: 'Auteur' },
-  ];
 
 }

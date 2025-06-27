@@ -1,43 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { environment } from '../../environments/environment';
+import { BlogService } from 'app/Services/BlogService';
+
 export interface Blog {
   id: number;
   titre: string;
   contenu: string;
-  image: string;        
-  tags: string[];       
-  likes: number;        
+  imagePath: string;    
+  tags: string[];
+  likes: number;
 }
+
 @Component({
   selector: 'app-blogslist',
   templateUrl: './blogslist.component.html',
   styleUrls: ['./blogslist.component.scss']
 })
 export class BlogslistComponent implements OnInit {
-constructor(private router: Router) { }
+  blogs: Blog[] = [];
+apiBaseUrl = environment.baseUrl;
 
- blogs: Blog[] = [];
+  constructor(private router: Router, private blogService: BlogService) { }
 
   ngOnInit() {
-    this.blogs = [
-      {
-        id: 1,
-        titre: 'Premier blog',
-        contenu: 'Contenu du premier blog...',
-        image: '/assets/img/gallery-img-03.jpg',
-        tags: ['tech', 'innovation'],
-        likes: 5
-      },
-      {
-        id: 2,
-        titre: 'Blog 2',
-        contenu: 'Contenu du blog 2...',
-        image: '/assets/img/gallery-img-03.jpg',
-        tags: ['coding', 'angular'],
-        likes: 10
-      }
-    ];
+    this.loadBlogs();
+  }
+
+  loadBlogs() {
+    this.blogService.getAllBlogs().subscribe({
+      next: (data) => this.blogs = data,
+      error: (err) => console.error('Erreur lors du chargement des blogs:', err)
+    });
   }
 
   editBlog(id: number) {
@@ -55,10 +50,15 @@ constructor(private router: Router) { }
       cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
+        // Ici, idéalement, appeler un service pour supprimer côté backend aussi
         this.blogs = this.blogs.filter(b => b.id !== id);
         Swal.fire('Supprimé !', 'Le blog a été supprimé.', 'success');
       }
     });
   }
 
+  // Méthode utilitaire pour avoir l'URL complète de l'image
+  getImageUrl(imagePath: string): string {
+    return this.apiBaseUrl + imagePath;
+  }
 }

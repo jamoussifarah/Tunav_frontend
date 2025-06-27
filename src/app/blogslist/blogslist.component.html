@@ -8,14 +8,14 @@
   <div class="content">
     <div class="row" *ngFor="let blog of blogs">
       <div class="col-md-2">
-        <img [src]="blog.image" alt="image blog" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
+        <img [src]="getImageUrl(blog.imagePath)"alt="image blog" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px;">
       </div>
       <div class="col-md-10">
         <h5>{{ blog.titre }}</h5>
         <p>{{ blog.contenu }}</p>
         <div class="d-flex justify-content-between align-items-center">
           <div>
-            <span *ngFor="let tag of blog.tags" class="badge bg-info text-white me-1">{{ tag }}</span>
+            <span *ngFor="let tag of blog.tags" class="badge bg-info text-white me-1">{{ tag.nom }}</span>
           </div>
           <div>
             <i class="fa fa-heart" style="color: #E44;" aria-hidden="true"></i> {{ blog.likes }}

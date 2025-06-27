@@ -27,11 +27,32 @@ const routes: Routes =[
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
   {path:'blogs',component:BlogsComponent},
-  // {
-  //   path: 'admin'},
+  
   { path: 'formulaireiotit', component: FormulaireIotItComponent },
-  { path: 'formulairefranchise', component: FormFranchiseComponent }
-  ]
+  { path: 'formulairefranchise', component: FormFranchiseComponent },
+  {
+    path: 'admin',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  }, {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./layouts/admin-layout/admin-layout.module').then(x => x.AdminLayoutModule)
+      },
+      { path: 'add-product', component: FormProductsComponent },
+      { path: 'update-product/:id', component: FormProductsComponent },
+      { path: 'listProducts', component: TablesComponent },
+      {path:'listblogs',component:BlogslistComponent},
+      {path:'listusers',component:UsersListsComponent},
+      { path: 'add-blog', component: FormblogComponent },
+      { path: 'update-blog/:id', component: FormblogComponent },
+      { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
+    ]
+  }
+]
   /*{
     path: '',
     redirectTo: 'dashboard',
