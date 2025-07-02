@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-carte-produit-nodevis',
@@ -13,6 +14,8 @@ export class CarteProduitNodevisComponent {
   @Input() prix: string = '';
   @Input() caracteristiques: string[] = [];
 
+  apiBaseUrl = environment.baseUrl
+
 
   hover: boolean = false;
   showModal: boolean = false;
@@ -23,6 +26,10 @@ export class CarteProduitNodevisComponent {
 
   closeModal() {
     this.showModal = false;
+  }
+  getImageUrl(imagePath: string): string {
+    console.log(imagePath);
+    return this.apiBaseUrl + imagePath;
   }
 
 }

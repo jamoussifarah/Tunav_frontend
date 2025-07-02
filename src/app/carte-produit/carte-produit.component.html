@@ -1,7 +1,7 @@
 
 
 <div class="carte-produit" (mouseenter)="hover = true" (mouseleave)="hover = false" (click)="openModal()">
-  <img class="image-fond" [src]="image" [alt]="titre" />
+  <img class="image-fond" [src]="getImageUrl(image)" [alt]="titre" />
 
   <div class="infos-base" *ngIf="!hover">
     <h2 class="titre">{{ titre }}</h2>
@@ -39,14 +39,14 @@
 
       <div class="modal-bottom">
         <div class="imagee">
-          <img [src]="image" alt="Produit" class="modal-image" />
+          <img [src]="getImageUrl(image)" alt="Produit" class="modal-image" />
         </div>
         <div class="caracteristiques-et-tarif">
 
           <div class="caracteristiques">
             <h4>Caractéristiques : </h4>
             <ul>
-              <li *ngFor="let carac of caracteristiques"> {{ carac }}</li>
+              <li *ngFor="let carac of caracteristiques"> {{ carac.texte }}</li>
             </ul>
           </div>
           <div class="tarif">
