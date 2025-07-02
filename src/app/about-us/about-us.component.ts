@@ -30,77 +30,53 @@ export class AboutUsComponent implements OnInit, AfterViewInit, OnDestroy {
     { src: '/assets/img/TeamBuilding/TM6.jpeg', alt: 'TM 6', active: false },
     { src: '/assets/img/TeamBuilding/TM7.jpeg', alt: 'TM 7', active: false },
     { src: '/assets/img/TeamBuilding/TM8.jpeg', alt: 'TM 8', active: false }
+  ];
+
+  membres = [
+    { nom: 'Najet', prenom: 'Boukadi', profession: 'Financial Manager', image: '/assets/img/Equipe/NajetBoukadi.jfif' },
+    { nom: 'Anis', prenom: 'Kalel', profession: 'PDG', image: '/assets/img/Equipe/AnisKallel.jfif' },
+    { nom: 'Mariem', prenom: 'Ayari', profession: 'Marketing Mnager', image: '/assets/img/Equipe/MariemAyari.jpeg' },
+    { nom: 'Skander', prenom: 'Elj', profession: 'Information System Mnager', image: '/assets/img/Equipe/SkanderElj.jfif' },
+    { nom: 'Chawki', prenom: 'Zorgui', profession: 'Chef Service Vente et Aprés vente', image: '/assets/img/Equipe/ChawkiZorgui.jpeg' },
+    { nom: 'Sarra', prenom: 'Dabbebi', profession: 'Responsable RH', image: '/assets/img/Equipe/SarraDabbebi.jpeg' },
+    { nom: 'Marwa', prenom: 'Henchir', profession: 'Cheffe de projet IT', image: '/assets/img/Equipe/MarwaHenchir.jpeg' },
 
   ];
-  membres = [
-      {
-      nom: 'Najet',
-      prenom: 'Boukadi',
-      profession: 'Financial Manager',
-      image: '/assets/img/Equipe/NajetBoukadi.jfif'
-    },
-    {
-      nom: 'Anis',
-      prenom: 'Kalel',
-      profession: 'PDG',
-      image: '/assets/img/Equipe/AnisKallel.jfif'
-    },
-    {
-      nom: 'Mariem',
-      prenom: 'Ayari',
-      profession: 'Marketing Mnager',
-      image: '/assets/img/Equipe/MariemAyari.jpeg'
-    },
-     {
-      nom: 'Skander',
-      prenom: 'Elj',
-      profession: 'Information System Mnager',
-      image: '/assets/img/Equipe/SkanderElj.jfif'
-    },
-     {
-      nom: 'Chawki',
-      prenom: 'Zorgui',
-      profession: 'Chef Service Vente et Aprés vente',
-      image: '/assets/img/Equipe/ChawkiZorgui.jpeg'
-    },
-     {
-      nom: 'Sarra',
-      prenom: 'Dabbebi',
-      profession: 'Responsable RH',
-      image: '/assets/img/Equipe/SarraDabbebi.jpeg'
-    },
-     {
-      nom: 'Marwa',
-      prenom: 'Henchir',
-      profession: 'Cheffe de projet IT',
-      image: '/assets/img/Equipe/MarwaHenchir.jpeg'
-    },
-  ];
- 
+
+  slideConfig = {
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    dots: true,
+    infinite: false,
+    arrows: true
+  };
+
   currentIndexEvent = 0;
   currentIndexTeamBuilding = 0;
 
-  // Intervalles séparés
   slideIntervalEvent: any;
   slideIntervalTeamBuilding: any;
 
   private videoObserver?: IntersectionObserver;
 
+  visibleMembres: any[] = [];
+  membreIndex: number = 0;
+  membresParSlide: number = 3;
+
   ngOnInit(): void {
     this.startSlider(this.EventImages, 'event');
     this.startSlider(this.TeamBuildingImages, 'teamBuilding');
+    this.updateVisibleMembres();
   }
 
   ngAfterViewInit(): void {
     const videoEl = this.aboutVideo?.nativeElement;
     if (!videoEl) return;
 
-    // Lecture immédiate (autoplay) - muting obligatoire pour autoplay sans interaction
     videoEl.muted = true;
     videoEl.playsInline = true;
     videoEl.play().catch(err => console.warn('Autoplay failed:', err));
 
-    // Observer pour pause/reprise au scroll avec seuil bas (0.1)
     this.videoObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -141,6 +117,25 @@ export class AboutUsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  // === Fonctions carrousel membres ===
+  updateVisibleMembres(): void {
+    this.visibleMembres = this.membres.slice(this.membreIndex, this.membreIndex + this.membresParSlide);
+  }
+
+  nextMembre(): void {
+    if (this.membreIndex + this.membresParSlide < this.membres.length) {
+      this.membreIndex++;
+      this.updateVisibleMembres();
+    }
+  }
+
+  prevMembre(): void {
+    if (this.membreIndex > 0) {
+      this.membreIndex--;
+      this.updateVisibleMembres();
+    }
+  }
+
   ngOnDestroy(): void {
     if (this.slideIntervalEvent) {
       clearInterval(this.slideIntervalEvent);
@@ -153,18 +148,20 @@ export class AboutUsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.videoObserver.disconnect();
     }
   }
+
   soundOn = false;
 
-toggleSound(): void {
-  const videoEl = this.aboutVideo.nativeElement;
-  this.soundOn = !this.soundOn;
-  videoEl.muted = !this.soundOn;
+  toggleSound(): void {
+    const videoEl = this.aboutVideo.nativeElement;
+    this.soundOn = !this.soundOn;
+    videoEl.muted = !this.soundOn;
 
-  if (this.soundOn) {
-    videoEl.play().catch(err => console.warn('Play with sound failed:', err));
+    if (this.soundOn) {
+      videoEl.play().catch(err => console.warn('Play with sound failed:', err));
+    }
   }
-}
-contact(event: Event){
+
+  contact(event: Event) {
     event.preventDefault();
     this.router.navigate(['contact']);
   }

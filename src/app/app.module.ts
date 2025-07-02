@@ -39,7 +39,6 @@ import { FormFranchiseComponent } from './form-franchise/form-franchise.componen
 import { AppRoutingModule } from './app.routing';
 import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   imports: [
