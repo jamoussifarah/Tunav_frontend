@@ -66,4 +66,8 @@ getBlogById(id: number) {
   return this.http.get<Blog>(`${this.apiUrl}/${id}`);
 }
 
+deleteBlog(id: number) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
+
 }

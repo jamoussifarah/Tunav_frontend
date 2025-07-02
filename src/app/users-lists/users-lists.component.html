@@ -15,7 +15,7 @@
         <tr *ngFor="let user of users">
           <td>{{ user.nom }}</td>
           <td>{{ user.email }}</td>
-          <td>{{ user.role }}</td>
+          <td>{{ user.role === 0 ? 'Client' : 'Administrateur' }}</td>
         </tr>
       </tbody>
     </table>

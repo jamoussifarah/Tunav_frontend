@@ -40,25 +40,31 @@ apiBaseUrl = environment.baseUrl;
     console.log("Edit blog", id);
   }
 
-  confirmDelete(id: number) {
-    Swal.fire({
-      title: 'Supprimer ce blog ?',
-      text: 'Cette action est irréversible.',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Oui, supprimer',
-      cancelButtonText: 'Annuler'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        // Ici, idéalement, appeler un service pour supprimer côté backend aussi
-        this.blogs = this.blogs.filter(b => b.id !== id);
-        Swal.fire('Supprimé !', 'Le blog a été supprimé.', 'success');
-      }
-    });
-  }
+ confirmDelete(id: number) {
+  Swal.fire({
+    title: 'Supprimer ce blog ?',
+    text: 'Cette action est irréversible.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Oui, supprimer',
+    cancelButtonText: 'Annuler'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.blogService.deleteBlog(id).subscribe({
+        next: () => {
+          this.blogs = this.blogs.filter(b => b.id !== id);
+          Swal.fire('Supprimé !', 'Le blog a été supprimé.', 'success');
+        },
+        error: (err) => {
+          console.error(err);
+          Swal.fire('Erreur', 'Une erreur est survenue lors de la suppression.', 'error');
+        }
+      });
+    }
+  });
+}
 
-  // Méthode utilitaire pour avoir l'URL complète de l'image
-  getImageUrl(imagePath: string): string {
+getImageUrl(imagePath: string): string {
     return this.apiBaseUrl + imagePath;
   }
 }

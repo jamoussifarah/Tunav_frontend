@@ -46,13 +46,37 @@ export class AboutUsComponent implements OnInit, AfterViewInit, OnDestroy {
       image: '/assets/img/Equipe/AnisKallel.jfif'
     },
     {
+      nom: 'Mariem',
+      prenom: 'Ayari',
+      profession: 'Marketing Mnager',
+      image: '/assets/img/Equipe/MariemAyari.jpeg'
+    },
+     {
       nom: 'Skander',
       prenom: 'Elj',
       profession: 'Information System Mnager',
       image: '/assets/img/Equipe/SkanderElj.jfif'
-    }
+    },
+     {
+      nom: 'Chawki',
+      prenom: 'Zorgui',
+      profession: 'Chef Service Vente et Aprés vente',
+      image: '/assets/img/Equipe/ChawkiZorgui.jpeg'
+    },
+     {
+      nom: 'Sarra',
+      prenom: 'Dabbebi',
+      profession: 'Responsable RH',
+      image: '/assets/img/Equipe/SarraDabbebi.jpeg'
+    },
+     {
+      nom: 'Marwa',
+      prenom: 'Henchir',
+      profession: 'Cheffe de projet IT',
+      image: '/assets/img/Equipe/MarwaHenchir.jpeg'
+    },
   ];
-  // Index indépendants pour chaque slider
+ 
   currentIndexEvent = 0;
   currentIndexTeamBuilding = 0;
 

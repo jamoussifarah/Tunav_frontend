@@ -114,14 +114,9 @@ la collaboration et la confiance mutuelle, tout en reflétant nos valeurs : l’
       <img [src]="membre.image" [alt]="membre.prenom + ' ' + membre.nom">
       <h3>{{ membre.prenom }} {{ membre.nom }}</h3>
       <p>{{ membre.profession }}</p>
-      <div class="about-social">
-        <a title="LinkedIn" href="index.html"><img src="/assets/img/linkedin.png" alt="linkedin"></a>
-        <a title="Instagram" href="index.html"><img src="/assets/img/instagram.png" alt="instagram"></a>
-        <a title="Medium" href="index.html"><img src="/assets/img/facebook.png" alt="medium"></a>
-      </div>
     </div>
-  </div>
-</section>
+   </div>
+  </section>
 
 
  <section class="about-section about-six">
@@ -151,7 +146,7 @@ la collaboration et la confiance mutuelle, tout en reflétant nos valeurs : l’
         });
       },
       {
-        threshold: 0.5 // au moins 50% de la vidéo visible pour qu’elle joue
+        threshold: 0.5 
       }
     );
 

@@ -1,5 +1,12 @@
 <div class="body">
   <app-navbar></app-navbar>
+   <script>
+   const phoneInputField = document.querySelector("#phone");
+   const phoneInput = window.intlTelInput(phoneInputField, {
+     utilsScript:
+       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+   });
+ </script>
   <br />
   <div class="container">
     <div class="partie-informations">
@@ -18,21 +25,22 @@
           </p>
 
           <label>Nom</label>
-          <input type="text" formControlName="nom" />
+          <input type="text" formControlName="nom" placeholder="Tapez vote nom"/>
 
           <label>Prénom</label>
-          <input type="text" formControlName="prenom" />
+          <input type="text" formControlName="prenom" placeholder="Tapez votre prénom"/>
 
           <label>Email</label>
-          <input type="email" formControlName="email" />
+          <input type="email" formControlName="email" placeholder="test@test.tes" />
 
-          <label>Téléphone</label>
-          <input type="text" formControlName="telephone" />
+          <label for="telephone">Téléphone</label>
+          <input id="telephone" #phoneInput type="tel" class="form-control" />
+
 
           <label>Profession actuelle</label>
-          <input type="text" formControlName="profession" />
+          <input type="text" formControlName="profession" placeholder="Tapez votre profession"/>
 
-          <label>A vez vous de l'Expérience  en IT/IoT/GPS ?</label>
+          <label>Avez vous de l'Expérience  en IT/IoT/GPS ?</label>
           <div>
             <label>
               <input type="radio" formControlName="experienceIT" value="oui" /> Oui
@@ -63,7 +71,7 @@
           </div>
 
           <label>Motivation pour rejoindre TUNAV </label>
-          <textarea formControlName="motivation"></textarea>
+          <textarea formControlName="motivation" placeholder="Quels sont vos motivations pour rejoindre La franchise à Tunav"></textarea>
 
           <button type="submit">🫴 Demander une franchise</button>
         </form>

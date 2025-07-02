@@ -17,6 +17,8 @@ import { FormblogComponent } from './formblog/formblog.component';
 import {ProductsComponent} from './products/products.component';
 import {FormulaireIotItComponent} from './formulaire-iot-it/formulaire-iot-it.component';
 import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
+import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
+import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
 
 const routes: Routes =[
   
@@ -49,6 +51,8 @@ const routes: Routes =[
       {path:'listusers',component:UsersListsComponent},
       { path: 'add-blog', component: FormblogComponent },
       { path: 'update-blog/:id', component: FormblogComponent },
+      {path:'franchises',component:ListeFranchisesComponent},
+      { path: 'franchises/:id', component: FranchiseDetailComponent },
       { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   }
