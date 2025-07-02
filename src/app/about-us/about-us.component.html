@@ -107,17 +107,34 @@ la collaboration et la confiance mutuelle, tout en reflétant nos valeurs : l’
     </div>
   </section>
 
-  <section class="about-section about-four">
-    <h2>Les Experts derrière TUNAV</h2><br>
-  <div class="about-container">
-    <div class="about-member" *ngFor="let membre of membres">
-      <img [src]="membre.image" [alt]="membre.prenom + ' ' + membre.nom">
+  <!--
+<section class="about-section about-four">
+   <h2>Les Experts derrière TUNAV</h2><br>
+   <slick-carousel class="carousel"  [config]="slideConfig">
+    <div ngxSlickItem *ngFor="let membre of membres" class="about-member" style="padding: 10px;">
+      <img [src]="membre.image" [alt]="membre.prenom + ' ' + membre.nom" style="width: 100%; height: auto; border-radius: 10px;">
       <h3>{{ membre.prenom }} {{ membre.nom }}</h3>
       <p>{{ membre.profession }}</p>
     </div>
-   </div>
+    </slick-carousel>
   </section>
 
+  --> 
+<section class="about-section about-four">
+  <h2>Les Experts derrière TUNAV</h2><br>
+  <div class="carousel-container">
+    <button class="nav" (click)="prevMembre()">❮</button>
+    <div class="carousel-slide">
+      <div class="about-member" *ngFor="let membre of visibleMembres">
+        <img [src]="membre.image" [alt]="membre.prenom + ' ' + membre.nom">
+        <h3>{{ membre.prenom }} {{ membre.nom }}</h3>
+        <p>{{ membre.profession }}</p>
+      </div>
+    </div>
+    <button class="nav" (click)="nextMembre()">❯</button>
+  </div>
+</section>
+  
 
  <section class="about-section about-six">
   <div class="about-container">
