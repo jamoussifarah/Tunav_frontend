@@ -37,6 +37,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormulaireIotItComponent } from './formulaire-iot-it/formulaire-iot-it.component';
 import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
 import { AppRoutingModule } from './app.routing';
+import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
+import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   imports: [
@@ -48,7 +51,7 @@ import { AppRoutingModule } from './app.routing';
     FooterModule,
     SidebarModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,
@@ -76,8 +79,10 @@ import { AppRoutingModule } from './app.routing';
     TitreproduitComponent,
     NavbarComponent,
     FormulaireIotItComponent,
-    FormFranchiseComponent
-  ],
+    FormFranchiseComponent,
+    ListeFranchisesComponent,
+    FranchiseDetailComponent
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

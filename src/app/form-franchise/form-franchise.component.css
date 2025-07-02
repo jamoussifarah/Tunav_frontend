@@ -113,3 +113,30 @@ input[type="radio"]{
   border: #01b4ff;
   gap: 30px;
 }
+
+input::placeholder,
+textarea::placeholder {
+  color:black;
+}
+.iti {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.iti__flag-container {
+  background-color: #f3f3f3;
+  border-right: 1px solid #ccc;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+input.form-control {
+  border: none;
+  flex: 1;
+  padding: 10px;
+  font-size: 1rem;
+}
+
