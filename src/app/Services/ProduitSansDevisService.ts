@@ -15,6 +15,7 @@ export interface ProduitSansDevis {
     texte: string;
     produitSansDevisId: number;
   }[];
+  userId: number;
 }
 
 export interface ProduitSansDevisCreateRequest {
@@ -24,6 +25,7 @@ export interface ProduitSansDevisCreateRequest {
   prix: string;
   image: File | null;
   caracteristiques: string[];
+  userId: number;
 }
 
 export interface ProduitSansDevisUpdateRequest {
@@ -58,6 +60,7 @@ export class ProduitSansDevisService {
     formData.append('Description', request.description);
     formData.append('Categorie', request.categorie);
     formData.append('Prix', request.prix);
+    formData.append('UserId', request.userId.toString());
 
     request.caracteristiques.forEach(c => {
       formData.append('Caracteristiques', c);

@@ -21,9 +21,11 @@
                     <p class="category">Tableau des produits IoT disponibles</p>
                 </div>
                 <input type="text" class="form-control w-25" placeholder="Recherche nom ou description..." [(ngModel)]="searchIot" />
-                <a [routerLink]="['/add-product']" title="Ajouter un produit">
-                    <i class="fa fa-plus" style="font-size: 22px; color: #38B; cursor: pointer;"></i>
+                <!-- bouton IoT -->
+                <a (click)="ajouterProduit('iot')" title="Ajouter un produit">
+                  <i class="fa fa-plus" style="font-size: 22px; color: #38B; cursor: pointer;"></i>
                 </a>
+
             </div>
 
           <div class="content table-responsive table-full-width">
@@ -40,11 +42,11 @@
               <tbody>
                 <tr *ngFor="let produit of filteredIot">
                   <td>
-                    <img [src]="produit.image" alt="Produit" width="50" height="50" style="object-fit: cover; border-radius: 8px;">
+                    <img [src]="getImageUrl(produit.imagePath)" alt="Produit" width="50" height="50" style="object-fit: cover; border-radius: 8px;">
                   </td>
-                  <td>{{ produit.nom }}</td>
+                  <td>{{ produit.titre }}</td>
                   <td>{{ produit.description }}</td>
-                  <td>{{ produit.prix }} DT</td>
+                  <td>{{ produit.prix }}</td>
                   <td>
                     <i class="fa fa-pencil" title="Modifier" 
                        style="color: #369; margin-right: 8px; cursor: pointer;" 
@@ -70,7 +72,8 @@
               <h4 class="title" style="color: #357;">Liste des Produits GPS</h4>
               <p class="category">Tableau des produits GPS disponibles</p>
             </div>
-            <a [routerLink]="['/add-product']" title="Ajouter un produit">
+            <input type="text" class="form-control w-25" placeholder="Recherche nom ou description..." [(ngModel)]="searchIot" />
+            <a (click)="ajouterProduit('gps')" title="Ajouter un produit">
               <i class="fa fa-plus" style="font-size: 22px; color: #38B; cursor: pointer;"></i>
             </a>
           </div>
@@ -88,11 +91,11 @@
               <tbody>
                 <tr *ngFor="let produit of filteredGps">
                   <td>
-                    <img [src]="produit.image" alt="Produit" width="50" height="50" style="object-fit: cover; border-radius: 8px;">
+                    <img [src]="getImageUrl(produit.imagePath)" alt="Produit" width="50" height="50" style="object-fit: cover; border-radius: 8px;">
                   </td>
-                  <td>{{ produit.nom }}</td>
+                  <td>{{ produit.titre }}</td>
                   <td>{{ produit.description }}</td>
-                  <td>{{ produit.prix }} DT</td>
+                  <td>{{ produit.prix }}</td>
                   <td>
                     <i class="fa fa-pencil" title="Modifier" 
                        style="color: #369; margin-right: 8px; cursor: pointer;" 

@@ -28,8 +28,10 @@ export class CarteProduitNodevisComponent {
     this.showModal = false;
   }
   getImageUrl(imagePath: string): string {
-    console.log(imagePath);
-    return this.apiBaseUrl + imagePath;
+  if (imagePath.startsWith('/assets')) {
+    return imagePath;
   }
+  return this.apiBaseUrl + imagePath;
+}
 
 }

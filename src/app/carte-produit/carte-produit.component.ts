@@ -32,10 +32,12 @@ export class CarteProduitComponent {
     this.closeModal();
     this.router.navigate(['/formulaireiotit']);
   }
-  getImageUrl(imagePath: string): string {
-    console.log(imagePath);
-    return this.apiBaseUrl + imagePath;
+ getImageUrl(imagePath: string): string {
+  if (imagePath.startsWith('/assets')) {
+    return imagePath;
   }
+  return this.apiBaseUrl + imagePath;
+}
 
 }
 

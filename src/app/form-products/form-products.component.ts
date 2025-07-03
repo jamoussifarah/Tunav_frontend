@@ -9,11 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class FormProductsComponent implements OnInit {
 
-   productForm!: FormGroup;
+  productForm!: FormGroup;
   isEditMode = false;
   productId: number | null = null;
   previewUrl: string | ArrayBuffer | null = null;
   selectedFile: File | null = null;
+
+  type: 'iot' | 'gps' = 'gps';
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +27,7 @@ export class FormProductsComponent implements OnInit {
     this.productForm = this.fb.group({
       nom: [''],
       description: [''],
-      prix: [''],
+      prix: this.type === 'gps' ? [''] : null,
       image: [null]
     });
 
@@ -42,14 +44,29 @@ export class FormProductsComponent implements OnInit {
         this.previewUrl = product.image;
       }
     }
+    const routeType = this.route.snapshot.queryParamMap.get('type');
+    if (routeType === 'iot' || routeType === 'gps') {
+      this.type = routeType;
+    }
   }
 
   onSubmit(): void {
     const formValue = this.productForm.value;
-    if (this.isEditMode) {
-      console.log('Mettre à jour le produit :', this.productId, formValue);
+    if (this.type === 'iot') {
+      console.log('Produit IoT envoyé :', {
+        titre: formValue.nom,
+        description: formValue.description,
+        image: this.selectedFile,
+        categorie: 'iot'
+      });
     } else {
-      console.log('Ajouter un nouveau produit :', formValue);
+      console.log('Produit GPS envoyé :', {
+        titre: formValue.nom,
+        description: formValue.description,
+        prix: formValue.prix,
+        image: this.selectedFile,
+        categorie: 'gps'
+      });
     }
     this.router.navigate(['/listProducts']);
   }
