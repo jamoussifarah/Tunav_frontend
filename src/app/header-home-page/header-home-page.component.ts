@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { ScrollService } from 'app/Services/scroll.service';
+import { TranslateService } from '@ngx-translate/core';
+import { LanguageService } from 'app/Services/language.service';
 
 @Component({
   selector: 'app-header-home-page',
@@ -8,10 +9,17 @@ import { ScrollService } from 'app/Services/scroll.service';
   styleUrls: ['./header-home-page.component.scss']
 })
 export class HeaderHomePageComponent implements OnInit {
+  isDropdownOpen = true;
   pendingSection: string | null = null;
+   languages = [
+  { code: 'en', name: 'English', flag: '/assets/img/flags/united-kingdom-flag.png' },
+  { code: 'fr', name: 'Francais', flag: '/assets/img/flags/france-flag.png' }
+];
 
-  constructor(private router: Router) {
-    // Quand la navigation finit, scroll vers la section demandée si besoin
+  currentLanguage = 'en';
+  constructor(private router: Router,private translate: TranslateService,private languageService: LanguageService,private cdr: ChangeDetectorRef) {
+    this.currentLanguage = this.languageService.getCurrentLanguage();
+    console.log(this.isDropdownOpen);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && this.pendingSection) {
         setTimeout(() => {
@@ -25,13 +33,28 @@ export class HeaderHomePageComponent implements OnInit {
     });
   }
 
-  navigateToSection(sectionId: string, event: Event) {
-    event.preventDefault();  // Empêche le comportement par défaut du lien
 
-    // Vérifie si on est sur la page d'accueil (adapter le chemin selon ton routing)
+  switchLanguage(languageCode: string): void {
+    this.currentLanguage = languageCode;
+    this.translate.use(languageCode);
+    localStorage.setItem('language', languageCode);
+    this.isDropdownOpen = false;
+  }
+  changeDropDown()
+  {
+    this.isDropdownOpen=!this.isDropdownOpen;
+    this.cdr.detectChanges();
+    console.log(this.isDropdownOpen);
+  }
+  getFlag(languageCode: string): string {
+    const language = this.languages.find((lang) => lang.code === languageCode);
+    return language ? language.flag : '';
+  }
+  navigateToSection(sectionId: string, event: Event) {
+    event.preventDefault();  
+
     const currentUrl = this.router.url.split('#')[0];
     if (currentUrl !== '/' && currentUrl !== '/home') {
-      // Pas sur la home => redirige vers home, puis scroll
       this.pendingSection = sectionId;
       this.router.navigate(['/']);
     } else {
