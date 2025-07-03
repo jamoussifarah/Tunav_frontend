@@ -10,28 +10,32 @@
   },
   "ABOUT": {
     "TITLE": "À propos de nous",
-    "NO_VIDEO_SUPPORT": "Votre navigateur ne prend pas en charge la balise vidéo.",
-    "PRESENTATION": "Depuis plus de 20 ans, Tunav IT Group se positionne en tant que fournisseur de référence en solutions GPS, IT et IoT. Intégrateur de systèmes à forte valeur ajoutée, Tunav conçoit et déploie des solutions technologiques intelligentes, alliant performance et fiabilité. Nos domaines d’expertise couvrent le suivi GPS, la gestion de flotte, la surveillance à distance en temps réel ainsi que l’optimisation des processus métier, au service de la transformation digitale des organisations.",
-    "DISCOVER_MORE": "Découvrir plus ⟩",
-    "IN_ACTION": {
+    "VIDEO": {
+      "NOT_SUPPORTED": "Votre navigateur ne prend pas en charge la lecture de vidéos."
+    },
+    "FIRST": {
+      "PARAGRAPH": "Depuis plus de 20 ans, Tunav IT Group se positionne en tant que fournisseur de référence en solutions GPS, IT et IoT. Intégrateur de systèmes à forte valeur ajoutée, Tunav conçoit et déploie des solutions technologiques intelligentes, alliant performance et fiabilité. Nos domaines d’expertise couvrent le suivi GPS, la gestion de flotte, la surveillance à distance en temps réel ainsi que l’optimisation des processus métier, au service de la transformation digitale des organisations.",
+      "CTA": "Découvrir plus ⟩"
+    },
+    "SECOND": {
       "TITLE": "TUNAV en Action!",
-      "CONTENT": "TUNAV IT GROUP a récemment marqué sa présence lors de FITA 2025, un événement majeur dédié à la coopération et à l’investissement en Afrique. À cette occasion, nous avons mis en avant notre engagement pour la transformation digitale à travers des solutions innovantes en IoT, cloud computing et sécurité informatique. Cet événement a été une formidable opportunité de présenter notre savoir-faire, d’échanger avec des acteurs clés du secteur et de renforcer notre vision : accompagner les entreprises africaines vers une digitalisation efficace, durable et sécurisée.",
-      "MORE": "Voir plus »"
+      "PARAGRAPH": "TUNAV IT GROUP a récemment marqué sa présence lors de FITA 2025, un événement majeur dédié à la coopération et à l’investissement en Afrique. À cette occasion, nous avons mis en avant notre engagement pour la transformation digitale à travers des solutions innovantes en IoT, cloud computing et sécurité informatique. Cet événement a été une formidable opportunité de présenter notre savoir-faire, d’échanger avec des acteurs clés du secteur et de renforcer notre vision : accompagner les entreprises africaines vers une digitalisation efficace, durable et sécurisée.",
+      "CTA": "En savoir plus »"
     },
-    "TEAMBUILDING": {
+    "THIRD": {
       "TITLE": "Au-delà du Code : renforcer l’humain chez TUNAV",
-      "CONTENT": "Chez TUNAV IT GROUP, nous croyons que la performance naît d’une équipe soudée et épanouie. C’est pourquoi nous organisons régulièrement des activités de team building, qui permettent à nos collaborateurs de se retrouver dans un cadre convivial, de renforcer leur cohésion et de stimuler la créativité en dehors du cadre professionnel. Ces moments privilégiés favorisent la communication, la collaboration et la confiance mutuelle, tout en reflétant nos valeurs : l’humain, l’innovation et le partage.",
-      "SEE_MORE": "Voir Plus  »"
+      "PARAGRAPH": "Chez TUNAV IT GROUP, nous croyons que la performance naît d’une équipe soudée et épanouie. C’est pourquoi nous organisons régulièrement des activités de team building, qui permettent à nos collaborateurs de se retrouver dans un cadre convivial, de renforcer leur cohésion et de stimuler la créativité en dehors du cadre professionnel. Ces moments privilégiés favorisent la communication, la collaboration et la confiance mutuelle, tout en reflétant nos valeurs : l’humain, l’innovation et le partage.",
+      "CTA": "Voir Plus »"
     },
-    "TEAM": {
+    "FOURTH": {
       "TITLE": "Les Experts derrière TUNAV"
     },
-    "COLLAB": {
+    "SIXTH": {
       "TITLE": "Construisons ensemble des solutions d’avenir",
-      "CONTENT1": "Chez Tunav IT Group, nous croyons que l'innovation naît de la collaboration. Forts de plus de 20 ans d’expérience dans les technologies GPS, IT et IoT, nous accompagnons nos partenaires dans la mise en œuvre de projets sur mesure, performants et durables.",
-      "CONTENT2": "Vous avez un projet, un besoin spécifique ou l’envie de transformer vos processus métier ? Échangeons ensemble pour construire des solutions adaptées à vos enjeux. Notre équipe est à votre écoute et prête à relever vos défis technologiques."
-    },
-    "CONTACT_US": "Contactez-nous dès aujourd’hui »"
+      "PARAGRAPH1": "Chez Tunav IT Group, nous croyons que l'innovation naît de la collaboration. Forts de plus de 20 ans d’expérience dans les technologies GPS, IT et IoT, nous accompagnons nos partenaires dans la mise en œuvre de projets sur mesure, performants et durables.",
+      "PARAGRAPH2": "Vous avez un projet, un besoin spécifique ou l’envie de transformer vos processus métier ? Échangeons ensemble pour construire des solutions adaptées à vos enjeux. Notre équipe est à votre écoute et prête à relever vos défis technologiques.",
+      "CTA": "Contactez-nous dès aujourd’hui »"
+    }
   },
   "CAROUSEL": {
     "SLIDE1": {
