@@ -39,12 +39,14 @@ import { FormFranchiseComponent } from './form-franchise/form-franchise.componen
 import { AppRoutingModule } from './app.routing';
 import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
 
 
 @NgModule({

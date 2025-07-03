@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router'; 
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-carte-produit',
@@ -12,6 +13,8 @@ export class CarteProduitComponent {
   @Input() image: string = '';
   @Input() categorie: string = '';
   @Input() caracteristiques: string[] = [];
+
+  apiBaseUrl = environment.baseUrl
 
   constructor(private router: Router) {}
 
@@ -29,5 +32,10 @@ export class CarteProduitComponent {
     this.closeModal();
     this.router.navigate(['/formulaireiotit']);
   }
+  getImageUrl(imagePath: string): string {
+    console.log(imagePath);
+    return this.apiBaseUrl + imagePath;
+  }
+
 }
 

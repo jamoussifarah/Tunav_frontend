@@ -38,7 +38,7 @@
         *ngFor="let produit of produits_nodevis"
         [titre]="produit.titre"
         [description]="produit.description"
-        [image]="produit.image"
+        [image]="produit.imagePath"
         [categorie]="produit.categorie"
         [prix]="produit.prix"
         [caracteristiques]="produit.caracteristiques">
@@ -50,7 +50,7 @@
         *ngFor="let produit of produits_avecdevis"
         [titre]="produit.titre"
         [description]="produit.description"
-        [image]="produit.image"
+        [image]="produit.imagePath"  
         [categorie]="produit.categorie"
         [caracteristiques]="produit.caracteristiques">
       </app-carte-produit>
