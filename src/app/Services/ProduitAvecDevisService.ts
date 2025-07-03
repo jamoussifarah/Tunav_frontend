@@ -14,6 +14,17 @@ export interface ProduitAvecDevis {
     texte: string;
     produitAvecDevisId: number;
   }[];
+  devis?: {
+    id: number;
+    nom: string;
+    prenom: string;
+    email: string;
+    entreprise: string;
+    message: string;
+    quantite: number;
+    userId: number;
+    produitAvecDevisId: number;
+  }[];
 }
 
 export interface ProduitAvecDevisCreateRequest {

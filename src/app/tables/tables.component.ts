@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-
-declare interface TableData {
-    headerRow: string[];
-    dataRows: string[][];
-}
+import { ProduitSansDevisService, ProduitSansDevis } from '../Services/ProduitSansDevisService';
+import { ProduitAvecDevisService, ProduitAvecDevis } from '../Services/ProduitAvecDevisService';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-tables',
@@ -13,47 +11,38 @@ declare interface TableData {
   styleUrls: ['./tables.component.css']
 })
 export class TablesComponent implements OnInit {
-    public tableData1: TableData;
-    public tableData2: TableData;
+  apiBaseUrl = environment.baseUrl
+  produitsIot: ProduitAvecDevis[] = [];
+  produitsGps: ProduitSansDevis[] = [];
 
-  constructor(private router: Router) { }
+  searchTerm: string = '';
+  searchIot: string = '';
+  searchGps: string = '';
 
-  ngOnInit() {
-    
-  }
- produitsIot = [
-  {
-    id: 1,
-    nom: 'Capteur Température',
-    description: 'Mesure en temps réel la température ambiante.',
-    prix: 120,
-    image: '/assets/img/Camtrack.jpg'
-  },
-  {
-    id: 2,
-    nom: 'Caméra HD',
-    description: 'Caméra connectée avec vision nocturne.',
-    prix: 300,
-    image: '/assets/img/Camtrack.jpg'
-  }
-];
+  constructor(
+    private router: Router,
+    private produitSansDevisService: ProduitSansDevisService,
+    private produitAvecDevisService: ProduitAvecDevisService
+  ) {}
 
-produitsGps = [
-  {
-    id: 101,
-    nom: 'GPS Tracker A1',
-    description: 'Dispositif de géolocalisation précis.',
-    prix: 150,
-    image: '/assets/img/Camtrack.jpg'
-  },
-  {
-    id: 102,
-    nom: 'Balise GPS Pro',
-    description: 'Balise longue autonomie.',
-    prix: 250,
-    image: '/assets/img/Camtrack.jpg'
+  ngOnInit(): void {
+    this.loadProduitsIot();
+    this.loadProduitsGps();
   }
-];
+
+  loadProduitsIot(): void {
+    this.produitAvecDevisService.getAllProduits().subscribe({
+      next: (data) => this.produitsIot = data,
+      error: (err) => console.error('Erreur chargement produits IoT :', err)
+    });
+  }
+
+  loadProduitsGps(): void {
+    this.produitSansDevisService.getAllProduits().subscribe({
+      next: (data) => this.produitsGps = data,
+      error: (err) => console.error('Erreur chargement produits GPS :', err)
+    });
+  }
 
   editIot(id: number) {
     this.router.navigate(['/update-product', id]);
@@ -69,14 +58,16 @@ produitsGps = [
       text: 'Voulez-vous vraiment supprimer ce produit IoT ?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#369',   
+      confirmButtonColor: '#369',
       cancelButtonColor: '#888',
       confirmButtonText: 'Oui, supprimer !',
       cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.produitsIot = this.produitsIot.filter(p => p.id !== id);
-        Swal.fire('Supprimé !', 'Le produit IoT a été supprimé.', 'success');
+        this.produitAvecDevisService.delete(id).subscribe(() => {
+          this.produitsIot = this.produitsIot.filter(p => p.id !== id);
+          Swal.fire('Supprimé !', 'Le produit IoT a été supprimé.', 'success');
+        });
       }
     });
   }
@@ -87,49 +78,48 @@ produitsGps = [
       text: 'Voulez-vous vraiment supprimer ce produit GPS ?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#369',   
+      confirmButtonColor: '#369',
       cancelButtonColor: '#888',
       confirmButtonText: 'Oui, supprimer !',
       cancelButtonText: 'Annuler'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.produitsGps = this.produitsGps.filter(p => p.id !== id);
-        Swal.fire('Supprimé !', 'Le produit GPS a été supprimé.', 'success');
+        this.produitSansDevisService.delete(id).subscribe(() => {
+          this.produitsGps = this.produitsGps.filter(p => p.id !== id);
+          Swal.fire('Supprimé !', 'Le produit GPS a été supprimé.', 'success');
+        });
       }
     });
   }
-  searchTerm: string = '';
-  searchIot: string = '';
-  searchGps: string = '';
+
   get filteredIot() {
-    if (!this.searchTerm) return this.produitsIot;
-    const term = this.searchTerm.toLowerCase();
+    const term = this.searchIot || this.searchTerm;
+    if (!term) return this.produitsIot;
     return this.produitsIot.filter(p =>
-      p.nom.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)
+      p.titre.toLowerCase().includes(term.toLowerCase()) ||
+      p.description.toLowerCase().includes(term.toLowerCase())
     );
   }
 
   get filteredGps() {
-    if (!this.searchTerm) return this.produitsGps;
-    const term = this.searchTerm.toLowerCase();
+    const term = this.searchGps || this.searchTerm;
+    if (!term) return this.produitsGps;
     return this.produitsGps.filter(p =>
-      p.nom.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)
-    );
-  }
-  /*
-   get filteredIot() {
-    if (!this.searchIot) return this.produitsIot;
-    const term = this.searchIot.toLowerCase();
-    return this.produitsIot.filter(p =>
-      p.nom.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)
+      p.titre.toLowerCase().includes(term.toLowerCase()) ||
+      p.description.toLowerCase().includes(term.toLowerCase())
     );
   }
 
-  get filteredGps() {
-    if (!this.searchGps) return this.produitsGps;
-    const term = this.searchGps.toLowerCase();
-    return this.produitsGps.filter(p =>
-      p.nom.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)
-    );
-  }*/
+ getImageUrl(imagePath: string): string {
+  if (imagePath.startsWith('/assets')) {
+    return imagePath;
+  }
+  return this.apiBaseUrl + imagePath;
 }
+
+  ajouterProduit(type: 'iot' | 'gps') {
+    this.router.navigate(['/add-product'], { queryParams: { type } });
+  }
+
+}
+
