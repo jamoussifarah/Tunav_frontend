@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -39,7 +39,13 @@ import { FormFranchiseComponent } from './form-franchise/form-franchise.componen
 import { AppRoutingModule } from './app.routing';
 import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 
 @NgModule({
   imports: [
@@ -52,6 +58,15 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     SidebarModule,
     AppRoutingModule,
     ReactiveFormsModule,
+     HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   declarations: [
     AppComponent,
