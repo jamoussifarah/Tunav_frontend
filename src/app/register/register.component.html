@@ -13,42 +13,32 @@
 <div class="auth-box" id="auth-box">
 	<div class="form-auth-box sign-up-auth-box">
 		<form action="#">
-			<h1>Create Account</h1>
-			<!--<div class="social-auth-box">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>-->
-			<span> use your email for registration</span>
-			<input type="text" [(ngModel)]="signUpName" name="signupName" placeholder="Name" required />
-			<input type="email" [(ngModel)]="signUpEmail" name="signupEmail" placeholder="Email" required />
-			<button type="button" (click)="onSignUp()">Sign Up</button>
+			<h1>{{ 'AUTH.SIGNUP.TITLE' | translate }}</h1>
+			<span> {{ 'AUTH.SIGNUP.SUBTITLE' | translate }}</span>
+			<input type="text" [(ngModel)]="signUpName" name="signupName"  [placeholder]="'AUTH.SIGNUP.PLACEHOLDERS.NAME' | translate" required />
+			<input type="email" [(ngModel)]="signUpEmail" name="signupEmail"  [placeholder]="'AUTH.SIGNUP.PLACEHOLDERS.EMAIL' | translate" required />
+			<button type="button" (click)="onSignUp()">{{ 'AUTH.SIGNUP.BUTTON' | translate }}</button>
 		</form>
 	</div>
 	<div class="form-auth-box sign-in-auth-box">
 		<form action="#">
-			<h1>Sign in</h1>
-			<!--<div class="social-auth-box">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-			</div>-->
-			<input type="email" [(ngModel)]="signInEmail" name="signinEmail" placeholder="Email" required />
-			<input type="password" [(ngModel)]="signInPassword" name="signinPassword" placeholder="Password" required />
-			<button type="button" (click)="onSignIn()">Sign In</button>
+			<h1>{{ 'AUTH.SIGNIN.TITLE' | translate }}</h1>
+			<input type="email" [(ngModel)]="signInEmail" name="signinEmail" [placeholder]="'AUTH.SIGNIN.PLACEHOLDERS.EMAIL' | translate" required />
+			<input type="password" [(ngModel)]="signInPassword" name="signinPassword" [placeholder]="'AUTH.SIGNIN.PLACEHOLDERS.PASSWORD' | translate" required />
+			<button type="button" (click)="onSignIn()">{{ 'AUTH.SIGNIN.BUTTON' | translate }}</button>
 		</form>
 	</div>
 	<div class="overlay-auth-box">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<h1>{{ 'AUTH.OVERLAY.LEFT.TITLE' | translate }}</h1>
+				<p>{{ 'AUTH.OVERLAY.LEFT.TEXT' | translate }}</p>
+				<button class="ghost" id="signIn">{{ 'AUTH.OVERLAY.LEFT.BUTTON' | translate }}</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<h1>{{ 'AUTH.OVERLAY.RIGHT.TITLE' | translate }}</h1>
+				<p>{{ 'AUTH.OVERLAY.RIGHT.TEXT' | translate }}</p>
+				<button class="ghost" id="signUp">{{ 'AUTH.OVERLAY.RIGHT.BUTTON' | translate }}</button>
 			</div>
 		</div>
 	</div>

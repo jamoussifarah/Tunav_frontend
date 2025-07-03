@@ -15,7 +15,76 @@ declare var $: any;
 })
 export class VitrineComponent implements AfterViewInit {
   constructor(private router: Router,private route: ActivatedRoute, private scroller: ViewportScroller) {}
+ testimonials = [
+    {
+      image: '/assets/img/testimonial-img-01.jpg',
+      quote: 'TESTIMONIALS.QUOTE1',
+      author: ''
+    },
+    {
+      image: '/assets/img/testimonial-img-02.jpg',
+      quote: 'TESTIMONIALS.QUOTE2',
+      author: 'Alexandre Petrenko'
+    },
+    {
+      image: '/assets/img/testimonial-img-03.jpg',
+      quote: 'TESTIMONIALS.QUOTE3',
+      author: 'nourchenne_cheguenni'
+    },
+    {
+      image: '/assets/img/testimonial-img-04.jpg',
+      quote: 'TESTIMONIALS.QUOTE1',
+      author: ''
+    },
+    {
+      image: '/assets/img/testimonial-img-02.jpg',
+      quote: 'TESTIMONIALS.QUOTE2',
+      author: 'Alexandre Petrenko'
+    }
+  ];
 
+  products = [
+    {
+      image: '/assets/img/MiniTrace_ KIT.png',
+      alt: 'MiniTrace_ KIT - PORTABLE',
+      title: 'GALLERY.PRODUCT1'
+    },
+    {
+      image: '/assets/img/SMART_LOCK.png',
+      alt: 'TRAILLER SMART_LOCK',
+      title: 'GALLERY.PRODUCT2'
+    },
+    {
+      image: '/assets/img/Camtrack.jpg',
+      alt: 'Camtrack',
+      title: 'GALLERY.PRODUCT3'
+    },
+    {
+      image: '/assets/img/ETX_KIT.png',
+      alt: 'ETX_KIT- AUTOMOTIVE',
+      title: 'GALLERY.PRODUCT4'
+    },
+    {
+      image: '/assets/img/ETBLE_KIT.png',
+      alt: 'ETBLE_KIT - AUTOMOTIVE',
+      title: 'GALLERY.PRODUCT5'
+    },
+    {
+      image: '/assets/img/ET6_KIT.png',
+      alt: 'ET6_KIT - ADVANCED AUTOMOTIVE',
+      title: 'GALLERY.PRODUCT6'
+    },
+    {
+      image: '/assets/img/ETCAN_KIT.png',
+      alt: 'ETCAN_KIT BUSCAN/ CARBURANT AUTOMOTIVE',
+      title: 'GALLERY.PRODUCT7'
+    },
+    {
+      image: '/assets/img/ET8_KIT.png',
+      alt: 'ET8_KIT - ETANCHE AUTOMOTIVE',
+      title: 'GALLERY.PRODUCT8'
+    }
+  ];
   ngOnInit() {
   this.route.queryParams.subscribe(params => {
     const section = params['section'];
