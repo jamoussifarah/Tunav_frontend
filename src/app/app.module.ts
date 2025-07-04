@@ -41,6 +41,8 @@ import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.co
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ListDevisComponent } from './list-devis/list-devis.component';
+import { DevisDetailComponent } from './devis-detail/devis-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -95,7 +97,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormulaireIotItComponent,
     FormFranchiseComponent,
     ListeFranchisesComponent,
-    FranchiseDetailComponent
+    FranchiseDetailComponent,
+    ListDevisComponent,
+    DevisDetailComponent
     ],
   providers: [],
   bootstrap: [AppComponent]

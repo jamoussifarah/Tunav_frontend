@@ -19,6 +19,8 @@ import {FormulaireIotItComponent} from './formulaire-iot-it/formulaire-iot-it.co
 import { FormFranchiseComponent } from './form-franchise/form-franchise.component';
 import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.component';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
+import { ListDevisComponent } from './list-devis/list-devis.component';
+import { DevisDetailComponent } from './devis-detail/devis-detail.component';
 
 const routes: Routes =[
   
@@ -53,6 +55,8 @@ const routes: Routes =[
       { path: 'update-blog/:id', component: FormblogComponent },
       {path:'franchises',component:ListeFranchisesComponent},
       { path: 'franchises/:id', component: FranchiseDetailComponent },
+      { path: 'listDevis', component: ListDevisComponent },
+      { path: 'devis/:id', component: DevisDetailComponent },
       { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
   }
