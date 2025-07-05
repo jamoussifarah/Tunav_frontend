@@ -29,4 +29,12 @@ export class AuthService {
   signIn(data: SignInRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, data);
   }
+  
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+  }
 }
