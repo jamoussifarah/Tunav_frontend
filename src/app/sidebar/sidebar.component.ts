@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'app/Services/auth.service';
 export const ROUTES = [
   { path: '/dashboard', title: 'Dashboard', icon: 'fa fa-dashboard', class: '' },
   { path: '/listProducts', title: 'Liste des Produits', icon: 'fa fa-table', class: '' },
@@ -22,11 +24,15 @@ export class SidebarComponent implements OnInit {
   { path: 'listDevis', title: 'Liste des devis', icon: 'fa fa-file-invoice-dollar', class: '' },
   ];
 
-  constructor() {}
+  constructor(private authService: AuthService,private router: Router) {}
 
   ngOnInit(): void {}
 
   isMobileMenu(): boolean {
     return window.innerWidth <= 991;
+  }
+   logout() {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
   }
 }

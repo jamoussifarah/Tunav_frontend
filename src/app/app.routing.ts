@@ -21,6 +21,7 @@ import { ListeFranchisesComponent } from './liste-franchises/liste-franchises.co
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
 import { ListDevisComponent } from './list-devis/list-devis.component';
 import { DevisDetailComponent } from './devis-detail/devis-detail.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes =[
   
@@ -41,6 +42,7 @@ const routes: Routes =[
   }, {
     path: '',
     component: AdminLayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
