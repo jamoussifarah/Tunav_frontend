@@ -10,16 +10,18 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-      const token = localStorage.getItem('token');
-    
-    if (token) {
-      // tu peux ajouter une vérification du token JWT ici (ex: expiration, structure)
-      return true;
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    const expectedRole = route.data['role']; 
+    console.log("role",role);
+    console.log("expected",expectedRole);
+    if (expectedRole !== undefined && role !== expectedRole) {
+      this.router.navigate(['/home']);
+      return false;
     }
 
-    this.router.navigate(['/auth']);
-    return false;
+    return true;
   }
   
 }

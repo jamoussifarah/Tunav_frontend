@@ -32,9 +32,10 @@ const routes: Routes =[
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactUsComponent },
   {path:'blogs',component:BlogsComponent},
-  
-  { path: 'formulaireiotit', component: FormulaireIotItComponent },
-  { path: 'formulairefranchise', component: FormFranchiseComponent },
+  { path: 'formulaireiotit', component: FormulaireIotItComponent ,canActivate: [AuthGuard],
+    data: { role: 'Client' },},
+  { path: 'formulairefranchise', component: FormFranchiseComponent ,canActivate: [AuthGuard],
+    data: { role: 'Client' },},
   {
     path: 'admin',
     redirectTo: 'dashboard',
@@ -43,6 +44,7 @@ const routes: Routes =[
     path: '',
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
+    data: { role: 'Administrateur' },
     children: [
       {
         path: '',
@@ -51,11 +53,11 @@ const routes: Routes =[
       { path: 'add-product', component: FormProductsComponent },
       { path: 'update-product/:id', component: FormProductsComponent },
       { path: 'listProducts', component: TablesComponent },
-      {path:'listblogs',component:BlogslistComponent},
-      {path:'listusers',component:UsersListsComponent},
+      { path:'listblogs',component:BlogslistComponent},
+      { path:'listusers',component:UsersListsComponent},
       { path: 'add-blog', component: FormblogComponent },
       { path: 'update-blog/:id', component: FormblogComponent },
-      {path:'franchises',component:ListeFranchisesComponent},
+      { path:'franchises',component:ListeFranchisesComponent},
       { path: 'franchises/:id', component: FranchiseDetailComponent },
       { path: 'listDevis', component: ListDevisComponent },
       { path: 'devis/:id', component: DevisDetailComponent },
