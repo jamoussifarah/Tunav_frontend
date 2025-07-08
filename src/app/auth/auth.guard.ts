@@ -16,6 +16,14 @@ export class AuthGuard implements CanActivate {
     const expectedRole = route.data['role']; 
     console.log("role",role);
     console.log("expected",expectedRole);
+    console.log("le token",token);
+    if(token===null)
+    { 
+      console.log("ouii");
+      this.router.navigate(['/auth']);
+      return false;
+      
+    }
     if (expectedRole !== undefined && role !== expectedRole) {
       this.router.navigate(['/home']);
       return false;
