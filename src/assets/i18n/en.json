@@ -4,9 +4,11 @@
     "GALLERY": "Gallery",
     "TESTIMONIALS": "Testimonials",
     "CONTACT": "Contact",
-    "ABOUT": "About us",
+    "ABOUT": "Discover",
     "BLOGS": "Blogs",
-    "LOGIN": "Login / Register"
+    "LOGIN": "Login / Register",
+    "FRANCHISE": "Franchise",
+    "LOGOUT": "Logout"
   },
  "ABOUT": {
     "TITLE": "About us",
@@ -218,6 +220,11 @@
       },
       "SUBMIT": "Request a franchise"
     }
-  }
+  },
+  "ALERT": {
+  "LOGOUT_TITLE": "Logged out",
+  "LOGOUT_SUCCESS": "You have been logged out successfully.",
+  "OK": "OK"
+}
 }
 
