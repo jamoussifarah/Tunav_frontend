@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Franchise } from 'app/liste-franchises/liste-franchises.component';
 import { FranchiseService } from 'app/Services/franchise.service';
 import * as html2pdf from 'html2pdf.js';
-
+import Swal from 'sweetalert2';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import { EmailjsService } from 'emailJs/email.service';
 @Component({
   selector: 'app-franchise-detail',
   templateUrl: './franchise-detail.component.html',
@@ -15,7 +17,8 @@ export class FranchiseDetailComponent implements OnInit {
  @ViewChild('pdfContent') pdfContent!: ElementRef;
   constructor(
     private route: ActivatedRoute,
-    private franchiseService: FranchiseService
+    private franchiseService: FranchiseService,
+    private emailjsService: EmailjsService
   ) {}
 
   ngOnInit(): void {
@@ -25,9 +28,37 @@ export class FranchiseDetailComponent implements OnInit {
     });
   }
 
- envoyerMailConfirmation(): void {
-    alert(`Un email de confirmation a été envoyé à ${this.franchise?.email}`);
+ envoyerMailConfirmation() {
+    Swal.fire({
+      title: 'Confirmer l\'envoi ?',
+      text: 'Voulez-vous vraiment envoyer un mail de confirmation à ' + this.franchise.nom + ' ?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Oui, envoyer',
+      cancelButtonText: 'Annuler'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        const params = {
+          nom: this.franchise.nom,
+          prenom: this.franchise.prenom,
+          to_email: this.franchise.email,
+        };
+
+        this.emailjsService.sendFranchiseConfirmation(params)
+          .then(() => {
+            Swal.fire('Succès', 'L\'email a été envoyé avec succès.', 'success');
+          })
+          .catch(() => {
+            Swal.fire('Erreur', 'Une erreur est survenue lors de l\'envoi.', 'error');
+          });
+
+      } else {
+        Swal.fire('Annulé', 'L\'email n\'a pas été envoyé.', 'info');
+      }
+    });
   }
+
 
  genererPdf() {
   const logoUrl = '/assets/img/logoTunav.png'; 

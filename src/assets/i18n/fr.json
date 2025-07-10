@@ -2,11 +2,13 @@
   "NAV": {
     "HOME": "Accueil",
     "GALLERY": "Galerie",
-    "TESTIMONIALS": "Témoignages",
+    "TESTIMONIALS": "Avis",
     "CONTACT": "Contact",
-    "ABOUT": "À propos",
+    "ABOUT": "Découvrir",
     "BLOGS": "Articles",
-    "LOGIN": "Connexion / Inscription"
+    "LOGIN": "Connexion/ Inscription",
+    "FRANCHISE": "Franchise",
+    "LOGOUT": "Déconnexion"
   },
   "ABOUT": {
     "TITLE": "À propos de nous",
@@ -240,5 +242,12 @@
     "tarif": "Prix :"
   }
 
+
+,
+  "ALERT": {
+  "LOGOUT_TITLE": "Déconnexion",
+  "LOGOUT_SUCCESS": "Vous avez été déconnecté avec succès.",
+  "OK": "D'accord"
+}
 
 }

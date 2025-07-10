@@ -7,10 +7,11 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from 'app/Services/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   const token = this.authService.getToken();
@@ -25,6 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log('Requête modifiée avec Authorization:', request.headers.get('Authorization'));
   } else {
     console.log('Aucun token trouvé');
+    
   }
 
   return next.handle(request);

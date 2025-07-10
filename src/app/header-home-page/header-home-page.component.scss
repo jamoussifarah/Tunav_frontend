@@ -10,7 +10,7 @@
   }
 
   .language-menu {
-    display: none;
+    display: block; // Par défaut block, mais masqué par *ngIf
     position: absolute;
     top: 2rem;
     left: 0;
@@ -34,8 +34,54 @@
       }
     }
   }
+}
 
-  &:hover .language-menu {
-    display: block;
+/* Responsive tablette */
+/* Tablette en mode portrait (768px) à paysage (1024px) */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .language-switcher .current-language {
+    font-size: 1.3rem;
+  }
+
+  .language-switcher .language-menu {
+    top: 1.8rem;
+    min-width: 100px;
+  }
+
+  .language-switcher .language-menu li {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .language-switcher .current-language {
+    font-size: 1.3rem;
+  }
+
+  .language-switcher .language-menu {
+    top: 1.8rem;
+    min-width: 100px;
+  }
+
+  .language-switcher .language-menu li {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive mobile */
+@media (max-width: 576px) {
+  .language-switcher .current-language {
+    font-size: 1.1rem;
+  }
+
+  .language-switcher .language-menu {
+    top: 1.6rem;
+    min-width: 90px;
+  }
+
+  .language-switcher .language-menu li {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.9rem;
   }
 }

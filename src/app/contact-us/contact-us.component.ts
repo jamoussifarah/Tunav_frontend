@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import emailjs from 'emailjs-com';
+import { EmailjsService } from 'emailJs/email.service';
 import Swal from 'sweetalert2';
 
 declare var Email: any;
@@ -10,7 +11,7 @@ declare var Email: any;
 })
 export class ContactUsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private emailjsService: EmailjsService) { }
   form = {
     name: '',
     email: '',
@@ -40,52 +41,36 @@ isValidEmail(email: string): boolean {
 }
 
  sendEmail() {
-  if (!this.isValidEmail(this.form.email)) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Email invalide',
-      text: 'Veuillez entrer un email valide.',
-    });
-    return;
-  }
-
-  const serviceID = 'service_x3dvh7z';
-  const template = 'template_al9cbrs';
-  const publicKey = 'sDFgBbOfrGRnnhc0V';
-
-  const templateParams = {
-    from_name: this.form.name,
-    from_email: this.form.email,
-    message: this.form.message,
-    to_name: 'Tunav Team',
-    reply_to: this.form.email,
-  };
-
-  emailjs.send(serviceID, template, templateParams, publicKey)
-    .then(() => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Message envoyé ✅',
-        html: `
-        <br><br>
-        <strong>Un e-mail de confirmation automatique</strong> va vous être envoyé immédiatement.<br><br>
-        <em>⚠️ Si vous ne le recevez pas dans quelques minutes, cela signifie que vous avez saisi une adresse e-mail inexistante ou incorrecte.</em>
-      `,
-      confirmButtonColor: '#3085d6'
-      });
-
-      this.form = { name: '', email: '', message: '' };
-    })
-    .catch((err) => {
+    if (!this.isValidEmail(this.form.email)) {
       Swal.fire({
         icon: 'error',
-        title: 'Erreur',
-        text: 'L\'adresse email est incorrecte .',
+        title: 'Email invalide',
+        text: 'Veuillez entrer un email valide.',
       });
-      console.error(err);
-    });
-}
+      return;
+    }
 
-
-
+    this.emailjsService.sendContactEmail(this.form)
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message envoyé ✅',
+          html: `
+            <br><br>
+            <strong>Un e-mail de confirmation automatique</strong> va vous être envoyé immédiatement.<br><br>
+            <em>⚠️ Si vous ne le recevez pas dans quelques minutes, cela signifie que vous avez saisi une adresse e-mail inexistante ou incorrecte.</em>
+          `,
+          confirmButtonColor: '#3085d6'
+        });
+        this.form = { name: '', email: '', message: '' };
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erreur',
+          text: 'Une erreur est survenue lors de l\'envoi.',
+        });
+        console.error(err);
+      });
+  }
 }

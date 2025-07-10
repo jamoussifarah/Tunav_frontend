@@ -14,8 +14,6 @@ export class ProductsComponent implements OnInit, AfterViewChecked {
   // @HostListener('window:scroll', [])
   // onWindowScroll() {
   //   const offset = window.pageYOffset || document.documentElement.scrollTop;
-  //   this.isScrolled = offset > 300;
-  // }
 
   allProduitsAvecDevis: ProduitAvecDevis[] = [];
   allProduitsNodevis: ProduitSansDevis[] = [];

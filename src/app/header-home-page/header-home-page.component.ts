@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'app/Services/auth.service';
 import { LanguageService } from 'app/Services/language.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header-home-page',
@@ -10,14 +12,22 @@ import { LanguageService } from 'app/Services/language.service';
 })
 export class HeaderHomePageComponent implements OnInit {
   isDropdownOpen = true;
+ isNavbarCollapsed: boolean = true;
+  isLoggedIn = false;
   pendingSection: string | null = null;
-   languages = [
+  languages = [
   { code: 'en', name: 'English', flag: '/assets/img/flags/united-kingdom-flag.png' },
   { code: 'fr', name: 'Francais', flag: '/assets/img/flags/france-flag.png' }
 ];
-
+   ngOnInit(): void {
+  this.checkLoginStatus();
+  window.addEventListener('scroll', this.onScroll);
+  
+ }
   currentLanguage = 'en';
-  constructor(private router: Router,private translate: TranslateService,private languageService: LanguageService,private cdr: ChangeDetectorRef) {
+  constructor(private router: Router,private translate: TranslateService,
+    private authService: AuthService,
+    private languageService: LanguageService,private cdr: ChangeDetectorRef) {
     this.currentLanguage = this.languageService.getCurrentLanguage();
     console.log(this.isDropdownOpen);
     this.router.events.subscribe(event => {
@@ -28,7 +38,7 @@ export class HeaderHomePageComponent implements OnInit {
             el.scrollIntoView({ behavior: 'smooth' });
           }
           this.pendingSection = null;
-        }, 100); // délai pour que la page ait le temps de s'afficher
+        }, 100); 
       }
     });
   }
@@ -58,17 +68,17 @@ export class HeaderHomePageComponent implements OnInit {
       this.pendingSection = sectionId;
       this.router.navigate(['/']);
     } else {
-      // Déjà sur la home => scroll direct
       const el = document.getElementById(sectionId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
- ngOnInit(): void {
-  window.addEventListener('scroll', this.onScroll);
-}
 
+checkLoginStatus(): void {
+    const token = localStorage.getItem('token'); 
+    this.isLoggedIn = !!token;
+  }
 onScroll = () => {
   const scrollY = window.scrollY;
   const logoBlanc = document.getElementById('logoBlanc');
@@ -95,5 +105,29 @@ onScroll = () => {
    Blogs(event: Event){
     event.preventDefault();
     this.router.navigate(['blogs']);
+  }
+   Franchise(event: Event){
+    event.preventDefault();
+    this.router.navigate(['formulairefranchise']);
+  }
+  logout()
+  {
+    this.authService.logout();
+    Swal.fire({
+    title: this.translate.instant('ALERT.LOGOUT_TITLE'),
+    text: this.translate.instant('ALERT.LOGOUT_SUCCESS'),
+    icon: 'success',
+    showConfirmButton: true,
+    confirmButtonText: this.translate.instant('ALERT.OK'),
+    background: '#f0f8ff',
+    color: '#333',
+    confirmButtonColor: '#3085d6',
+    backdrop: `
+      rgba(0,0,123,0.4)
+      left top
+      no-repeat
+    `
+  });
+   this.checkLoginStatus()
   }
 }
