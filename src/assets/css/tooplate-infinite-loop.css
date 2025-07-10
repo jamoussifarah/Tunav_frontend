@@ -51,7 +51,6 @@ blockquote {
 
 .tm-content-box {
   padding-top: 20px;
-  padding-bottom: 40px;
 }
 
 .tm-text-primary {
@@ -269,6 +268,13 @@ blockquote {
 
 .tm-continue {
 	padding: 20px 0 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tm-nothing{
+  margin-top: 10%;
+  margin-bottom: 20%;
 }
 
 /* Testimonials */
@@ -590,7 +596,6 @@ figure.effect-honey:hover h2 i {
 }
 
 ::-ms-input-placeholder {
-  /* Microsoft Edge */
   color: white;
 }
 
@@ -708,3 +713,10 @@ p {
     margin: 0;
   }
 }
+.bouton-intermediaire {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20%;
+}
+

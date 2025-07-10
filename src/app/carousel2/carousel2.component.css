@@ -147,4 +147,137 @@
   width: 40px;
   height: 40px;
 }
+/* ✅ Responsive sans changement de layout : on réduit juste les tailles */
+
+@media (max-width: 1024px) {
+  .carousel-container {
+    height: 350px;
+  }
+
+  .carousel-slide {
+    padding: 30px 20px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.3rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .right-image img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .scroll-arrow {
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 300px;
+  }
+
+  .title {
+    font-size: 1.7rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .right-image img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .scroll-arrow img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dots span {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    height: 260px;
+  }
+
+  .carousel-slide {
+    padding: 20px 10px;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .right-image img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .scroll-arrow {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .scroll-arrow img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+/* hethy un peu plus petite lektiba */
+@media (max-width: 380px) {
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .description {
+    font-size: 0.75rem;
+  }
+
+  .right-image img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .scroll-arrow img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .carousel-slide {
+    padding: 15px 8px;
+  }
+}
+
 

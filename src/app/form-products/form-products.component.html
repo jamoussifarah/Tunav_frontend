@@ -12,9 +12,32 @@
       <textarea id="description" class="form-control" formControlName="description"></textarea>
     </div>
 
+    <div class="form-group">
+      <label for="categorie">Catégorie</label>
+      <input id="categorie" class="form-control" formControlName="categorie" />
+    </div>
+
     <div *ngIf="type === 'gps'" class="form-group">
       <label for="prix">Prix</label>
       <input id="prix" type="number" class="form-control" formControlName="prix" />
+    </div>
+
+    <div class="form-group mt-3">
+      <label>Caractéristiques</label>
+      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+        <span *ngFor="let carac of caracteristiques; let i = index" class="badge bg-primary px-2 py-1 me-1">
+          {{ carac }}
+          <button type="button" class="btn btn-sm btn-light ms-2" (click)="removeCaracteristique(i)">×</button>
+        </span>
+      </div>
+      <input type="text"
+         class="form-control"
+         [ngModel]="newCaracteristique"
+         (ngModelChange)="newCaracteristique = $event"
+         name="newCaracteristique"
+         (keydown.enter)="addCaracteristique($event)"
+         placeholder="Ajouter une caractéristique et appuyer sur Entrée"
+         [ngModelOptions]="{ standalone: true }">
     </div>
 
     <div class="form-group">
@@ -31,6 +54,11 @@
       </div>
       <button type="button" class="btn btn-secondary mt-2" (click)="fileInput.click()">Choisir une image</button>
     </div>
+    <div *ngIf="type === 'gps'" class="form-group">
+      <label for="userId">User ID</label>
+      <input id="userId" type="number" class="form-control" formControlName="userId" required />
+    </div>
+
 
     <button class="btn btn-primary" type="submit">
       {{ isEditMode ? 'Mettre à jour' : 'Ajouter' }}

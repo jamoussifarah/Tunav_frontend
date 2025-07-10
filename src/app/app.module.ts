@@ -40,6 +40,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ListDevisComponent } from './list-devis/list-devis.component';
 import { DevisDetailComponent } from './devis-detail/devis-detail.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProduitAvecDevisDetailComponent } from './produit-avec-devis-detail/produit-avec-devis-detail.component';
+import { ProduitSansDevisDetailComponent } from './produit-sans-devis-detail/produit-sans-devis-detail.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     NavbarModule,
     FooterModule,
+    FormsModule,
     SidebarModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -96,7 +99,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListeFranchisesComponent,
     FranchiseDetailComponent,
     ListDevisComponent,
-    DevisDetailComponent
+    DevisDetailComponent,
+    ProduitAvecDevisDetailComponent,
+    ProduitSansDevisDetailComponent
     ],
    providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

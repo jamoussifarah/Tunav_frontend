@@ -22,6 +22,8 @@ import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.co
 import { ListDevisComponent } from './list-devis/list-devis.component';
 import { DevisDetailComponent } from './devis-detail/devis-detail.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ProduitAvecDevisDetailComponent } from './produit-avec-devis-detail/produit-avec-devis-detail.component';
+import { ProduitSansDevisDetailComponent } from './produit-sans-devis-detail/produit-sans-devis-detail.component';
 
 const routes: Routes =[
   
@@ -60,6 +62,8 @@ const routes: Routes =[
       { path: 'listDevis', component: ListDevisComponent },
       { path: 'devis/:id', component: DevisDetailComponent },
       { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
+      {path:'produit-iot/:id',component:ProduitAvecDevisDetailComponent},
+      {path:'produit-gps/:id',component:ProduitSansDevisDetailComponent}
     ]
   }
 ]

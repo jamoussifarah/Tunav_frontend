@@ -45,12 +45,13 @@ export class TablesComponent implements OnInit {
   }
 
   editIot(id: number) {
-    this.router.navigate(['/update-product', id]);
+    this.router.navigate(['/update-product', id], { queryParams: { type: 'iot' } });
   }
 
-  editGps(id: number) {
-    this.router.navigate(['/update-product', id]);
+editGps(id: number) {
+    this.router.navigate(['/update-product', id], { queryParams: { type: 'gps' } });
   }
+
 
   deleteIot(id: number) {
     Swal.fire({
@@ -119,6 +120,14 @@ export class TablesComponent implements OnInit {
 
   ajouterProduit(type: 'iot' | 'gps') {
     this.router.navigate(['/add-product'], { queryParams: { type } });
+  }
+
+  voirDetailsIot(id: number) {
+    this.router.navigate(['/produit-iot', id]);
+  }
+
+  voirDetailsGps(id: number) {
+    this.router.navigate(['/produit-gps', id]);
   }
 
 }

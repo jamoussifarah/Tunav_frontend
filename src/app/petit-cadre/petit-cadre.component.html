@@ -1,5 +1,5 @@
 <button
   [class.active]="active"
   (click)="onClick()">
-  {{ label }}
+  {{ ('filters.' + label) | translate }}
 </button>
