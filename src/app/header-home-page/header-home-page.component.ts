@@ -12,13 +12,18 @@ import Swal from 'sweetalert2';
 })
 export class HeaderHomePageComponent implements OnInit {
   isDropdownOpen = true;
+ isNavbarCollapsed: boolean = true;
   isLoggedIn = false;
   pendingSection: string | null = null;
-   languages = [
+  languages = [
   { code: 'en', name: 'English', flag: '/assets/img/flags/united-kingdom-flag.png' },
   { code: 'fr', name: 'Francais', flag: '/assets/img/flags/france-flag.png' }
 ];
-
+   ngOnInit(): void {
+  this.checkLoginStatus();
+  window.addEventListener('scroll', this.onScroll);
+  
+ }
   currentLanguage = 'en';
   constructor(private router: Router,private translate: TranslateService,
     private authService: AuthService,
@@ -33,7 +38,7 @@ export class HeaderHomePageComponent implements OnInit {
             el.scrollIntoView({ behavior: 'smooth' });
           }
           this.pendingSection = null;
-        }, 100); // délai pour que la page ait le temps de s'afficher
+        }, 100); 
       }
     });
   }
@@ -69,10 +74,7 @@ export class HeaderHomePageComponent implements OnInit {
       }
     }
   }
- ngOnInit(): void {
-  window.addEventListener('scroll', this.onScroll);
-  this.checkLoginStatus();
-}
+
 checkLoginStatus(): void {
     const token = localStorage.getItem('token'); 
     this.isLoggedIn = !!token;

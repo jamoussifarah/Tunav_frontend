@@ -26,7 +26,7 @@ export class AuthInterceptor implements HttpInterceptor {
     console.log('Requête modifiée avec Authorization:', request.headers.get('Authorization'));
   } else {
     console.log('Aucun token trouvé');
-    this.router.navigate(['/auth']);
+    
   }
 
   return next.handle(request);

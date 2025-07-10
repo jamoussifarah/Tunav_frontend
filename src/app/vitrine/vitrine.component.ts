@@ -298,7 +298,14 @@ isOpen = false;
 
   getIconTransform(index: number): string {
     const angle = (360 / this.icons.length) * index;
-    const radius = 300;
+  let radius = 300;
+  const width = window.innerWidth;
+
+  if (width <= 576) {
+    radius = 140; 
+  } else if (width <= 1024) {
+    radius = 220; 
+  }
         return this.isOpen
       ? `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`
       : `rotate(0deg) translate(0)`;

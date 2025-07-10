@@ -123,7 +123,7 @@ background-image: url(/assets/img/HomeCarousselBackground.png);
 
 .scroll-arrow {
   position: absolute;
-  right: 20px;
+  right: 80px;
   bottom: 20px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
@@ -148,4 +148,80 @@ background-image: url(/assets/img/HomeCarousselBackground.png);
 .scroll-arrow img {
   width: 40px;
   height: 40px;
+}
+@media screen and (max-width: 767px) {
+  .carousel-slide {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .left-content {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .right-image {
+    width: 100%;
+  }
+
+  .right-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .dots {
+    bottom: 20px;
+  }
+
+  .scroll-arrow {
+    right: 20px;
+    bottom: 10px;
+    padding: 8px;
+  }
+
+  .scroll-arrow img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .carousel-slide {
+    padding: 30px;
+  }
+
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.4rem;
+  }
+
+  .description {
+    font-size: 1.05rem;
+  }
+
+  .right-image img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .scroll-arrow {
+    right: 50px;
+    bottom: 15px;
+  }
 }

@@ -63,7 +63,8 @@ const routes: Routes =[
       { path: 'devis/:id', component: DevisDetailComponent },
       { path: 'admin', redirectTo: 'dashboard', pathMatch: 'full' },
     ]
-  }
+  },
+  // { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ]
   /*{
     path: '',
