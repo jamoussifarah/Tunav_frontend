@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     });
   }
 
- onSignIn() {
+onSignIn() {
   const data = {
     email: this.signInEmail,
     password: this.signInPassword
@@ -73,6 +73,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       localStorage.setItem('role', res.role);
       localStorage.setItem('name', res.nom);
 
+      const redirectUrl = localStorage.getItem('redirectAfterLogin');
+      localStorage.removeItem('redirectAfterLogin'); 
+
       Swal.fire({
         icon: 'success',
         title: 'Connexion réussie',
@@ -81,7 +84,14 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       }).then((result) => {
         if (result.isConfirmed) {
           if (res.role === 'Client') {
-            this.router.navigate(['/home']);
+            console.log("aaaaaaaaaaaaaaaaaaaaaaa");
+            console.log("lien",redirectUrl);
+            if (redirectUrl && (redirectUrl.includes('formulaireiotit') || redirectUrl.includes('formulairefranchise'))) {
+              this.router.navigateByUrl(redirectUrl);
+              console.log(redirectUrl);
+            } else {
+              this.router.navigate(['/home']);
+            }
           } else {
             this.router.navigate(['/admin']);
           }
@@ -98,7 +108,4 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     }
   });
 }
-
-
-
 }

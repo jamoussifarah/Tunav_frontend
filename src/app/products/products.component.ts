@@ -11,11 +11,11 @@ import { ProduitSansDevisService, ProduitSansDevis } from '../Services/ProduitSa
 export class ProductsComponent implements OnInit {
   isScrolled = false;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const offset = window.pageYOffset || document.documentElement.scrollTop;
-    this.isScrolled = offset > 300; 
-  }
+  // @HostListener('window:scroll', [])
+  // onWindowScroll() {
+  //   const offset = window.pageYOffset || document.documentElement.scrollTop;
+  //   this.isScrolled = offset > 300; 
+  // }
   
   allProduitsAvecDevis: ProduitAvecDevis[] = [];
   allProduitsNodevis:ProduitSansDevis[] = [];
