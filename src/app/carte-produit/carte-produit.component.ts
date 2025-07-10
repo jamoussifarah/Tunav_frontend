@@ -12,7 +12,7 @@ export class CarteProduitComponent {
   @Input() description: string = '';
   @Input() image: string = '';
   @Input() categorie: string = '';
-  @Input() caracteristiques: string[] = [];
+  @Input() caracteristiques: { texte: string }[] = [];
 
   apiBaseUrl = environment.baseUrl
 

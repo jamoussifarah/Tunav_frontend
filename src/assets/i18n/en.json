@@ -73,7 +73,7 @@
     "TRANSFORMATION": {
       "TITLE": "Digital Transformation",
       "DESCRIPTION": "We support businesses in their digital transition with innovative, sustainable solutions perfectly integrated with their activity.",
-      "LINK": "Discover"
+      "LINK": "Learn more"
     },
     "IT_SOLUTION": {
       "TITLE": "IT Solutions",
@@ -81,12 +81,13 @@
     },
     "GPS_TRACKING": {
       "TITLE": "GPS Tracking",
-      "DESCRIPTION": "Our geolocation solutions provide reliable and secure real-time tracking of your vehicles, equipment or field teams.",
-      "LINK": "Learn more"
+      "DESCRIPTION": "Our geolocation solutions provide reliable and secure real-time advanced tracking of your vehicles, equipment or field teams.",
+      "LINK": "discover"
     },
     "IOT_SOLUTION": {
       "TITLE": "IoT Solutions",
-      "DESCRIPTION": "Our IoT solutions offer smart monitoring, centralized device management, and advanced security systems to protect your facilities, optimize your operations, and improve your overall efficiency."
+      "DESCRIPTION": "Our IoT solutions offer smart monitoring, centralized device management, and advanced security systems to protect your facilities.",
+      "LINK":"discover"
     }
   },
   "TESTIMONIALS": {
@@ -221,10 +222,38 @@
       "SUBMIT": "Request a franchise"
     }
   },
+  "SOLUTIONS_PRODUCTS": {
+  "IT": {
+    "TITLE": "IT Solutions",
+    "DESCRIPTION": "We develop and integrate IT solutions that strengthen operations, improve performance, and accelerate the digital transformation of businesses.",
+    "LINK": "👉 Request an IT consultation"
+  }
+  },
+
+  "filters": {
+    "Tous": "All",
+    "GPS Trackers": "GPS Trackers",
+    "Solutions IoT": "IoT Solutions",
+    "Solutions IT": "IT Solutions"
+  },
+  "conteneur_avecdevis":{
+    "surDevis": "ON QUOTE",
+    "voirDetails": "View Details",
+    "demanderDevis": "Request a quote",
+    "caracteristiques": "Features :",
+    "tarif": "Price :"
+  },
+  "conteneur_sansdevis":{
+    "voirDetails": "View Details",
+    "caracteristiques": "Features :",
+    "tarif": "Price :"
+  }
+
   "ALERT": {
   "LOGOUT_TITLE": "Logged out",
   "LOGOUT_SUCCESS": "You have been logged out successfully.",
   "OK": "OK"
 }
+
 }
 

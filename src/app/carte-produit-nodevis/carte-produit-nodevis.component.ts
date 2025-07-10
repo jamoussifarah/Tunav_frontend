@@ -12,7 +12,7 @@ export class CarteProduitNodevisComponent {
   @Input() image: string = '';
   @Input() categorie: string = '';
   @Input() prix: string = '';
-  @Input() caracteristiques: string[] = [];
+  @Input() caracteristiques: { texte: string }[] = [];
 
   apiBaseUrl = environment.baseUrl
 

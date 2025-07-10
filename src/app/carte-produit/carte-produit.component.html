@@ -1,5 +1,4 @@
 
-
 <div class="carte-produit" (mouseenter)="hover = true" (mouseleave)="hover = false" (click)="openModal()">
   <img class="image-fond" [src]="getImageUrl(image)" [alt]="titre" />
 
@@ -11,10 +10,10 @@
     <div class="infos-hover">
       <h3>{{ titre }}</h3>
       <p>{{ description }}</p>
-      <button class="btn-devis">SUR DEVIS</button>
+      <button class="btn-devis">{{ 'conteneur_avecdevis.surDevis' | translate }}</button>
       <div class="liens">
-        <a (click)="openModal() ; $event.stopPropagation() " class="voir-details">Voir détails</a>
-        <a [routerLink]="['/formulaireiotit']" class="demander-devis">Demander un devis</a>
+        <a (click)="openModal() ; $event.stopPropagation() " class="voir-details">{{ 'conteneur_avecdevis.voirDetails' | translate }}</a>
+        <a [routerLink]="['/formulaireiotit']" class="demander-devis">{{ 'conteneur_avecdevis.demanderDevis' | translate }}</a>
       </div>
     </div>
   </div>
@@ -44,15 +43,15 @@
         <div class="caracteristiques-et-tarif">
 
           <div class="caracteristiques">
-            <h4>Caractéristiques : </h4>
+            <h4>{{ 'conteneur_avecdevis.caracteristiques' | translate }}</h4>
             <ul>
               <li *ngFor="let carac of caracteristiques"> {{ carac.texte }}</li>
             </ul>
           </div>
           <div class="tarif">
-          <h4>Tarif :</h4>
-          <p>SUR DEVIS</p>
-          <button class="btn-devis" (click)="allerAuFormulaire()">Demander un devis</button>
+          <h4>{{ 'conteneur_avecdevis.tarif' | translate }}</h4>
+          <p>{{ 'conteneur_avecdevis.surDevis' | translate }}</p>
+          <button class="btn-devis" (click)="allerAuFormulaire()">{{ 'conteneur_avecdevis.demanderDevis' | translate }}</button>
         </div>
 
         </div>

@@ -56,6 +56,9 @@
                        (mouseover)="hover = true" 
                        (mouseleave)="hover = false"
                        (click)="deleteIot(produit.id)"></i>
+                    <i class="fa fa-eye" title="Voir détails"
+                      style="color: #2a7; margin-left: 8px; cursor: pointer;"
+                      (click)="voirDetailsIot(produit.id)"></i>
                   </td>
                 </tr>
               </tbody>
@@ -72,7 +75,7 @@
               <h4 class="title" style="color: #357;">Liste des Produits GPS</h4>
               <p class="category">Tableau des produits GPS disponibles</p>
             </div>
-            <input type="text" class="form-control w-25" placeholder="Recherche nom ou description..." [(ngModel)]="searchIot" />
+            <input type="text" class="form-control w-25" placeholder="Recherche nom ou description..." [(ngModel)]="searchGps" />
             <a (click)="ajouterProduit('gps')" title="Ajouter un produit">
               <i class="fa fa-plus" style="font-size: 22px; color: #38B; cursor: pointer;"></i>
             </a>
@@ -95,7 +98,7 @@
                   </td>
                   <td>{{ produit.titre }}</td>
                   <td>{{ produit.description }}</td>
-                  <td>{{ produit.prix }}</td>
+                  <td>{{ produit.prix }}DT</td>
                   <td>
                     <i class="fa fa-pencil" title="Modifier" 
                        style="color: #369; margin-right: 8px; cursor: pointer;" 
@@ -103,6 +106,9 @@
                     <i class="fa fa-trash" title="Supprimer" 
                        style="color: #888; cursor: pointer;" 
                        (click)="deleteGps(produit.id)"></i>
+                    <i class="fa fa-eye" title="Voir détails" 
+                      style="color: #2a7; margin-left: 8px; cursor: pointer;" 
+                      (click)="voirDetailsGps(produit.id)"></i>   
                   </td>
                 </tr>
               </tbody>

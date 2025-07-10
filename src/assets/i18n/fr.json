@@ -65,7 +65,7 @@
     "TRANSFORMATION": {
       "TITLE": "Transformation Digitale",
       "DESCRIPTION": "Nous accompagnons les entreprises dans leur transition numérique avec des solutions innovantes, durables et parfaitement intégrées à leur activité.",
-      "LINK": "Découvrir"
+      "LINK": "En savoir plus sur Nos Solutions IT" 
     },
     "IT_SOLUTION": {
       "TITLE": "Solutions IT",
@@ -78,7 +78,8 @@
     },
     "IOT_SOLUTION": {
       "TITLE": "Solutions IoT",
-      "DESCRIPTION": "Nos solutions IoT offrent une surveillance intelligente, une gestion centralisée des appareils connectés et des systèmes de sécurité avancés pour protéger vos installations, optimiser vos opérations et améliorer votre efficacité globale."
+      "DESCRIPTION": "Nos solutions IoT offrent une surveillance intelligente, une gestion centralisée des appareils connectés pour protéger vos installations et améliorer votre efficacité globale.",
+      "LINK":"Découvrir"
     }
   },
   "TESTIMONIALS": {
@@ -213,9 +214,40 @@
       "SUBMIT": "Demander une franchise"
     }
   },
+  "SOLUTIONS_PRODUCTS": {
+  "IT": {
+    "TITLE": "Solutions IT",
+    "DESCRIPTION": "Nous développons et intégrons des solutions IT qui renforcent les opérations, améliorent la performance et accélèrent la transformation digitale des entreprises.",
+    "LINK": "👉 Demander une consultation IT"
+  } 
+  },
+  
+  "filters": {
+    "Tous": "Tous",
+    "GPS Trackers": "Traceurs GPS",
+    "Solutions IoT": "Solutions IoT",
+    "Solutions IT": "Solutions IT"
+  },
+
+  "conteneur_avecdevis":{
+    "surDevis": "SUR DEVIS",
+    "voirDetails": "Voir détails",
+    "demanderDevis": "Demander un devis",
+    "caracteristiques": "Caractéristiques :",
+    "tarif": "Tarif :"
+  },
+  "conteneur_sansdevis":{
+    "voirDetails": "Voir Détails",
+    "caracteristiques": "Caractéristiques :",
+    "tarif": "Prix :"
+  }
+
+
+,
   "ALERT": {
   "LOGOUT_TITLE": "Déconnexion",
   "LOGOUT_SUCCESS": "Vous avez été déconnecté avec succès.",
   "OK": "D'accord"
 }
+
 }
