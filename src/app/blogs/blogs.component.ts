@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Blog } from 'app/blogslist/blogslist.component';
+import { BlogService } from 'app/Services/BlogService';
+import { environment } from 'environments/environment';
 
 @Component({
   selector: 'app-blogs',
@@ -7,36 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit {
   blogPosts = [
-    {
-      author: 'Russ Beye',
-      title: 'I Like To Make Cool Things',
-      summary: `I love working on fresh designs that breathe. To that end, I need to freshen up my portfolio...`,
-      tags: ['css', 'web design', 'codepen', 'twitter'],
-      publishedDate: '12/01/2025',
-      comments: 4,
-      shares: 1,
-      likes: 0 ,
-      liked:false,
-      coverImage: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/17779/yosemite-3.jpg'
-    },
-    {
-      author: 'Russ Beye',
-      title: 'This Post Has No Cover Image',
-      summary: `Here is an example of a post without a cover image. You don't always have to have a cover image.`,
-      tags: ['design', 'web dev', 'css'],
-      publishedDate: '16/06/2025',
-      comments: 8,
-      liked:false,
-      shares: 3,likes: 10 
-    }
   ];
-  constructor() { }
-
-  ngOnInit(): void {
+  apiBaseUrl = environment.baseUrl;
+  constructor(private blogService: BlogService) {
+   }
+  loadBlogs() {
+  this.blogService.getAllBlogs().subscribe({
+    next: blogs => {
+      this.blogPosts = blogs.map(blog => ({
+        ...blog,
+        liked: false 
+      }));
+    },
+    error: err => console.error(err)
+  });
+}
+  ngOnInit() {
+    this.loadBlogs()
   }
- toggleLike(index: number): void {
-    const blog = this.blogPosts[index];
-    blog.liked = !blog.liked;
-    blog.likes += blog.liked ? 1 : -1;
+  getImageUrl(imagePath: string): string {
+    return this.apiBaseUrl + imagePath;
   }
+  onLike(blog: Blog, index: number): void {
+    this.blogService.incrementLike(blog.id).subscribe({
+      next: (res) => {
+        this.blogPosts[index].likes = res.likes;
+        this.blogPosts[index].liked = true;
+      },
+      error: (err) => console.error('Erreur lors du like :', err)
+    });
+  }
+  transformNewlines(text: string): string {
+  if (!text) return '';
+  return text.replace(/\n/g, '<br>');
+}
 }
