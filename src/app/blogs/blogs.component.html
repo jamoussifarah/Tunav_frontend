@@ -19,18 +19,19 @@
   <div *ngFor="let blog of blogPosts; let i = index" class="blog-container">
     <!-- Blog details -->
     <div class="blog-header">
-      <div *ngIf="blog.coverImage" class="blog-cover" [ngStyle]="{'background-image': 'url(' + blog.coverImage + ')'}">
-        <div class="blog-author"><h3>{{ blog.author }}</h3></div>
+      <div *ngIf="blog.imagePath" class="blog-cover" [ngStyle]="{'background-image': 'url(' + getImageUrl(blog.imagePath) + ')'}">
       </div>
-      <div *ngIf="!blog.coverImage" class="blog-author--no-cover"><h3>{{ blog.author }}</h3></div>
     </div>
-
+  <br><br>
     <div class="blog-body">
-      <div class="blog-title"><h1>{{ blog.title }}</h1></div>
-      <div class="blog-summary"><p>{{ blog.summary }}</p></div>
+      <div class="blog-title"><h1>{{ blog.titre }}</h1></div>
+      <br><br>
+      <div class="blog-summary" [innerHTML]="transformNewlines(blog.contenu)">
+      </div>
+      <br><br>
       <div class="blog-tags">
         <ul>
-          <li *ngFor="let tag of blog.tags"><a href="#">{{ tag }}</a></li>
+          <li *ngFor="let tag of blog.tags"><a href="#">{{ tag.nom }}</a></li>
         </ul>
       </div>
     </div>
@@ -38,12 +39,12 @@
     <!-- Blog footer avec like -->
     <div class="blog-footer">
       <ul>
-        <li class="published-date">{{ blog.publishedDate }}</li>
+        <li class="published-date">{{ blog.datePublication| date: 'dd/MM/yyyy' }}</li>
 
         <!-- ♥️ Like bouton -->
         <li class="likes">
           <button 
-            (click)="toggleLike(i)" 
+            (click)="onLike(blog,i)" 
             class="like-button" 
             [style.fill]="blog.liked ? 'red' : '#aaa'">
             <svg class="icon-heart">

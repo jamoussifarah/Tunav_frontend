@@ -69,5 +69,8 @@ getBlogById(id: number) {
 deleteBlog(id: number) {
   return this.http.delete(`${this.apiUrl}/${id}`);
 }
+ incrementLike(id: number): Observable<{ message: string; likes: number }> {
+    return this.http.post<{ message: string; likes: number }>(`${this.apiUrl}/${id}/like`, {});
+  }
 
 }
