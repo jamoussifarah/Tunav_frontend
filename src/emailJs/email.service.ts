@@ -50,6 +50,28 @@ sendContactEmail(form: { name: string, email: string, message: string }): Promis
   .then(() => {
   });
 }
+sendPasswordEmail( data:any): Promise<void> {
+  const params = {
+    to_name: data.name,
+    to_email: data.email,
+    password: data.password,
+    loginLink: data.loginLink,
+  };
+
+  return emailjs.send(
+    EMAILJS_CONFIG.serviceId,
+    EMAILJS_CONFIG.passwordTemplateId, 
+    params,
+    EMAILJS_CONFIG.publicKey
+  )
+  .then(() => {
+    console.log('✅ Email de mot de passe envoyé avec succès');
+  })
+  .catch((error) => {
+    console.error('❌ Échec de l’envoi du mail de mot de passe', error);
+    throw error;
+  });
+}
 
 
 }
