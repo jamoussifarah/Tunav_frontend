@@ -44,8 +44,8 @@ isValidEmail(email: string): boolean {
     if (!this.isValidEmail(this.form.email)) {
       Swal.fire({
         icon: 'error',
-        title: 'Email invalide',
-        text: 'Veuillez entrer un email valide.',
+        title: 'Invalid Email',
+        text: 'Please enter a valid email address.',
       });
       return;
     }
@@ -57,8 +57,8 @@ isValidEmail(email: string): boolean {
           title: 'Message envoyé ✅',
           html: `
             <br><br>
-            <strong>Un e-mail de confirmation automatique</strong> va vous être envoyé immédiatement.<br><br>
-            <em>⚠️ Si vous ne le recevez pas dans quelques minutes, cela signifie que vous avez saisi une adresse e-mail inexistante ou incorrecte.</em>
+           <strong>An automatic confirmation email</strong> will be sent to you immediately.<br><br>
+          <em>⚠️ If you do not receive it within a few minutes, it means you entered a non-existent or incorrect email address.</em>
           `,
           confirmButtonColor: '#3085d6'
         });
@@ -67,10 +67,9 @@ isValidEmail(email: string): boolean {
       .catch((err) => {
         Swal.fire({
           icon: 'error',
-          title: 'Erreur',
-          text: 'Une erreur est survenue lors de l\'envoi.',
+          title: 'Error',
+          text: 'An error occurred while sending.',
         });
-        console.error(err);
       });
   }
 }

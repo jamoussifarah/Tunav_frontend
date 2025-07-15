@@ -48,14 +48,14 @@ onSubmit(): void {
   const dialCode = countryData?.dialCode || '';
 
   if (!localNumber || !dialCode) {
-    Swal.fire('Erreur', 'Numéro ou pays non sélectionné.', 'error');
+    Swal.fire('Error', 'Phone number or country not selected.', 'error');
     return;
   }
 
   const phoneRegex = /^[0-9]{6,15}$/;
 
   if (!phoneRegex.test(localNumber)) {
-    Swal.fire('Numéro invalide', 'Le numéro ne doit contenir que des chiffres (pas de lettres ni de symboles).', 'error');
+    Swal.fire('Invalid number', 'The number must contain only digits (no letters or symbols).', 'error');
     return;
   }
 
@@ -65,13 +65,13 @@ onSubmit(): void {
   // 🔐 Validation conditionnelle
   if (this.formFranchise.get('experienceIT')?.value === 'oui' &&
       !this.formFranchise.get('precisionsExp')?.value.trim()) {
-    Swal.fire('Champ requis', 'Veuillez préciser votre expérience en IT/IoT/GPS.', 'warning');
+    Swal.fire('Required field', 'Please specify your experience in IT/IoT/GPS.', 'warning');
     return;
   }
 
   if (this.formFranchise.get('dirigeEntreprise')?.value === 'oui' &&
       !this.formFranchise.get('secteurDuree')?.value.trim()) {
-    Swal.fire('Champ requis', 'Veuillez préciser le secteur et la durée de l’entreprise que vous avez dirigée.', 'warning');
+    Swal.fire('Required field', 'Please specify the sector and duration of the company you managed.', 'warning');
     return;
   }
 
@@ -80,32 +80,32 @@ onSubmit(): void {
     const controls = this.formFranchise.controls;
 
     if (controls['nom'].invalid) {
-      Swal.fire('Champ requis', 'Veuillez renseigner votre nom.', 'warning');
+      Swal.fire('Required field', 'Please enter your last name.', 'warning');
       return;
     }
 
     if (controls['prenom'].invalid) {
-      Swal.fire('Champ requis', 'Veuillez renseigner votre prénom.', 'warning');
+      Swal.fire('Required field', 'Please enter your first name.', 'warning');
       return;
     }
 
     if (controls['email'].invalid) {
-      Swal.fire('Email invalide', 'Veuillez saisir une adresse email valide.', 'error');
+      Swal.fire('Invalid email', 'Please enter a valid email address.', 'error');
       return;
     }
 
     if (controls['experienceIT'].invalid) {
-      Swal.fire('Champ requis', 'Veuillez indiquer votre expérience.', 'warning');
+      Swal.fire('Required field', 'Please indicate your experience.', 'warning');
       return;
     }
 
     if (controls['dirigeEntreprise'].invalid) {
-      Swal.fire('Champ requis', 'Veuillez préciser si vous avez dirigé une entreprise.', 'warning');
+      Swal.fire('Required field', 'Please specify if you have managed a company.', 'warning');
       return;
     }
 
     if (controls['motivation'].invalid) {
-      Swal.fire('Champ requis', 'Veuillez indiquer vos motivations.', 'warning');
+      Swal.fire('Required field', 'Please state your motivations.', 'warning');
       return;
     }
 
@@ -130,14 +130,14 @@ const payload = {
 this.franchiseService.envoyerDemandeFranchise(payload).subscribe({
   next: (res) => {
     console.log('Réponse API :', res);
-    Swal.fire('Succès', 'Votre demande a bien été envoyée.', 'success');
+    Swal.fire('Success', 'Your request has been sent successfully.', 'success');
     this.formFranchise.reset();
     this.router.navigate(['/home']);
 
   },
   error: (err) => {
-    console.error('Erreur API :', err);
-    Swal.fire('Erreur', 'Une erreur est survenue lors de l\'envoi.', 'error');
+    console.error('API error: :', err);
+    Swal.fire('Error', 'An error occurred while sending', 'error');
   }
 });
 

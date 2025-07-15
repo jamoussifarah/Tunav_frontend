@@ -46,9 +46,6 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     
     this.authService.signUp(data).subscribe({
           next: (response) => {
-          console.log('✅ Inscription réussie');
-          console.log('🔐 Mot de passe généré :', response.mdp);
-
           const params = {
             email: data.email,
             name: data.nom, 
@@ -60,17 +57,16 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
           Swal.fire({
             icon: 'success',
-            title: 'Inscription réussie',
-            text: 'Un mail contenant le mot de passe sera envoyé.'
+            title: 'Registration successful',
+            text: 'An email containing your password will be sent.'
           });
         },
       error: (err) => {
         Swal.fire({
           icon: 'error',
-          title: 'Erreur',
-          text: 'Un compte avec cet email existe déjà.'
+          title: 'Error',
+          text: 'An account with this email already exists.'
         });
-        console.error(err);
       }
     });
   }
@@ -87,22 +83,19 @@ onSignIn() {
       localStorage.setItem('role', res.role);
       localStorage.setItem('name', res.nom);
       localStorage.setItem('userId', res.userId);
-      console.log("le resultat",localStorage.getItem('userId'));
       const redirectUrl = localStorage.getItem('redirectAfterLogin');
       localStorage.removeItem('redirectAfterLogin'); 
 
       Swal.fire({
         icon: 'success',
-        title: 'Connexion réussie',
-        text: `Bienvenue ${res.nom} !`,
-        confirmButtonText: 'Continuer'
+        title: 'Login successful',
+        text: `Welcome  ${res.nom} !`,
+        confirmButtonText: 'Continue'
       }).then((result) => {
         if (result.isConfirmed) {
           if (res.role === 'Client') {
-            console.log("lien",redirectUrl);
             if (redirectUrl && (redirectUrl.includes('formulaireiotit') || redirectUrl.includes('formulairefranchise'))) {
               this.router.navigateByUrl(redirectUrl);
-              console.log(redirectUrl);
             } else {
               this.router.navigate(['/home']);
             }
@@ -115,10 +108,9 @@ onSignIn() {
     error: (err) => {
       Swal.fire({
         icon: 'error',
-        title: 'Échec de la connexion',
-        text: 'Email ou mot de passe incorrect.'
+        title: 'Login failed',
+        text: 'Incorrect email or password.'
       });
-      console.error(err);
     }
   });
 }

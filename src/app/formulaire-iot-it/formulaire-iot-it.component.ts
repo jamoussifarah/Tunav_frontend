@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulaire-iot-it',
@@ -36,13 +37,16 @@ export class FormulaireIotItComponent implements OnInit {
   }
 
   submitForm(type: 'iot' | 'it') {
-    const form = type === 'iot' ? this.formIot : this.formIt;
-    if (form.valid) {
-      console.log(`Formulaire ${type.toUpperCase()} :`, form.value);
-      alert(`Formulaire ${type.toUpperCase()} soumis avec succès !`);
-      form.reset();
-    } else {
-      form.markAllAsTouched();
-    }
+  const form = type === 'iot' ? this.formIot : this.formIt;
+  if (form.valid) {
+    Swal.fire({
+      icon: 'success',
+      title: `${type.toUpperCase()} form submitted successfully!`
+    });
+    form.reset();
+  } else {
+    form.markAllAsTouched();
   }
+}
+
 }
