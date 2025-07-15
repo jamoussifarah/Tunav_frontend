@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailjsService } from 'emailJs/email.service';
 import { environment } from 'environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 
 export interface SignUpRequest {
@@ -21,7 +22,7 @@ export interface SignInRequest {
 export class AuthService {
  private apiUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient,private emailjsService: EmailjsService) {}
+  constructor(private http: HttpClient,private emailjsService: EmailjsService,private cookieService: CookieService) {}
 
  signUp(data: SignUpRequest): Observable<{ message: string; mdp: string }> {
   return this.http.post<{ message: string; mdp: string }>(`${this.apiUrl}/signup`, data);
@@ -32,14 +33,14 @@ export class AuthService {
   }
   
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return this.cookieService.get('token');
   }
   getRole(): string | null {
-    return localStorage.getItem('role');
+    return this.cookieService.get('role');
   }
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('name');
+    this.cookieService.delete('token');
+    this.cookieService.delete('role');
+    this.cookieService.delete('name');
   }
 }

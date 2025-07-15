@@ -12,6 +12,7 @@ export class CarteProduitComponent {
   @Input() description: string = '';
   @Input() image: string = '';
   @Input() categorie: string = '';
+  @Input() id: number;
   @Input() caracteristiques: { texte: string }[] = [];
 
   apiBaseUrl = environment.baseUrl
@@ -30,7 +31,9 @@ export class CarteProduitComponent {
   }
   allerAuFormulaire() {
     this.closeModal();
-    this.router.navigate(['/formulaireiotit']);
+    console.log("le id",this.id);
+    this.router.navigate(['/formulaireiotit'], { queryParams: { produitId: this.id ,titre:this.titre} });
+    
   }
  getImageUrl(imagePath: string): string {
   if (imagePath.startsWith('/assets')) {

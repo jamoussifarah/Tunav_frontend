@@ -13,7 +13,7 @@
       <button class="btn-devis">{{ 'conteneur_avecdevis.surDevis' | translate }}</button>
       <div class="liens">
         <a (click)="openModal() ; $event.stopPropagation() " class="voir-details">{{ 'conteneur_avecdevis.voirDetails' | translate }}</a>
-        <a [routerLink]="['/formulaireiotit']" class="demander-devis">{{ 'conteneur_avecdevis.demanderDevis' | translate }}</a>
+        <a (click)="allerAuFormulaire()" class="demander-devis">{{ 'conteneur_avecdevis.demanderDevis' | translate }}</a>
       </div>
     </div>
   </div>

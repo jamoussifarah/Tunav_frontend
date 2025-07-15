@@ -34,11 +34,11 @@
     </div>
   </section>
 
-  
     <section id="section-iot" class="anchor-offset">
       <div class="products-grid" *ngIf="produits_avecdevis.length > 0">
         <app-carte-produit
           *ngFor="let produit of produits_avecdevis"
+          [id]="produit.id"
           [titre]="produit.titre"
           [description]="produit.description"
           [image]="produit.imagePath"  

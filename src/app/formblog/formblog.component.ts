@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BlogCreateRequest, BlogService, BlogUpdateRequest } from 'app/Services/BlogService';
 import { Blog } from 'app/blogslist/blogslist.component';
 import { environment } from 'environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-formblog',
@@ -19,7 +20,7 @@ export class FormblogComponent implements OnInit {
     tags: [],
     likes: 0
   };
-  storedUser = localStorage.getItem('userId');
+  storedUser = this.cookieService.get('userId');
  userId = this.storedUser ? Number(this.storedUser) : null;
   selectedFile?: File;
   newTag: string = '';
@@ -30,7 +31,7 @@ export class FormblogComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private blogService: BlogService
+    private blogService: BlogService,private cookieService: CookieService
   ) {}
 
   ngOnInit() {

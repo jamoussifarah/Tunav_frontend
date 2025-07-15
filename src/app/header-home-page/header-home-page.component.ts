@@ -76,7 +76,7 @@ export class HeaderHomePageComponent implements OnInit {
   }
 
 checkLoginStatus(): void {
-    const token = localStorage.getItem('token'); 
+    const token = this.authService.getToken(); 
     this.isLoggedIn = !!token;
   }
 onScroll = () => {

@@ -160,18 +160,19 @@
   "SOLUTIONS": {
     "TITLE": "📡 Advanced GPS Solutions",
     "SUBTITLE": "Discover our IoT and IT solutions for your GPS needs",
-    "IOT": {
-      "TAB": "IoT Solution",
-      "TITLE": "🌐 IoT GPS Solution",
-      "SUBTITLE": "Internet of Things Solution",
-      "DESCRIPTION": "Our IoT solutions enable connectivity and real-time tracking of your GPS devices with advanced cloud integration."
+   "IOT": {
+    "TAB": "IoT Solution",
+    "TITLE": "Quotation Request for IoT Product",
+   "SUBTITLE": "Request a quote for your selected IoT solution",
+   "DESCRIPTION": "Please fill in the form below to receive a personalized quotation for the selected IoT product "
     },
-    "IT": {
+   "IT": {
       "TAB": "IT Solution",
-      "TITLE": "💻 IT GPS Solution",
-      "SUBTITLE": "IT Solutions",
-      "DESCRIPTION": "Our IT solutions offer robust GPS systems with software integration, databases, and enterprise architectures."
+      "TITLE": "Quotation Request for a Custom IT Solution",
+      "SUBTITLE": "Tell us about the IT solution you need",
+      "DESCRIPTION": "Please fill in the form below to request a personalized quote for a custom IT solution, including software, databases, or enterprise systems tailored to your needs."
     }
+
   },
   "FORM": {
     "NAME": "Last Name",

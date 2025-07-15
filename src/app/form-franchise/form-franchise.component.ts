@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FranchiseService } from 'app/Services/franchise.service';
+import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 
 declare var intlTelInput: any;
@@ -15,9 +16,9 @@ export class FormFranchiseComponent implements OnInit, AfterViewInit {
   @ViewChild('phoneInput', { static: false }) phoneInputRef!: ElementRef;
   formFranchise!: FormGroup;
   iti: any;
- storedUser = localStorage.getItem('userId');
+ storedUser = this.cookieService.get('userId');
  userId = this.storedUser ? Number(this.storedUser) : null;
-  constructor(private fb: FormBuilder,private franchiseService: FranchiseService,private router: Router) {}
+  constructor(private fb: FormBuilder,private franchiseService: FranchiseService,private router: Router,private cookieService: CookieService) {}
 
   ngOnInit(): void {
     this.formFranchise = this.fb.group({
@@ -129,14 +130,12 @@ const payload = {
 
 this.franchiseService.envoyerDemandeFranchise(payload).subscribe({
   next: (res) => {
-    console.log('Réponse API :', res);
     Swal.fire('Success', 'Your request has been sent successfully.', 'success');
     this.formFranchise.reset();
     this.router.navigate(['/home']);
 
   },
   error: (err) => {
-    console.error('API error: :', err);
     Swal.fire('Error', 'An error occurred while sending', 'error');
   }
 });

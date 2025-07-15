@@ -152,17 +152,17 @@
    "SOLUTIONS": {
     "TITLE": "📡 Solutions GPS Avancées",
     "SUBTITLE": "Découvrez nos solutions IoT et IT pour vos besoins GPS",
-    "IOT": {
+      "IOT": {
       "TAB": "Solution IoT",
-      "TITLE": "🌐 Solution IoT GPS",
-      "SUBTITLE": "Solution Internet des Objets",
-      "DESCRIPTION": "Nos solutions IoT permettent la connectivité et le suivi en temps réel de vos dispositifs GPS avec une intégration cloud avancée."
+      "TITLE": "Demande de devis pour un produit IoT",
+      "SUBTITLE": "Obtenez un devis personnalisé pour votre solution IoT",
+      "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour recevoir un devis pour le produit IoT sélectionné."
     },
-    "IT": {
+   "IT": {
       "TAB": "Solution IT",
-      "TITLE": "💻 Solution IT GPS",
-      "SUBTITLE": "Solutions Informatiques",
-      "DESCRIPTION": "Nos solutions IT offrent des systèmes GPS robustes avec intégration logicielle, bases de données et architectures d’entreprise."
+      "TITLE": "Demande de devis pour une solution IT personnalisée",
+      "SUBTITLE": "Décrivez-nous la solution IT dont vous avez besoin",
+      "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour demander un devis personnalisé pour une solution IT sur mesure, incluant des logiciels, des bases de données ou des systèmes d’entreprise adaptés à vos besoins."
     }
   },
   "FORM": {

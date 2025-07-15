@@ -4,6 +4,8 @@ import { AuthService } from 'app/Services/auth.service';
 import { EmailjsService } from 'emailJs/email.service';
 import { environment } from 'environments/environment';
 import Swal from 'sweetalert2';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
   frontUrl=environment.frontUrl;
   signInEmail: string = '';
   signInPassword: string = '';
-  constructor(private authService: AuthService,private router: Router,private emailjsService: EmailjsService) { }
+  constructor(private authService: AuthService,private router: Router,private emailjsService: EmailjsService,private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -79,13 +81,13 @@ onSignIn() {
 
   this.authService.signIn(data).subscribe({
     next: (res) => {
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('role', res.role);
-      localStorage.setItem('name', res.nom);
-      localStorage.setItem('userId', res.userId);
-      const redirectUrl = localStorage.getItem('redirectAfterLogin');
-      localStorage.removeItem('redirectAfterLogin'); 
-
+      this.cookieService.set('token', res.token);
+      this.cookieService.set('role', res.role);
+      this.cookieService.set('name', res.nom);
+      this.cookieService.set('userId', res.userId);
+      const redirectUrl = this.cookieService.get('redirectAfterLogin');
+      this.cookieService.delete('redirectAfterLogin'); 
+      console.log("le token",this.cookieService.get('token'));
       Swal.fire({
         icon: 'success',
         title: 'Login successful',
