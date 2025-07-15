@@ -21,6 +21,7 @@ import { environment } from 'environments/environment';
   styleUrls: ['./form-products.component.scss']
 })
 export class FormProductsComponent implements OnInit {
+  
   productForm!: FormGroup;
   isEditMode = false;
   productId: number | null = null;
@@ -39,12 +40,14 @@ export class FormProductsComponent implements OnInit {
     private produitSansDevisService: ProduitSansDevisService,
     private produitAvecDevisService: ProduitAvecDevisService
   ) {}
-
+ storedUser = localStorage.getItem('userId');
+ userId = this.storedUser ? Number(this.storedUser) : null;
   ngOnInit(): void {
     const routeType = this.route.snapshot.queryParamMap.get('type');
     if (routeType === 'iot' || routeType === 'gps') {
       this.type = routeType;
     }
+    console.log("id est",this.userId);
 
     this.productForm = this.fb.group({
       nom: [''],
@@ -66,8 +69,7 @@ export class FormProductsComponent implements OnInit {
               nom: product.titre,
               description: product.description,
               prix: product.prix,
-              categorie: product.categorie,
-              userId: product.userId
+              categorie: product.categorie
             });
             this.caracteristiques = product.caracteristiques.map(c => c.texte);
             this.previewUrl = product.imagePath.startsWith('/assets') 
@@ -126,7 +128,7 @@ export class FormProductsComponent implements OnInit {
           description: formValue.description,
           categorie: 'iot',
           caracteristiques: this.caracteristiques,
-          image: this.selectedFile
+          image: this.selectedFile,
         };
 
         this.produitAvecDevisService.create(createRequest).subscribe({
@@ -142,6 +144,7 @@ export class FormProductsComponent implements OnInit {
           categorie: 'gps',
           prix: formValue.prix,
           caracteristiques: this.caracteristiques,
+          userId:this.userId,
           newImage: this.selectedFile || undefined
         };
 
@@ -163,7 +166,7 @@ export class FormProductsComponent implements OnInit {
           prix: formValue.prix,
           caracteristiques: this.caracteristiques,
           image: this.selectedFile,
-          userId: formValue.userId
+          userId: this.userId
         };
 
         this.produitSansDevisService.create(createRequest).subscribe({

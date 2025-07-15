@@ -35,6 +35,7 @@ export interface ProduitSansDevisUpdateRequest {
   prix: string;
   newImage?: File | null;
   caracteristiques: string[];
+  userId: number;
 }
 
 @Injectable({

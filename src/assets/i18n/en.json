@@ -247,8 +247,7 @@
     "voirDetails": "View Details",
     "caracteristiques": "Features :",
     "tarif": "Price :"
-  }
-
+  },
   "ALERT": {
   "LOGOUT_TITLE": "Logged out",
   "LOGOUT_SUCCESS": "You have been logged out successfully.",

@@ -11,8 +11,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./header-home-page.component.scss']
 })
 export class HeaderHomePageComponent implements OnInit {
-  isDropdownOpen = true;
- isNavbarCollapsed: boolean = true;
+  isDropdownOpen = false;
+  isNavbarCollapsed: boolean = true;
   isLoggedIn = false;
   pendingSection: string | null = null;
   languages = [

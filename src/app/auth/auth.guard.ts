@@ -55,9 +55,10 @@ export class AuthGuard implements CanActivate {
         icon: 'error',
         title: 'Accès refusé',
         text: 'Vous devez être connecté pour accéder à cette page..',
-        confirmButtonText: 'Retour à l\'accueil'
+        confirmButtonText: 'Se connecter'
       }).then(() => {
-        this.router.navigate(['/home']);
+        event.preventDefault();
+        this.router.navigate(['/auth']);
       });
       return false;
     }

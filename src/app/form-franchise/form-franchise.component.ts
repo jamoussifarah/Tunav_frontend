@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FranchiseService } from 'app/Services/franchise.service';
 import Swal from 'sweetalert2';
 
@@ -14,8 +15,9 @@ export class FormFranchiseComponent implements OnInit, AfterViewInit {
   @ViewChild('phoneInput', { static: false }) phoneInputRef!: ElementRef;
   formFranchise!: FormGroup;
   iti: any;
-
-  constructor(private fb: FormBuilder,private franchiseService: FranchiseService) {}
+ storedUser = localStorage.getItem('userId');
+ userId = this.storedUser ? Number(this.storedUser) : null;
+  constructor(private fb: FormBuilder,private franchiseService: FranchiseService,private router: Router) {}
 
   ngOnInit(): void {
     this.formFranchise = this.fb.group({
@@ -30,6 +32,7 @@ export class FormFranchiseComponent implements OnInit, AfterViewInit {
       secteurDuree: [''],
       motivation: ['', Validators.required],
     });
+    
   }
 
   ngAfterViewInit(): void {
@@ -121,7 +124,7 @@ const payload = {
   experienceIotGps: formData.experienceIT === 'oui' ? formData.precisionsExp : '',
   entrepriseDirige: formData.dirigeEntreprise === 'oui' ? formData.secteurDuree : '',
   motivation: formData.motivation,
-  userId: 1 
+  userId: this.userId
 };
 
 this.franchiseService.envoyerDemandeFranchise(payload).subscribe({
@@ -129,6 +132,8 @@ this.franchiseService.envoyerDemandeFranchise(payload).subscribe({
     console.log('Réponse API :', res);
     Swal.fire('Succès', 'Votre demande a bien été envoyée.', 'success');
     this.formFranchise.reset();
+    this.router.navigate(['/home']);
+
   },
   error: (err) => {
     console.error('Erreur API :', err);

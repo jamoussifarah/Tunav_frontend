@@ -19,7 +19,8 @@ export class FormblogComponent implements OnInit {
     tags: [],
     likes: 0
   };
-
+  storedUser = localStorage.getItem('userId');
+ userId = this.storedUser ? Number(this.storedUser) : null;
   selectedFile?: File;
   newTag: string = '';
   isEditMode = false;
@@ -33,6 +34,7 @@ export class FormblogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    
     const blogId = this.route.snapshot.paramMap.get('id');
     console.log("le is est",blogId);
     if (blogId) {
@@ -99,8 +101,8 @@ export class FormblogComponent implements OnInit {
     const CreateRequest: BlogCreateRequest = {
       titre: this.blog.titre,
       contenu: this.blog.contenu,
-      userId: 1, // à remplacer par l'utilisateur connecté
-      tags: this.blog.tags, // s'assurer que ce sont bien des strings
+      userId: this.userId, 
+      tags: this.blog.tags, 
       image: this.selectedFile || undefined
     };
     const UpdateRequest: BlogUpdateRequest = {
