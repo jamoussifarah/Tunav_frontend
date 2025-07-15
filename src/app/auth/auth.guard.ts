@@ -13,10 +13,22 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (!this.authService.isLoggedIn()) {
+      Swal.fire({
+    icon: 'warning',
+    title: 'Session Expired',
+    text: 'Your session has expired, please log in again.',
+    confirmButtonText: 'Log In'
+  }).then(() => {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
+  });
+      return false;
+    }
     const token = this.authService.getToken();
     const role = this.authService.getRole();
     const expectedRole = route.data['role']; 
-    // ✅ Cas 2 : restriction supplémentaire pour certaines routes (formulaire-franchise ou formulaire-iot) et si le rôle est client
+
     const url = state.url;
     if ((url.includes('formulairefranchise') || url.includes('formulaireiotit'))
        &&(!token|| role === 'Administrateur')
@@ -32,20 +44,7 @@ export class AuthGuard implements CanActivate {
       });
       return false;
     }
-    // ✅ Cas 1 : pas de token -> redirige vers auth
-    /*if (!token) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Authentification requise',
-        text: 'Vous devez être connecté pour accéder à cette page.',
-        confirmButtonText: 'Se connecter'
-      }).then(() => {
-        this.router.navigate(['/auth']);
-      });
-      return false;
-    }*/
-
-    // ✅ Cas 3 : rôle attendu dans les data (optionnel)
+    
     if (expectedRole !== undefined && role !== expectedRole) {
       Swal.fire({
         icon: 'error',
