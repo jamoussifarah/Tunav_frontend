@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EmailjsService } from 'emailJs/email.service';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
 
@@ -20,11 +21,11 @@ export interface SignInRequest {
 export class AuthService {
  private apiUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private emailjsService: EmailjsService) {}
 
-  signUp(data: SignUpRequest): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signup`, data);
-  }
+ signUp(data: SignUpRequest): Observable<{ message: string; mdp: string }> {
+  return this.http.post<{ message: string; mdp: string }>(`${this.apiUrl}/signup`, data);
+}
 
   signIn(data: SignInRequest): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, data);

@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'app/Services/auth.service';
+import { EmailjsService } from 'emailJs/email.service';
+import { environment } from 'environments/environment';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,10 +13,10 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit, AfterViewInit {
   signUpName: string = '';
   signUpEmail: string = '';
-  
+  frontUrl=environment.frontUrl;
   signInEmail: string = '';
   signInPassword: string = '';
-  constructor(private authService: AuthService,private router: Router) { }
+  constructor(private authService: AuthService,private router: Router,private emailjsService: EmailjsService) { }
 
   ngOnInit(): void {
   }
@@ -41,15 +43,27 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       email: this.signUpEmail,
       role:0
     };
-
+    
     this.authService.signUp(data).subscribe({
-      next: () => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Inscription réussie',
-          text: 'Un mail contenant le mot de passe sera envoyé.'
-        });
-      },
+          next: (response) => {
+          console.log('✅ Inscription réussie');
+          console.log('🔐 Mot de passe généré :', response.mdp);
+
+          const params = {
+            email: data.email,
+            name: data.nom, 
+            password: response.mdp,
+            loginLink: this.frontUrl+'/auth'
+          };
+
+          this.emailjsService.sendPasswordEmail(params);
+
+          Swal.fire({
+            icon: 'success',
+            title: 'Inscription réussie',
+            text: 'Un mail contenant le mot de passe sera envoyé.'
+          });
+        },
       error: (err) => {
         Swal.fire({
           icon: 'error',
