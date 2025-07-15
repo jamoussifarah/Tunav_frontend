@@ -48,7 +48,9 @@
           </div>
           <div class="tarif">
             <h4>{{ 'conteneur_sansdevis.tarif' | translate }}</h4>
-            <h2> {{prix}} DT </h2>
+           <h2>
+              {{ prix }} <span *ngIf="!(prix + '').toLowerCase().includes('dt')">DT</span>
+            </h2>
             <button class="btn-panier">Ajouter au panier</button>
           </div>
 

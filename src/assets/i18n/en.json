@@ -73,7 +73,7 @@
     "TRANSFORMATION": {
       "TITLE": "Digital Transformation",
       "DESCRIPTION": "We support businesses in their digital transition with innovative, sustainable solutions perfectly integrated with their activity.",
-      "LINK": "Learn more"
+      "LINK": "Learn more about Our IT Solutions"
     },
     "IT_SOLUTION": {
       "TITLE": "IT Solutions",
@@ -82,12 +82,12 @@
     "GPS_TRACKING": {
       "TITLE": "GPS Tracking",
       "DESCRIPTION": "Our geolocation solutions provide reliable and secure real-time advanced tracking of your vehicles, equipment or field teams.",
-      "LINK": "discover"
+      "LINK": "Learn more"
     },
     "IOT_SOLUTION": {
       "TITLE": "IoT Solutions",
       "DESCRIPTION": "Our IoT solutions offer smart monitoring, centralized device management, and advanced security systems to protect your facilities.",
-      "LINK":"discover"
+      "LINK":"Discover"
     }
   },
   "TESTIMONIALS": {
