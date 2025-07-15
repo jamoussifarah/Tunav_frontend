@@ -72,7 +72,8 @@ onSignIn() {
       localStorage.setItem('token', res.token);
       localStorage.setItem('role', res.role);
       localStorage.setItem('name', res.nom);
-
+      localStorage.setItem('userId', res.userId);
+      console.log("le resultat",localStorage.getItem('userId'));
       const redirectUrl = localStorage.getItem('redirectAfterLogin');
       localStorage.removeItem('redirectAfterLogin'); 
 
@@ -84,7 +85,6 @@ onSignIn() {
       }).then((result) => {
         if (result.isConfirmed) {
           if (res.role === 'Client') {
-            console.log("aaaaaaaaaaaaaaaaaaaaaaa");
             console.log("lien",redirectUrl);
             if (redirectUrl && (redirectUrl.includes('formulaireiotit') || redirectUrl.includes('formulairefranchise'))) {
               this.router.navigateByUrl(redirectUrl);

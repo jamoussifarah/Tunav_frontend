@@ -285,3 +285,63 @@
 
 input:-ms-input-placeholder { color: #369; } 
 input::-ms-input-placeholder { color: #369; } 
+
+@media (max-width: 768px) {
+  .auth-box {
+    max-width: 90%;
+    padding: 15px;
+	
+  }
+
+  .auth-component h1 {
+    font-size: 20px;
+  }
+
+  .auth-component p,
+  .auth-component span {
+    font-size: 13px;
+  }
+
+  .auth-component button {
+    padding: 10px 25px;
+    font-size: 13px;
+  }
+
+  .auth-component input {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .back-arrow {
+    top: 15px;
+    left: 15px;
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .auth-box {
+    padding: 10px;
+  }
+
+  .auth-component h1 {
+    font-size: 18px;
+  }
+
+  .auth-component p,
+  .auth-component span {
+    font-size: 12px;
+  }
+
+  .auth-component button {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+
+  .auth-component input {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
