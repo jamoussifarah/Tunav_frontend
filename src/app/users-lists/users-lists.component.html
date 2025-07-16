@@ -9,6 +9,7 @@
           <th>Nom</th>
           <th>Email</th>
           <th>Rôle</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -16,6 +17,14 @@
           <td>{{ user.nom }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.role === 0 ? 'Client' : 'Administrateur' }}</td>
+          <td>
+            <button
+                class="btn btn-sm btn-outline-primary"
+                (click)="sendResetPassword(user.email)"
+              >
+                🔒 Reset Password
+              </button>
+          </td>
         </tr>
       </tbody>
     </table>

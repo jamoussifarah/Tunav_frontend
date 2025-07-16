@@ -13,18 +13,7 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.authService.isLoggedIn()) {
-      Swal.fire({
-    icon: 'warning',
-    title: 'Session Expired',
-    text: 'Your session has expired, please log in again.',
-    confirmButtonText: 'Log In'
-  }).then(() => {
-    this.authService.logout();
-    this.router.navigate(['/auth']);
-  });
-      return false;
-    }
+  
     const token = this.authService.getToken();
     const role = this.authService.getRole();
     const expectedRole = route.data['role']; 
@@ -44,6 +33,7 @@ export class AuthGuard implements CanActivate {
       });
       return false;
     }
+
     
     if (expectedRole !== undefined && role !== expectedRole) {
       Swal.fire({
@@ -57,10 +47,22 @@ export class AuthGuard implements CanActivate {
       });
       return false;
     }
+      if (!this.authService.isLoggedIn()) {
+      Swal.fire({
+    icon: 'warning',
+    title: 'Session Expired',
+    text: 'Your session has expired, please log in again.',
+    confirmButtonText: 'Log In'
+  }).then(() => {
+    this.authService.logout();
+    this.router.navigate(['/auth']);
+  });
+      return false;
+    }
 
     // ✅ Sinon, tout est bon
     return true;
-  
+    
   }
   
 }

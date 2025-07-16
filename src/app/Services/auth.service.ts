@@ -21,7 +21,9 @@ export interface SignInRequest {
   email: string;
   password: string;
 }
-
+export interface ForgetPasswordRequest {
+  email: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -56,10 +58,10 @@ export class AuthService {
       const decoded: DecodedToken = jwtDecode(token);
       const exp = decoded.exp;
       const now = Date.now() / 1000;
-      const tokenIssueTime = exp - 3600; // supposons token valide 1h normalement
+      /*const tokenIssueTime = exp - 3600; // supposons token valide 1h normalement
       const testExpirationTime = tokenIssueTime + 60; // 1 minute après issue
-      return now > testExpirationTime;
-      //return exp < now;
+      return now > testExpirationTime;*/
+      return exp < now;
     } catch (e) {
       return true; 
     }
@@ -69,4 +71,9 @@ export class AuthService {
     const token = this.getToken();
     return token !== null && !this.isTokenExpired(token);
   }
+ forgetPassword(dat: ForgetPasswordRequest): Observable<{ mdp: string }> {
+  return this.http.post<{ mdp: string }>(`${this.apiUrl}/forget-password`, dat);
+}
+
+
 }

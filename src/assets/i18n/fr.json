@@ -119,6 +119,12 @@
     }
   },
   "AUTH": {
+    "FORGET": {
+    "TITLE": "Mot de passe oublié ?",
+    "LINK": "Cliquez ici",
+    "PLACEHOLDER": "Entrez votre email",
+    "BUTTON": "Réinitialiser"
+     },
     "SIGNUP": {
       "TITLE": "Créer un compte",
       "SUBTITLE": "Utilisez votre e-mail pour l'inscription",

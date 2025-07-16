@@ -127,6 +127,12 @@
     }
   },
   "AUTH": {
+     "FORGET": {
+      "TITLE": "Forgot your password?",
+      "LINK": "Click here",
+      "PLACEHOLDER": "Enter your email",
+      "BUTTON": "Reset"
+      },
     "SIGNUP": {
       "TITLE": "Create Account",
       "SUBTITLE": "Use your email for registration",
@@ -134,7 +140,13 @@
         "NAME": "Name",
         "EMAIL": "Email"
       },
-      "BUTTON": "Sign Up"
+      "BUTTON": "Sign Up",
+      "FORGET": {
+        "TITLE": "Forgot your password?",
+        "LINK": "Click here",
+        "PLACEHOLDER": "Enter your email",
+        "BUTTON": "Reset"
+      }
     },
     "SIGNIN": {
       "TITLE": "Sign In",
