@@ -15,15 +15,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   const token = this.authService.getToken();
-  console.log('Token récupéré :', token);
-
   if (token) {
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
       }
     });
-    console.log('Requête modifiée avec Authorization:', request.headers.get('Authorization'));
+    console.log('Requête modifiée avec Authorization:');
   } else {
     console.log('Aucun token trouvé');
     

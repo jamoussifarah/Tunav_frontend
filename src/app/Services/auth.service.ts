@@ -2,7 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmailjsService } from 'emailJs/email.service';
 import { environment } from 'environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import {jwtDecode} from 'jwt-decode';
+
+interface DecodedToken {
+  exp: number; 
+  [key: string]: any;
+}
 
 export interface SignUpRequest {
   nom: string;
@@ -14,14 +21,16 @@ export interface SignInRequest {
   email: string;
   password: string;
 }
-
+export interface ForgetPasswordRequest {
+  email: string;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
  private apiUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient,private emailjsService: EmailjsService) {}
+  constructor(private http: HttpClient,private emailjsService: EmailjsService,private cookieService: CookieService) {}
 
  signUp(data: SignUpRequest): Observable<{ message: string; mdp: string }> {
   return this.http.post<{ message: string; mdp: string }>(`${this.apiUrl}/signup`, data);
@@ -32,14 +41,39 @@ export class AuthService {
   }
   
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return this.cookieService.get('token');
   }
   getRole(): string | null {
-    return localStorage.getItem('role');
+    return this.cookieService.get('role');
   }
   logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('name');
+    this.cookieService.delete('token');
+    this.cookieService.delete('role');
+    this.cookieService.delete('name');
+    this.cookieService.delete('userId');
   }
+
+  isTokenExpired(token: string): boolean {
+    try {
+      const decoded: DecodedToken = jwtDecode(token);
+      const exp = decoded.exp;
+      const now = Date.now() / 1000;
+      /*const tokenIssueTime = exp - 3600; // supposons token valide 1h normalement
+      const testExpirationTime = tokenIssueTime + 60; // 1 minute après issue
+      return now > testExpirationTime;*/
+      return exp < now;
+    } catch (e) {
+      return true; 
+    }
+  }
+
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    return token !== null && !this.isTokenExpired(token);
+  }
+ forgetPassword(dat: ForgetPasswordRequest): Observable<{ mdp: string }> {
+  return this.http.post<{ mdp: string }>(`${this.apiUrl}/forget-password`, dat);
+}
+
+
 }

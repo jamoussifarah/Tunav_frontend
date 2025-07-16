@@ -18,4 +18,9 @@ private apiUrl = environment.apiUrl + '/devis';
   getDevisById(id: number): Observable<any> {
   return this.http.get<any>(`${this.apiUrl}/${id}`);
 }
+
+ addDevis(data :any):Observable<any>
+ {
+  return this.http.post(`${this.apiUrl}`, data);
+ }
 }

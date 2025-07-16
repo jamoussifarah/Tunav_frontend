@@ -14,6 +14,7 @@ import {
   ProduitSansDevisUpdateRequest
 } from '../Services/ProduitSansDevisService';
 import { environment } from 'environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-form-products',
@@ -38,9 +39,10 @@ export class FormProductsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private produitSansDevisService: ProduitSansDevisService,
-    private produitAvecDevisService: ProduitAvecDevisService
+    private produitAvecDevisService: ProduitAvecDevisService,
+    private cookieService: CookieService
   ) {}
- storedUser = localStorage.getItem('userId');
+ storedUser = this.cookieService.get('userId');;
  userId = this.storedUser ? Number(this.storedUser) : null;
   ngOnInit(): void {
     const routeType = this.route.snapshot.queryParamMap.get('type');

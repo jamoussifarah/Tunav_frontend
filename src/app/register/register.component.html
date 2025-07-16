@@ -23,13 +23,36 @@
 			<input type="email" [(ngModel)]="signUpEmail" name="signupEmail"  [placeholder]="'AUTH.SIGNUP.PLACEHOLDERS.EMAIL' | translate" required />
 			<button type="button" (click)="onSignUp()">{{ 'AUTH.SIGNUP.BUTTON' | translate }}</button>
 		</form>
-	</div>
+	
+  </div>
 	<div class="form-auth-box sign-in-auth-box">
 		<form action="#">
 			<h1>{{ 'AUTH.SIGNIN.TITLE' | translate }}</h1>
 			<input type="email" [(ngModel)]="signInEmail" name="signinEmail" [placeholder]="'AUTH.SIGNIN.PLACEHOLDERS.EMAIL' | translate" required />
 			<input type="password" [(ngModel)]="signInPassword" name="signinPassword" [placeholder]="'AUTH.SIGNIN.PLACEHOLDERS.PASSWORD' | translate" required />
 			<button type="button" (click)="onSignIn()">{{ 'AUTH.SIGNIN.BUTTON' | translate }}</button>
+				
+		<div class="forget-password-box">
+			<p style=" color: #369;opacity: 1;  ">
+			{{ 'AUTH.FORGET.TITLE' | translate }}
+			<a href="#" (click)="showForgetForm = !showForgetForm; $event.preventDefault()">
+				{{ 'AUTH.FORGET.LINK' | translate }}
+			</a>
+			</p>
+
+			<!-- Formulaire de mot de passe oublié -->
+		<div *ngIf="showForgetForm" class="forget-form">
+			<input
+				type="email"
+				[(ngModel)]="forgetEmail"
+				name="forgetEmail"
+				placeholder="Entrez votre email"
+			/>
+			<button type="button" (click)="handleForgetPassword(forgetEmail)">
+				Réinitialiser
+			</button>
+			</div>
+	    </div>
 		</form>
 	</div>
 	<div class="overlay-auth-box">
@@ -42,7 +65,6 @@
 			<div class="overlay-panel overlay-right">
 				<h1>{{ 'AUTH.OVERLAY.RIGHT.TITLE' | translate }}</h1>
 				<p>{{ 'AUTH.OVERLAY.RIGHT.TEXT' | translate }}</p>
-				<a href="#">Forgot your password?</a>
 				<button class="ghost" id="signUp">{{ 'AUTH.OVERLAY.RIGHT.BUTTON' | translate }}</button>
 			</div>
 		</div>
