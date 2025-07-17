@@ -87,7 +87,6 @@ onSignIn() {
       this.cookieService.set('userId', res.userId);
       const redirectUrl = this.cookieService.get('redirectAfterLogin');
       this.cookieService.delete('redirectAfterLogin'); 
-      console.log("le token",this.cookieService.get('token'));
       Swal.fire({
         icon: 'success',
         title: 'Login successful',
@@ -128,7 +127,6 @@ handleForgetPassword(email: string): void {
     });
     return;
   }
-  console.log(email);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     Swal.fire({

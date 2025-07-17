@@ -23,4 +23,12 @@ private apiUrl = environment.apiUrl + '/devis';
  {
   return this.http.post(`${this.apiUrl}`, data);
  }
+  getNumberDevisWithProduit(): Observable<{ devisWithProduit: number }> {
+    return this.http.get<{ devisWithProduit: number }>(`${this.apiUrl}/count/IOT`);
+  }
+
+  getNumberDevisWithoutProduit(): Observable<{ devisWithoutProduit: number }> {
+    return this.http.get<{ devisWithoutProduit: number }>(`${this.apiUrl}/count/IT`);
+  }
+
 }

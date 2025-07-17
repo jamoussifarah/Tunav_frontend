@@ -52,7 +52,6 @@ export class FormulaireIotItComponent implements OnInit {
   const form = type === 'iot' ? this.formIot : this.formIt;
 
   if (form.invalid) return;
-  console.log("ojpojopj")
   const userId = this.cookieService.get('userId');;
   
   const data = {
@@ -60,7 +59,6 @@ export class FormulaireIotItComponent implements OnInit {
     userId,
     produitAvecDevisId: type === 'iot' ? this.produitAvecDevisId : null,
   };
- console.log(data);
   this.devisService.addDevis(data).subscribe({
    next: () => {
       Swal.fire({

@@ -37,7 +37,6 @@ export class FormblogComponent implements OnInit {
   ngOnInit() {
     
     const blogId = this.route.snapshot.paramMap.get('id');
-    console.log("le is est",blogId);
     if (blogId) {
       this.isEditMode = true;
       this.blogService.getBlogById(+blogId).subscribe({
@@ -46,9 +45,8 @@ export class FormblogComponent implements OnInit {
             tags: data.tags.map((t: any) => t.nom || t) 
           
         }
-        console.log("le blog filtré",this.blog);
       },
-        error: err => console.error('Erreur chargement blog :', err)
+        error: err => console.error('Erreur chargement blog')
       });
     }
   }
@@ -114,7 +112,6 @@ export class FormblogComponent implements OnInit {
     };
    
     if (this.isEditMode) {
-      console.log(UpdateRequest);
       this.blogService.updateBlog(this.blog.id, UpdateRequest).subscribe({
         next: () => this.router.navigate(['/listblogs']),
         error: (err) => {
@@ -137,9 +134,7 @@ export class FormblogComponent implements OnInit {
             const reader = new FileReader();
             reader.onload = () => console.error('Erreur backend:', reader.result);
             reader.readAsText(err.error);
-          } else {
-            console.error('Erreur JSON:', err.error);
-          }
+          } 
         }
       });
     }

@@ -4,7 +4,8 @@ import { Router ,NavigationEnd} from '@angular/router';
 import { ScrollService } from './Services/scroll.service';
 import { filter } from 'rxjs/operators';
 import { LanguageService } from './Services/language.service';
-import { TranslateService } from '@ngx-translate/core';@Component({
+import { TranslateService } from '@ngx-translate/core';import { UserStatisticsService } from './Services/user-statistics.service';
+@Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -13,23 +14,27 @@ export class AppComponent implements OnInit,AfterViewInit {
      constructor(private translate: TranslateService,
       public location: Location,private router: Router, 
       private scrollService: ScrollService,
+      private statsService: UserStatisticsService,
       private languageService: LanguageService) 
      {
      translate.setDefaultLang('en');
 
     const savedLang = localStorage.getItem('language') || 'en';
 
-    console.log('Langue détectée au démarrage :', savedLang);
 
     translate.use(savedLang).subscribe({
-      next: () => console.log(`Langue ${savedLang} chargée avec succès`),
-      error: (err) => console.error(`Erreur lors du chargement de la langue ${savedLang}`, err)
+      next: () => console.log(`Langue chargée avec succès`),
+      error: (err) => console.error(`Erreur lors du chargement de la langue`)
     });
 
 
      }
 
     ngOnInit(){
+       this.statsService.trackVisit().subscribe({
+      next: () => console.log('✅ Visit tracked'),
+      error: err => console.error('❌ Visit tracking failed')
+    });
     }
     ngAfterViewInit(): void {
     this.router.events

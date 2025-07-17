@@ -21,12 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${token}`
       }
     });
-    console.log('Requête modifiée avec Authorization:');
-  } else {
-    console.log('Aucun token trouvé');
-    
-  }
-
+  } 
   return next.handle(request);
 }
 
