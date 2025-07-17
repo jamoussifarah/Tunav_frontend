@@ -11,10 +11,9 @@ constructor(private translate: TranslateService) {
   }
 
   setLanguage(lang: string) {
-  console.log('Changement de langue vers :', lang);
   this.translate.use(lang).subscribe({
-    next: () => console.log(`Langue ${lang} activée`),
-    error: (err) => console.error(`Erreur de chargement pour ${lang}`, err)
+    next: () => console.log(`Langue activée`),
+    error: (err) => console.error(`Erreur de chargement pour `)
   });
   localStorage.setItem('language', lang);
 }

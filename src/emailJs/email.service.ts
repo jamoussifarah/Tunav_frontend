@@ -38,7 +38,6 @@ sendContactEmail(form: { name: string, email: string, message: string }): Promis
     EMAILJS_CONFIG.publicKey
   )
   .then(() => {
-    console.log('✅ Auto-reply envoyé');
 
     return emailjs.send(
       EMAILJS_CONFIG.serviceId,
@@ -68,7 +67,7 @@ sendPasswordEmail( data:any): Promise<void> {
     console.log('✅ Email de mot de passe envoyé avec succès');
   })
   .catch((error) => {
-    console.error('❌ Échec de l’envoi du mail de mot de passe', error);
+    console.error('❌ Échec de l’envoi du mail de mot de passe');
     throw error;
   });
 }

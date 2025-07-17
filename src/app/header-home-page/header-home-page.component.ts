@@ -29,7 +29,6 @@ export class HeaderHomePageComponent implements OnInit {
     private authService: AuthService,
     private languageService: LanguageService,private cdr: ChangeDetectorRef) {
     this.currentLanguage = this.languageService.getCurrentLanguage();
-    console.log(this.isDropdownOpen);
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd && this.pendingSection) {
         setTimeout(() => {
@@ -54,7 +53,6 @@ export class HeaderHomePageComponent implements OnInit {
   {
     this.isDropdownOpen=!this.isDropdownOpen;
     this.cdr.detectChanges();
-    console.log(this.isDropdownOpen);
   }
   getFlag(languageCode: string): string {
     const language = this.languages.find((lang) => lang.code === languageCode);

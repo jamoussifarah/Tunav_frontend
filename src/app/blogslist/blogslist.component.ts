@@ -37,7 +37,6 @@ apiBaseUrl = environment.baseUrl;
 
   editBlog(id: number) {
     this.router.navigate(['/update-blog', id]);
-    console.log("Edit blog", id);
   }
 
  confirmDelete(id: number) {

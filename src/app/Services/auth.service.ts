@@ -5,6 +5,7 @@ import { environment } from 'environments/environment';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import {jwtDecode} from 'jwt-decode';
+import { UserStatisticsService } from './user-statistics.service';
 
 interface DecodedToken {
   exp: number; 
@@ -30,15 +31,50 @@ export interface ForgetPasswordRequest {
 export class AuthService {
  private apiUrl = `${environment.apiUrl}/auth`;
 
-  constructor(private http: HttpClient,private emailjsService: EmailjsService,private cookieService: CookieService) {}
+  constructor(private http: HttpClient,private emailjsService: EmailjsService,private cookieService: CookieService,
+    private statisticsService: UserStatisticsService
+  ) {}
 
- signUp(data: SignUpRequest): Observable<{ message: string; mdp: string }> {
-  return this.http.post<{ message: string; mdp: string }>(`${this.apiUrl}/signup`, data);
+signUp(data: SignUpRequest): Observable<{ message: string; mdp: string }> {
+  return new Observable(observer => {
+    this.http.post<{ message: string; mdp: string }>(`${this.apiUrl}/signup`, data).subscribe({
+      next: (response) => {
+        // 🔁 Track signup après succès
+        this.statisticsService.trackSignUp().subscribe({
+          next: () => console.log('📊 Signup tracked'),
+          error: err => console.error('❌ Failed to track signup')
+        });
+
+        observer.next(response);
+        observer.complete();
+      },
+      error: (err) => {
+        observer.error(err);
+      }
+    });
+  });
 }
 
-  signIn(data: SignInRequest): Observable<any> {
-    return this.http.post(`${this.apiUrl}/signin`, data);
-  }
+
+signIn(data: SignInRequest): Observable<any> {
+  return new Observable(observer => {
+    this.http.post(`${this.apiUrl}/signin`, data).subscribe({
+      next: (response) => {
+        this.statisticsService.trackLogin().subscribe({
+          next: () => console.log('📊 Login tracked'),
+          error: err => console.error('❌ Failed to track login')
+        });
+
+        observer.next(response);
+        observer.complete();
+      },
+      error: (err) => {
+        observer.error(err);
+      }
+    });
+  });
+}
+
   
   getToken(): string | null {
     return this.cookieService.get('token');

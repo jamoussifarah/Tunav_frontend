@@ -25,10 +25,6 @@ export class DevisDetailComponent implements OnInit {
       });
     }
   }
-
-  envoyerMailConfirmation() {
-    console.log('Envoi du mail de confirmation pour le devis', this.devis);
-  }
   today = new Date();
 genererPdf() {
   const logoPath = '/assets/img/logoTunav.png'; 

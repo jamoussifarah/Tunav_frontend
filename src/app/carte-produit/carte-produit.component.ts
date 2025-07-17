@@ -31,7 +31,6 @@ export class CarteProduitComponent {
   }
   allerAuFormulaire() {
     this.closeModal();
-    console.log("le id",this.id);
     this.router.navigate(['/formulaireiotit'], { queryParams: { produitId: this.id ,titre:this.titre} });
     
   }

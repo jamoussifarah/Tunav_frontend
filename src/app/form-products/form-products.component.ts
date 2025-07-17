@@ -49,7 +49,6 @@ export class FormProductsComponent implements OnInit {
     if (routeType === 'iot' || routeType === 'gps') {
       this.type = routeType;
     }
-    console.log("id est",this.userId);
 
     this.productForm = this.fb.group({
       nom: [''],
