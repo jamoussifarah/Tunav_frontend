@@ -10,6 +10,7 @@
           <th>Prénom</th>
           <th>Email</th>
           <th>Entreprise</th>
+          <th>État</th> 
           <th>Action</th>
         </tr>
       </thead>
@@ -19,6 +20,20 @@
           <td>{{ devis.prenom }}</td>
           <td>{{ devis.email }}</td>
           <td>{{ devis.entreprise }}</td>
+
+         <td>
+          <div class="input-group input-group-sm">
+            <select class="form-select"
+                    [ngModel]="devis.etat"
+                    (ngModelChange)="onEtatSelected($event, devis)">
+              <option *ngFor="let etat of etatsDisponibles" [ngValue]="etat">
+                {{ etat }}
+              </option>
+            </select>
+          </div>
+        </td>
+
+
           <td>
             <a [routerLink]="['/devis', devis.id]" class="btn btn-sm">
               🔍 Détails
