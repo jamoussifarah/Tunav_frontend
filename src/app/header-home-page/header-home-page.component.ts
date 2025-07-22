@@ -17,7 +17,8 @@ export class HeaderHomePageComponent implements OnInit {
   pendingSection: string | null = null;
   languages = [
   { code: 'en', name: 'English', flag: '/assets/img/flags/united-kingdom-flag.png' },
-  { code: 'fr', name: 'Francais', flag: '/assets/img/flags/france-flag.png' }
+  { code: 'fr', name: 'Francais', flag: '/assets/img/flags/france-flag.png' },
+  { code: 'ar', name: 'العربية', flag: '/assets/img/flags/tn-flag.gif' } 
 ];
    ngOnInit(): void {
   this.checkLoginStatus();
