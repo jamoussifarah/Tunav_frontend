@@ -30,5 +30,8 @@ private apiUrl = environment.apiUrl + '/devis';
   getNumberDevisWithoutProduit(): Observable<{ devisWithoutProduit: number }> {
     return this.http.get<{ devisWithoutProduit: number }>(`${this.apiUrl}/count/IT`);
   }
+   updateEtatDevis(id: number, nouvelEtat: string): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/${id}/etat`, { etat: nouvelEtat });
+  }
 
 }
