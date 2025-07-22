@@ -58,6 +58,7 @@ export class FormulaireIotItComponent implements OnInit {
     ...form.value,
     userId,
     produitAvecDevisId: type === 'iot' ? this.produitAvecDevisId : null,
+    etat:0
   };
   this.devisService.addDevis(data).subscribe({
    next: () => {
