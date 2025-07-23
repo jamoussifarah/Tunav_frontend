@@ -1,4 +1,4 @@
-.carte-produit {
+ .carte-produit {
     background-color: #e9ecef;
     position: relative;
     width: 300px;
@@ -61,8 +61,6 @@
   align-items: flex-end;
   box-sizing: border-box;
 }
-
-
 .infos-hover h3 {
   margin: 0 0 10px;
   font-size: 18px;
@@ -96,7 +94,6 @@
   border-bottom: 3px solid white;
   font-size: 14px;
 }
-
 .demander-devis {
   color: orange;
   text-decoration: none;
@@ -128,7 +125,6 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   animation: fadeIn 0.3s ease-in-out;
 }
-
 .modal-top {
   background-image: url('assets/img/infinite-loop-01.jpg');
   background-repeat: no-repeat;
@@ -226,7 +222,6 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
 .caracteristiques h4,
 .tarif h4 {
   margin-top: 0;
@@ -289,5 +284,131 @@
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+/* ✅ RESPONSIVE ADAPTATION */
+
+/* 📱 Pour écrans de tablette et plus petits */
+@media screen and (max-width: 768px) {
+
+  /* 📌 Réduction propre et uniforme de la taille de la carte produit */
+  .carte-produit {
+    /* Taille fixée pour rester uniforme */
+    width: 260px; /* 📝 Taille modifiée ici pour mobile */
+    height: 310px; /* 📝 Taille modifiée ici pour mobile */
+  }
+
+  .image-fond {
+    height: 85%;
+    object-fit: contain;
+    margin-top: 10px;
+  }
+
+  .titre {
+    font-size: 13px;
+  }
+
+  .infos-hover h3 {
+    font-size: 16px;
+  }
+
+  .infos-hover p {
+    font-size: 13px;
+  }
+   .btn-devis {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  .voir-details,
+  .demander-devis {
+    font-size: 13px;
+  }
+
+  /* 📌 Modale plus étroite pour téléphone */
+  .modal-container {
+    width: 80%; /* 📝 Réduction de la largeur de la modale sur mobile */
+    max-height:85vh;
+    overflow-y: auto;
+  }
+
+  .modal-top {
+    padding: 20px;
+    height: auto;
+  }
+
+  .titre-et-description h2 {
+    font-size: 22px;
+  }
+
+  .titre-et-description p {
+    font-size: 12px;
+  }
+  .modal-bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .imagee,
+  .caracteristiques-et-tarif {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .caracteristiques,
+  .tarif {
+    padding: 10px;
+  }
+
+  .caracteristiques h4,
+  .tarif h4 {
+    font-size: 16px;
+  }
+
+  .tarif h2 {
+    font-size: 18px;
+  }
+
+  .modal-close {
+    font-size: 32px;
+    right: 10px;
+  }
+}
+
+
+/* 📱 Pour petits téléphones */
+@media screen and (max-width: 480px) {
+  .carte-produit {
+    width: 230px; /* 📝 Taille modifiée ici pour très petits écrans */
+    height: 290px; /* 📝 Taille modifiée ici pour très petits écrans */
+  }
+
+  .titre {
+    font-size: 12px;
+  }
+
+  .infos-hover h3 {
+    font-size: 14px;
+  }
+
+  .btn-devis {
+    font-size: 10px;
+    padding: 5px 8px;
+  }
+
+  .voir-details,
+  .demander-devis {
+    font-size: 12px;
+  }
+
+  .modal-container {
+    width: 80%; /* 📝 Encore un peu plus étroit sur très petit écran */
+  }
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
   }
 }

@@ -170,6 +170,43 @@
     font-size: 0.85rem;
   }
 }
+.video-button-container {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.btn-gps-video {
+  display: inline-block;
+  padding: 14px 28px;
+  background: linear-gradient(to right, #42a5f5, #1e88e5);
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* transition: background 0.3s ease, transform 0.2s ease; */
+  cursor: pointer;
+  animation: saut 2s infinite;
+}
+
+.btn-gps-video:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(to right, #42a5f5, #1e88e5);
+}
+
+@keyframes saut{
+  0%,20%,40%,60%,90% {
+    transform:translateY(0);
+  }
+  100%{
+    transform: translateY(15px);
+
+  }
+  80%{
+    transform: translateY(15px);
+  }
+}
 
 
 

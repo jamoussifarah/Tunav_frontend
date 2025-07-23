@@ -22,9 +22,15 @@ export class FormulaireIotItComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
+    const typeParam = params['type'];
+    if (typeParam === 'it' || typeParam === 'iot') {
+      this.selectedTab = typeParam;
+    }
+
     this.produitAvecDevisId = +params['produitId'] || 0;
     this.produitTitre = params['titre'] || '';
-  });
+    });
+    
     this.formIot = this.fb.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],

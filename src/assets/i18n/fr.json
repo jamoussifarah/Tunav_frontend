@@ -185,6 +185,7 @@
       "IOT_MESSAGE": "Décrivez votre projet IoT",
       "IT_MESSAGE": "Décrivez votre projet IT"
     },
+    "QUANTITY":"Quantité",
     "SUBMIT_IOT": "Demander un devis IoT",
     "SUBMIT_IT": "Demander une consultation IT"
   },
@@ -254,6 +255,14 @@
   "LOGOUT_TITLE": "Déconnexion",
   "LOGOUT_SUCCESS": "Vous avez été déconnecté avec succès.",
   "OK": "D'accord"
-}
+},
+  "video_webtrace": {
+    "titre": "Notre Plateforme WebTrace",
+    "paragraphe": "Vous êtes à la recherche d'une solution parfaitement adaptée à tous vos besoins spécifiques en matière de tracking ?Notre plateforme en White Label vous permet de générer différents types de rapports, vous offrant ainsi une vision claire et approfondie de vos données.Découvrez comment notre plateforme de suivi GPS peut transformer votre gestion quotidienne et améliorer votre prise de décision.",
+    "bouton_home":"Découvrir WebTrace",
+    "voir_video": "👉 Voir la démonstration en vidéo"
+  }
+
+
 
 }
