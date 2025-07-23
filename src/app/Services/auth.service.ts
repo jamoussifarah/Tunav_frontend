@@ -60,11 +60,14 @@ signIn(data: SignInRequest): Observable<any> {
   return new Observable(observer => {
     this.http.post(`${this.apiUrl}/signin`, data).subscribe({
       next: (response) => {
-        this.statisticsService.trackLogin().subscribe({
-          next: () => console.log('📊 Login tracked'),
-          error: err => console.error('❌ Failed to track login')
-        });
-
+        const rolee = (response as any)?.role;
+          const isAdmin =rolee==="Administrateur" ;
+          if (!isAdmin) {
+            this.statisticsService.trackLogin().subscribe({
+              next: () => console.log('📊 Login tracked'),
+              error: err => console.error('❌ Failed to track login')
+            });
+          }
         observer.next(response);
         observer.complete();
       },

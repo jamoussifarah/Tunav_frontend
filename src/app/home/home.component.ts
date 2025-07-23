@@ -23,6 +23,14 @@ export class HomeComponent implements OnInit {
   public devisChartResponsive: any[];
   public devisChartLegendItems: LegendItem[];
 
+  // Graphique des états
+  totalDevis: number = 0;
+public devisEtatChartType: ChartType;
+public devisEtatChartData: any;
+public devisEtatChartOptions: any;
+public devisEtatChartResponsive: any[] = [];
+public devisEtatChartLegendItems: LegendItem[] = [];
+public footerEtatText: string = '';
   public footerText: string = '';
 
   constructor(
@@ -32,6 +40,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.hoursChartType = ChartType.Bar;
+    this.devisChartType=ChartType.Pie;
     this.hoursChartResponsive = [];
     this.hoursChartLegendItems = [
       { title: 'Visitors', imageClass: 'fa fa-eye text-info' },
@@ -45,8 +54,16 @@ export class HomeComponent implements OnInit {
       { title: 'Devis IT', imageClass: 'fa fa-circle text-info' },
       { title: 'Devis IOT', imageClass: 'fa fa-circle text-danger' }
     ];
-
+     this.devisEtatChartType = ChartType.Line;
+    this.devisEtatChartResponsive = [];
+    this.devisEtatChartLegendItems = [
+        { title: 'En Attente', imageClass: 'fa fa-circle text-warning' },
+        { title: 'En Cours', imageClass: 'fa fa-circle text-info' },
+        { title: 'Validé', imageClass: 'fa fa-circle text-success' },
+        { title: 'Annulé', imageClass: 'fa fa-circle text-danger' }
+      ];
     this.loadStats();
+    
   }
 
   loadStats() {
@@ -57,8 +74,13 @@ export class HomeComponent implements OnInit {
           high: maxValue,
           low: 0,
           axisY: {
-            onlyInteger: true
-          },
+          onlyInteger: true,
+          offset: 60 
+        },
+         axisX: {
+          onlyInteger: true,
+          offset: 60 
+        },
           seriesBarDistance: 20
         };
         this.hoursChartData = {
@@ -71,6 +93,27 @@ export class HomeComponent implements OnInit {
         this.footerText = this.getTimeSinceLastUpdate(stats.lastUpdated);
       },
       error: (error) => console.error('Error fetching user stats')
+    });
+    this.devisService.getAllDevis().subscribe({
+      next: (devisList) => {
+        this.etatStats = {
+          EnAttente: 0,
+          EnCours: 0,
+          Valide: 0,
+          Annulé: 0
+        };
+
+        for (const d of devisList) {
+          if (this.etatStats[d.etat] !== undefined) {
+            this.etatStats[d.etat]++;
+          }
+        }
+
+        this.updateChartData();
+        this.totalDevis = devisList.length;
+        this.footerEtatText= `Total des devis : ${this.totalDevis}`
+      },
+      error: (err) => console.error('Erreur de récupération des devis pour stats état', err)
     });
 
     this.devisService.getNumberDevisWithoutProduit().subscribe({
@@ -113,6 +156,42 @@ export class HomeComponent implements OnInit {
       error: (error) => console.error('Error fetching devis without produit')
     });
   }
+  updateChartData() {
+      const labels = Object.keys(this.etatStats);
+      const data = Object.values(this.etatStats);
+       this.devisEtatChartData = {
+        labels: labels,
+        series: [data] 
+      };
+      this.devisEtatChartOptions = {
+        low: 0,
+        axisY: {
+          onlyInteger: true,
+          offset: 60 
+        },
+         axisX: {
+          onlyInteger: true,
+          offset: 60 
+        },
+        chartPadding: {
+          left: 20,
+          right: 20
+        },
+        seriesBarDistance: 20,
+        donut: true,
+        donutWidth: 70,
+        showLabel: true,
+        labelInterpolationFnc: function (value: string) {
+          return value;
+        }
+      };
+
+      this.devisEtatChartLegendItems = labels.map((label, index) => ({
+        title: label,
+        imageClass: 'fa fa-circle',
+        class: `text-${['danger', 'info', 'success'][index] || 'primary'}`
+      }));
+    }
 
   getTimeSinceLastUpdate(lastUpdated: string): string {
     const lastUpdateDate = new Date(lastUpdated);
@@ -135,4 +214,13 @@ export class HomeComponent implements OnInit {
       return `Updated ${diffInWeeks} week${diffInWeeks === 1 ? '' : 's'} ago`;
     }
   }
+  public etatStats: { [key: string]: number } = {
+  EnAttente: 0,
+  EnCours: 0,
+  Valide: 0,
+  Annulé:0
+};
+
+  
+
 }

@@ -31,12 +31,38 @@ export class AppComponent implements OnInit,AfterViewInit {
      }
 
     ngOnInit(){
-       this.statsService.trackVisit().subscribe({
-      next: () => console.log('✅ Visit tracked'),
-      error: err => console.error('❌ Visit tracking failed')
-    });
+
+     const adminPaths = [
+      'dashboard',
+      'admin',
+      'add-product',
+      'update-product',
+      'listProducts',
+      'listblogs',
+      'listusers',
+      'add-blog',
+      'update-blog',
+      'franchises',
+      'listDevis',
+      'devis',
+      'produit-iot',
+      'produit-gps',
+    ];
+
+    const currentUrl = this.router.url;
+
+    const isAdminRoute = adminPaths.some(path => currentUrl.includes(path));
+
+    if (!isAdminRoute) {
+      this.statsService.trackVisit().subscribe({
+        next: () => console.log('✅ Visit tracked'),
+        error: err => console.error('❌ Visit tracking failed')
+      });
     }
-    ngAfterViewInit(): void {
+
+  }
+  ngAfterViewInit(): void 
+  {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -51,7 +77,7 @@ export class AppComponent implements OnInit,AfterViewInit {
         }
       });
   }
-    isMap(path){
+  isMap(path){
       var titlee = this.location.prepareExternalUrl(this.location.path());
       titlee = titlee.slice( 1 );
       if(path == titlee){

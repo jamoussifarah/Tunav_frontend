@@ -28,8 +28,7 @@ export class ListDevisComponent implements OnInit {
     });
   }
   onEtatSelected(nouvelEtat: string, devis: any) {
-    if (nouvelEtat === devis.etat) return; // Pas de changement
-
+    if (nouvelEtat === devis.etat) return; 
     Swal.fire({
       title: 'Confirmation',
       text: `Voulez-vous vraiment changer l'état du devis en '${nouvelEtat}' ?`,
@@ -40,7 +39,6 @@ export class ListDevisComponent implements OnInit {
     }).then(result => {
       if (result.isConfirmed) {
         const nouvelEtatIndex = this.etatsDisponibles.indexOf(nouvelEtat);
-
         this.devisService.updateEtatDevis(devis.id, nouvelEtatIndex.toString()).subscribe({
           next: (updatedDevis) => {
             devis.etat = updatedDevis.etat; 
@@ -51,7 +49,6 @@ export class ListDevisComponent implements OnInit {
           }
         });
       } else {
-        
         devis.etat = devis.etat;
       }
     });
