@@ -34,24 +34,30 @@
             </lbd-chart>
          </div>
             
-      <!--     
+        
           
         </div>
-        <div class="row">
-            <div class="col-md-6">
-                <lbd-chart
-                  [title]="'2021 Sales'"
-                  [subtitle]="'All products including Taxes'"
-                  [chartType]="activityChartType"
-                  [chartData]="activityChartData"
-                  [chartOptions]="activityChartOptions"
-                  [chartResponsive]="activityChartResponsive"
-                  [legendItems]="activityChartLegendItems"
-                  [withHr]="true"
-                  [footerIconClass]="'fa fa-check'"
-                  [footerText]="'Data information certified'">
-                </lbd-chart>
+        <div class="row mt-4" >
+            <br>
+           <div class="col-md-12" style="margin-bottom: 0">
+            <lbd-chart
+                [title]="'Devis par État'"
+                [subtitle]="'Répartition: EnAttente, EnCours, Valide, Annulé'"
+                [chartClass]="'ct-perfect-fourth'"
+                [chartType]="devisEtatChartType"
+                [chartData]="devisEtatChartData"
+                [chartOptions]="devisEtatChartOptions"
+                [chartResponsive]="devisEtatChartResponsive"
+                [legendItems]="devisEtatChartLegendItems"
+                [withHr]="true"
+                [footerIconClass]="'fa fa-refresh'"
+                [footerText]="footerEtatText">
+            </lbd-chart>
             </div>
+        </div>
+    </div>
+</div>   
+            <!--
             <div class="col-md-6">
                 <div class="card">
                     <div class="header">
@@ -189,6 +195,4 @@
                     </div>
                 </div>
             </div>-->
-        </div>
-    </div>
-</div>
+  
