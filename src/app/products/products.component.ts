@@ -109,4 +109,7 @@ export class ProductsComponent implements OnInit, AfterViewChecked {
   isSolutionsITSelected(): boolean {
     return this.petitsCadres.find((c) => c.label === 'Solutions IT')?.active || false;
   }
+  isGpsSelected(): boolean {
+    return this.petitsCadres.find((c) => c.label === 'GPS Trackers')?.active || false;
+  }
 }

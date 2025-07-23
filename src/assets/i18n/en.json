@@ -200,6 +200,7 @@
       "IOT_MESSAGE": "Describe your IoT project",
       "IT_MESSAGE": "Describe your IT project"
     },
+    "QUANTITY":"Quantity",
     "SUBMIT_IOT": "Request IoT Quote",
     "SUBMIT_IT": "Request IT Consultation"
   },
@@ -265,7 +266,13 @@
   "LOGOUT_TITLE": "Logged out",
   "LOGOUT_SUCCESS": "You have been logged out successfully.",
   "OK": "OK"
-}
+},
+"video_webtrace": {
+  "titre": "Our WebTrace Platform",
+  "paragraphe": "Are you looking for a solution perfectly tailored to all your tracking needs?Our White Label platform allows you to generate different types of reports, giving you a clear and detailed view of your data.Discover how our GPS tracking platform can transform your daily management and improve your decision-making.",
+  "bouton_home":"Discover WebTrace",
+  "voir_video": "👉 Watch the video demonstration"
+  }
 
 }
 

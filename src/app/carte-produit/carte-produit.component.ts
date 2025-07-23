@@ -31,8 +31,13 @@ export class CarteProduitComponent {
   }
   allerAuFormulaire() {
     this.closeModal();
-    this.router.navigate(['/formulaireiotit'], { queryParams: { produitId: this.id ,titre:this.titre} });
-    
+    this.router.navigate(['/formulaireiotit'], {
+      queryParams: {
+        type: 'iot',                
+        produitId: this.id,
+        titre: this.titre
+      }
+    });
   }
  getImageUrl(imagePath: string): string {
   if (imagePath.startsWith('/assets')) {

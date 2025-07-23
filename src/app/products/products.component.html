@@ -28,7 +28,9 @@
     <div class="description-it" *ngIf="isSolutionsITSelected()">
       <h2>{{ 'SOLUTIONS_PRODUCTS.IT.TITLE' | translate }}</h2>
       <p>{{ 'SOLUTIONS_PRODUCTS.IT.DESCRIPTION' | translate }}</p>
-      <a class="btn-formulaire-it" [routerLink]="['/formulaireiotit']" [queryParams]="{ onglet: 'it' }">
+      <a class="btn-formulaire-it"
+        [routerLink]="['/formulaireiotit']"
+        [queryParams]="{ type: 'it' }">
         {{ 'SOLUTIONS_PRODUCTS.IT.LINK' | translate }}
       </a>
     </div>
@@ -61,7 +63,11 @@
         </app-carte-produit-nodevis>
       </div>
     </section>
-    
+    <div *ngIf="isGpsSelected()" class="video-button-container">
+      <a href="https://www.dropbox.com/scl/fi/j8raw1w8fma6y1dclcdp0/plateforme-complet.mp4?rlkey=canq2r20hsma9q4dtzb3406su&e=2&st=bvyvh272&dl=0" target="_blank" class="btn-gps-video">
+       {{ 'video_webtrace.voir_video' | translate }}
+      </a>
+    </div>
 
   </div>
 </section>

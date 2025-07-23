@@ -292,6 +292,113 @@
 .btn-panier:hover {
   background-color: #008fcc;
 }
+/* ✅ RESPONSIVE - Cartes sans devis et modale */
+
+@media screen and (max-width: 768px) {
+  /* 📌 Cartes produit avec taille réduite fixe */
+  .carte-produit {
+    width: 260px; /* 📝 Taille modifiée ici pour tablette/mobile */
+    height: 310px; /* 📝 Hauteur modifiée ici */
+  }
+
+  .titre {
+    font-size: 13px;
+  }
+
+  .overlay {
+    padding: 16px;
+  }
+
+  .infos-hover h3 {
+    font-size: 16px;
+  }
+
+  .infos-hover p {
+    font-size: 13px;
+  }
+
+  .voir-details {
+    font-size: 13px;
+  }
+  .modal-container {
+    width: 80%; /* 📝 Réduction de la largeur de la modale sur mobile */
+    max-height:85vh;
+    overflow-y: auto;
+  }
+
+  .modal-top {
+    padding: 20px;
+    height: auto;
+  }
+
+  .titre-et-description h2 {
+    font-size: 22px;
+  }
+
+  .titre-et-description p {
+    font-size: 12px;
+  }
+
+  .modal-bottom {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .imagee,
+  .caracteristiques-et-tarif {
+    width: 100%;
+    max-width: 100%;
+  }
+  .caracteristiques,
+  .tarif {
+    padding: 10px;
+  }
+
+  .caracteristiques h4,
+  .tarif h4 {
+    font-size: 16px;
+  }
+
+  .tarif h2 {
+    font-size: 18px;
+  }
+
+  .modal-close {
+    font-size: 32px;
+    right: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .carte-produit {
+    width: 230px; /* 📝 Plus petit écran */
+    height: 290px;
+  }
+
+  .modal-container {
+    width: 85%;
+  }
+
+  .imagee,
+  .caracteristiques-et-tarif {
+    width: 100%; /* 👈 Permet l'adaptation en pile uniquement si nécessaire */
+  }
+
+  .modal-container {
+    width: 80%; /* 📝 Encore un peu plus étroit sur très petit écran */
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
+  }
+  .btn-panier {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+}
 
 
 

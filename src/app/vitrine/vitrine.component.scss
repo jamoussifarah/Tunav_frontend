@@ -213,5 +213,61 @@
     padding: 7px 18px;
   }
 }
+.video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.video-demo {
+  width: 60%;
+  height: 100%;
+  max-height: 500px; /* pour éviter débordement sur très grands écrans */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Pour petits écrans : garder le ratio mais avec 100% hauteur & 60% largeur */
+@media (max-width: 768px) {
+  .video-demo {
+    width: 60%;
+    height: 100vh;
+    max-height: none;
+  }
+}
+.video-container {
+  position: relative;
+
+  video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .sound-toggle {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 14px;
+  }
+}
+.css_perso{
+  position: relative;
+  left: 20%;
+}
+
 
 

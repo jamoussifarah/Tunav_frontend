@@ -96,8 +96,26 @@ export class VitrineComponent implements AfterViewInit {
   });
 }
 
-  ngAfterViewInit() {
+  ngAfterViewInit() :void {
     this.initScripts();
+    const videoEl = this.webtraceVideo?.nativeElement;
+    if (videoEl) {
+      videoEl.muted = true;
+      videoEl.playsInline = true;
+      videoEl.play().catch(err => console.warn('Autoplay failed:', err));
+
+      this.webtraceVideoObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            videoEl.play().catch(err => console.warn('Autoplay failed:', err));
+          } else {
+            videoEl.pause();
+          }
+        },
+        { threshold: 0.1 }
+      );
+      this.webtraceVideoObserver.observe(videoEl);
+    }
   }
   // constructor(private router: Router) {}
 
@@ -325,6 +343,28 @@ onScroll() {
 }
   goToProductsPage(): void {
   this.router.navigate(['/products']);
+  }
+   @ViewChild('webtraceVideo', { static: false }) webtraceVideo!: ElementRef<HTMLVideoElement>;
+
+
+  webtraceSoundOn = false;
+  private webtraceVideoObserver?: IntersectionObserver;
+
+  toggleWebtraceSound(): void {
+    const videoEl = this.webtraceVideo.nativeElement;
+    this.webtraceSoundOn = !this.webtraceSoundOn;
+    videoEl.muted = !this.webtraceSoundOn;
+
+    if (this.webtraceSoundOn) {
+      videoEl.play().catch(err => console.warn('Play with sound failed:', err));
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.webtraceVideoObserver && this.webtraceVideo) {
+      this.webtraceVideoObserver.unobserve(this.webtraceVideo.nativeElement);
+      this.webtraceVideoObserver.disconnect();
+    }
   }
 
 

@@ -6,14 +6,14 @@
       <h1> {{ 'SOLUTIONS.TITLE' | translate }}</h1>
       <p class="subtitle">{{ 'SOLUTIONS.SUBTITLE' | translate }}</p>
 
-      <div class="tabs">
+      <!-- <div class="tabs">
         <button class="tab" [class.active]="selectedTab === 'iot'" (click)="selectTab('iot')">
           {{ 'SOLUTIONS.IOT.TAB' | translate }}
         </button>
         <button class="tab" [class.active]="selectedTab === 'it'" (click)="selectTab('it')">
           {{ 'SOLUTIONS.IT.TAB' | translate }}
         </button>
-      </div>
+      </div> -->
     </div>
 
     <div class="partie-formulaire">
@@ -33,13 +33,13 @@
         <form [formGroup]="formIot" (ngSubmit)="submitForm('iot')">
           <label for="nom-iot">{{ 'FORM.NAME' | translate }} *</label>
           <input id="nom-iot" formControlName="nom" [placeholder]="'FORM.PLACEHOLDER.NAME' | translate" />
-          <label for="quantite-iot">Quantité *</label>
-          <input id="quantite-iot" formControlName="quantite" type="number" min="1" />
           <label for="prenom-iot">{{ 'FORM.FIRSTNAME' | translate }} *</label>
           <input id="prenom-iot" formControlName="prenom" [placeholder]="'FORM.PLACEHOLDER.FIRSTNAME' | translate" />
-
           <label for="email-iot">Email *</label>
           <input id="email-iot" formControlName="email" type="email" [placeholder]="'FORM.PLACEHOLDER.EMAIL' | translate" />
+          
+          <label for="quantite-iot">Quantité *</label>
+          <input id="quantite-iot" formControlName="quantite" type="number" min="1" />
 
           <label for="entreprise-iot">{{ 'FORM.COMPANY' | translate }}</label>
           <input id="entreprise-iot" formControlName="entreprise" [placeholder]="'FORM.PLACEHOLDER.COMPANY' | translate" />
