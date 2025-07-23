@@ -156,19 +156,21 @@
     }
   },
    "SOLUTIONS": {
-    "TITLE": "📡 Solutions GPS Avancées",
-    "SUBTITLE": "Découvrez nos solutions IoT et IT pour vos besoins GPS",
       "IOT": {
-      "TAB": "Solution IoT",
-      "TITLE": "Demande de devis pour un produit IoT",
-      "SUBTITLE": "Obtenez un devis personnalisé pour votre solution IoT",
-      "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour recevoir un devis pour le produit IoT sélectionné."
+          "DYNAMIC_TITLE": "📡 Solutions IoT Avancées",
+          "DYNAMIC_SUBTITLE": "Découvrez nos solutions IoT adaptées à vos besoins",
+          "TAB": "Solution IoT",
+          "TITLE": "Demande de devis pour un produit IoT",
+          "SUBTITLE": "Obtenez un devis personnalisé pour votre solution IoT",
+          "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour recevoir un devis pour le produit IoT sélectionné."
     },
-   "IT": {
-      "TAB": "Solution IT",
-      "TITLE": "Demande de devis pour une solution IT personnalisée",
-      "SUBTITLE": "Décrivez-nous la solution IT dont vous avez besoin",
-      "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour demander un devis personnalisé pour une solution IT sur mesure, incluant des logiciels, des bases de données ou des systèmes d’entreprise adaptés à vos besoins."
+      "IT": {
+          "DYNAMIC_TITLE": "📡 Solutions IT Avancées",
+          "DYNAMIC_SUBTITLE": "Découvrez nos solutions IT adaptées à vos besoins",
+          "TAB": "Solution IT",
+          "TITLE": "Demande de devis pour une solution IT personnalisée",
+          "SUBTITLE": "Décrivez-nous la solution IT dont vous avez besoin",
+          "DESCRIPTION": "Veuillez remplir le formulaire ci-dessous pour demander un devis personnalisé pour une solution IT sur mesure, incluant des logiciels, des bases de données ou des systèmes d’entreprise adaptés à vos besoins."
     }
   },
   "FORM": {
