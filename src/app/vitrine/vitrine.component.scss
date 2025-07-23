@@ -213,43 +213,29 @@
     padding: 7px 18px;
   }
 }
+/* ✅ CHANGEMENT : ajout de flex et padding pour centrer et aérer la vidéo */
 .video-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-}
+  padding: 1rem;
 
-.video-demo {
-  width: 60%;
-  height: 100%;
-  max-height: 500px; /* pour éviter débordement sur très grands écrans */
-  object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-/* ✅ Pour petits écrans : garder le ratio mais avec 100% hauteur & 60% largeur */
-@media (max-width: 768px) {
-  .video-demo {
-    width: 60%;
-    height: 100vh;
-    max-height: none;
-  }
-}
-.video-container {
-  position: relative;
-
+  /* ✅ CHANGEMENT : ajout de max-height et object-fit pour une vidéo responsive */
   video {
     width: 100%;
+    max-height: 500px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    object-fit: contain;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
+  /* ✅ PAS DE CHANGEMENT ici mais bien structuré */
   .sound-toggle {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 20px;
+    right: 20px;
     background: rgba(0, 0, 0, 0.5);
     border: none;
     color: white;
@@ -264,10 +250,60 @@
     font-size: 14px;
   }
 }
-.css_perso{
+
+/* ✅ CHANGEMENT : bouton décalé à gauche en desktop */
+.css_perso {
   position: relative;
   left: 20%;
 }
+
+/* ✅ NOUVEAU : media query tablette pour adapter taille vidéo et bouton */
+@media (max-width: 992px) {
+  .video-container video {
+    min-height: 400px;
+  }
+
+  .css_perso {
+    left: 0;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+/* ✅ NOUVEAU : media query mobile pour mise à l’échelle et recentrage */
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+
+    /* ✅ CHANGEMENT : réduction largeur et hauteur en mobile */
+    video {
+      width: 100%;
+      max-height: 400px;
+    }
+
+    /* ✅ CHANGEMENT : placement du bouton son ajusté */
+    .sound-toggle {
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+
+  /* ✅ NOUVEAU : centrage du texte */
+  .text-container {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  /* ✅ CHANGEMENT : recentrage du bouton sur mobile */
+  .css_perso {
+    left: 0;
+    display: block;
+    margin: 1rem auto 0 auto;
+    text-align: center;
+  }
+}
+
 
 
 

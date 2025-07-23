@@ -3,8 +3,12 @@
   <br>
   <div class="container">
     <div class="partie-informations">
-      <h1> {{ 'SOLUTIONS.TITLE' | translate }}</h1>
-      <p class="subtitle">{{ 'SOLUTIONS.SUBTITLE' | translate }}</p>
+      <h1 *ngIf="selectedTab === 'iot'">{{ 'SOLUTIONS.IOT.DYNAMIC_TITLE' | translate }}</h1>
+      <h1 *ngIf="selectedTab === 'it'">{{ 'SOLUTIONS.IT.DYNAMIC_TITLE' | translate }}</h1>
+
+      <p class="subtitle" *ngIf="selectedTab === 'iot'">{{ 'SOLUTIONS.IOT.DYNAMIC_SUBTITLE' | translate }}</p>
+      <p class="subtitle" *ngIf="selectedTab === 'it'">{{ 'SOLUTIONS.IT.DYNAMIC_SUBTITLE' | translate }}</p>
+
 
       <!-- <div class="tabs">
         <button class="tab" [class.active]="selectedTab === 'iot'" (click)="selectTab('iot')">

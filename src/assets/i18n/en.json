@@ -170,15 +170,17 @@
     }
   },
   "SOLUTIONS": {
-    "TITLE": "📡 Advanced GPS Solutions",
-    "SUBTITLE": "Discover our IoT and IT solutions for your GPS needs",
-   "IOT": {
-    "TAB": "IoT Solution",
-    "TITLE": "Quotation Request for IoT Product",
-   "SUBTITLE": "Request a quote for your selected IoT solution",
-   "DESCRIPTION": "Please fill in the form below to receive a personalized quotation for the selected IoT product "
-    },
-   "IT": {
+    "IOT": {
+      "DYNAMIC_TITLE": "📡 Advanced IoT Solutions",
+      "DYNAMIC_SUBTITLE": "Discover our IoT solutions for your needs",
+      "TAB": "IoT Solution",
+      "TITLE": "Quotation Request for IoT Product",
+    "SUBTITLE": "Request a quote for your selected IoT solution",
+    "DESCRIPTION": "Please fill in the form below to receive a personalized quotation for the selected IoT product "
+      },
+    "IT": {
+      "DYNAMIC_TITLE": "📡 Advanced IT Solutions",
+      "DYNAMIC_SUBTITLE": "Discover our IT solutions for your needs",
       "TAB": "IT Solution",
       "TITLE": "Quotation Request for a Custom IT Solution",
       "SUBTITLE": "Tell us about the IT solution you need",
